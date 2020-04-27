@@ -113,7 +113,7 @@ include_once 'includes/config.php';
     <div class="row">
       <div class="col-md-3">
         
-        <idv class="list-group">
+        <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action active main-color-bg">
           <span class="material-icons">school</span> Progress</a>
         <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
@@ -122,9 +122,9 @@ include_once 'includes/config.php';
           Level  <span class="badge badge-dark">4</span> </a>
         <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
           Remaining  <span class="badge badge-dark ">7</span></a>
-        </idv>
+        </div>
         
-
+        <br>
       </div>
      
       <div class="col-md-9">
@@ -135,7 +135,7 @@ include_once 'includes/config.php';
           </div>
 
          <div class="card-body row">
-            <div class="col-md-4" style="text-align: center;">
+            <div class="col-4" style="text-align: center;">
 
               <div class="well dash-box">
                 <h2><span class="material-icons">inbox</span> 5</h2>
@@ -145,7 +145,7 @@ include_once 'includes/config.php';
 
             </div>
 
-            <div class="col-md-4" style="text-align: center;">
+            <div class="col-4" style="text-align: center;">
 
               <div class="well dash-box">
                 <h2><span class="material-icons">inbox</span> 5</h2>
@@ -155,7 +155,7 @@ include_once 'includes/config.php';
 
             </div>
 
-            <div class="col-md-4" style="text-align: center;">
+            <div class="col-4" style="text-align: center;">
 
               <div class="well dash-box">
                 <h2><span class="material-icons">inbox</span> 5</h2>
