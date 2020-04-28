@@ -111,8 +111,32 @@ include_once 'includes/config.php';
 <section id="main">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <!-- sidebar -->
         
+      <!-- profile -->
+
+      <div class="col-md-3">
+
+        <div class="card" style="text-align: center">
+				<!-- SIDEBAR USERPIC -->
+        <div class="card-body">
+				<div class="profile-userpic">
+					<img src="images/profilepic.jpeg" class="img-responsive" alt="profile picture">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						Kerone Creary
+					</div>
+					<div class="profile-usertitle-job">
+						Aspiring Developer
+					</div>
+        </div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				</div>
+        <br/>
         <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action active main-color-bg">
           <span class="material-icons">school</span> Progress</a>
@@ -126,7 +150,7 @@ include_once 'includes/config.php';
         
         <br>
       </div>
-     
+      <!-- main document -->
       <div class="col-md-9">
 
         <div class="card">
@@ -172,8 +196,48 @@ include_once 'includes/config.php';
 <br>
         <div class="card" >
             <div class="card-header main-color-bg">
-              Featured
+              Current Modules
             </div>
+
+            <table class="table table-striped table hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Module Code</th>
+                  <th>Type</th>
+                  <th>Credits</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+
+
             
           </div>
 
@@ -186,7 +250,15 @@ include_once 'includes/config.php';
     
   </div>
 </section>
-<!-- main end--> 
+<!-- main end-->
+
+<!-- Footer -->
+<footer id="footer">
+
+  <p>Copyright ScitAdvisement, &copy; 2020</p>
+
+</footer>
+<!-- Footer end -->
 
 
 
