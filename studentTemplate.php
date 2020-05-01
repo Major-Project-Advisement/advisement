@@ -1,0 +1,151 @@
+<?php 
+
+include_once 'includes/config.php';
+
+
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+
+    <!-- custom styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- material design icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <title>Student | <?php echo $title; ?></title>
+  </head>
+  <body>
+
+
+
+
+
+
+
+<!-- navbar start  -->
+<nav class="navbar navbar-default navbar-expand-md navbar-dark">
+  <a href="#"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item <?php if ($title == 'Resources')  {echo ' active'; }?>">
+        <a class="nav-link" href="#">Resources<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item <?php if ($title == 'Modules')  {echo ' active'; }?>">
+        <a class="nav-link" href="#">Modules</a>
+      </li>
+      <li class="nav-item <?php if ($title == 'Update')  {echo ' active'; }?>">
+        <a class="nav-link" href="#">Update</a>
+      </li>
+      <li class="nav-item dropdown <?php if ($title == 'Advisor')  {echo ' active'; }?>">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="#">View</a>
+          <a class="dropdown-item" href="#">Message</a>
+          <a class="dropdown-item" href="#">Request meeting</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav  navbar-right">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Welcome, Kerone</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Logout</a>
+      </li>
+      
+      
+    </ul>
+
+    
+    
+  </div>
+</nav>
+<!-- navbar end -->
+
+
+
+
+<!-- header start   -->
+<header id="header">
+  <div class="container" >
+    
+    <div class="row"> 
+      <div class="col-md-12"> 
+        <h3> <span class="material-icons">home</span> Dashboard</h3>
+      </div>
+      
+    </div>
+
+  </div>
+</header>
+<!-- header end   -->
+
+
+<!-- beadcrumb -->
+<section id="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li> Dashboard </li>
+      <?php  echo '<li> '.$crumb.' </li>'; ?>
+    </ol>
+  </div>
+</section>
+<!-- beadcrumb end -->
+
+
+<!-- main start--> 
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <!-- sidebar -->
+        
+      <!-- profile -->
+
+      <div class="col-md-3">
+        <?php echo $sidebar; ?>
+      </div>
+      <!-- main document -->
+      <div class="col-md-9">
+        <?php echo $main; ?>
+        </div>
+  <!-- main end-->
+</section>
+
+
+<!-- Footer -->
+<footer id="footer">
+
+  <p>Copyright ScitAdvisement, &copy; 2020</p>
+
+</footer>
+<!-- Footer end -->
+
+
+
+
+
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
