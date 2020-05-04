@@ -1,7 +1,22 @@
 /* off white background color */
-body {
+ body {
     background: #f4f4f4;
+    height: 100%
+
 }
+
+html {
+  height: 100%
+}
+
+#container {
+ overflow: auto;
+}
+
+#main {
+   min-height: 80%;
+}
+
 
 /* resize the navbar to make it smaller */
 .navbar{
@@ -156,10 +171,13 @@ body {
 /* footer*/
 #footer{
   background: #333333;
+  position: relative;
   color: #ffffff;
   text-align: center;
   padding: 30px;
   margin-top: 30px;
+  clear: both;
+
 }
 
 

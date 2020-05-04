@@ -41,8 +41,8 @@ include_once 'includes/config.php';
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="studentresources.php">Resources</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="studentresources.php">Resources<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Modules</a>
@@ -86,22 +86,22 @@ include_once 'includes/config.php';
     
     <div class="row"> 
       <div class="col-md-12"> 
-        <h3> <span class="material-icons">home</span> Dashboard</h3>
+        <h3> <span class="material-icons">home</span> Resources</h3>
       </div>
       
     </div>
 
   </div>
 </header>
-<!-- header end   --> 
+<!-- header end   -->
 
 
 <!-- beadcrumb -->
 <div class="container">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item active">Dashboard</li>
-    
+    <li class="breadcrumb-item"><a href="student.php">Dashboard</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Resources</li>
   </ol>
 </nav>
 </div>
@@ -154,50 +154,9 @@ include_once 'includes/config.php';
       <!-- main document -->
       <div class="col-md-9">
 
-        <div class="card">
-          <div class="card-header main-color-bg">
-           <span class="material-icons">account_box</span> Overview
-          </div>
-
-         <div class="card-body row">
-            <div class="col-4" style="text-align: center;">
-
-              <div class="well dash-box">
-                <h2><span class="material-icons">inbox</span> 5</h2>
-                <h4>Inbox</h4>
-
-              </div>
-
-            </div>
-
-            <div class="col-4" style="text-align: center;">
-
-              <div class="well dash-box">
-                <h2><span class="material-icons">inbox</span> 5</h2>
-                <h4>Inbox</h4>
-
-              </div>
-
-            </div>
-
-            <div class="col-4" style="text-align: center;">
-
-              <div class="well dash-box">
-                <h2><span class="material-icons">inbox</span> 5</h2>
-                <h4>Inbox</h4>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-<br>
         <div class="card" >
             <div class="card-header main-color-bg">
-              Current Modules
+              Available Resources
             </div>
 
             <table class="table table-striped table hover">
