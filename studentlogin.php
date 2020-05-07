@@ -27,11 +27,6 @@ include_once 'includes/config.php';
   <body>
 
 
-
-
-
-
-
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
   <a href="#"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
@@ -142,10 +137,6 @@ include_once 'includes/config.php';
 
 </footer>
 <!-- Footer end -->
-
-
-
-
 
 
     
