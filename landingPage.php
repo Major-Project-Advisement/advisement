@@ -19,7 +19,7 @@ Session_start();//continue session
 
     <!-- custom styles -->
     <link rel="stylesheet" href="css/neutralStyle.css">
-    <?php echo $style; ?>
+  
 
     <!-- material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
