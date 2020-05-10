@@ -18,7 +18,7 @@ Session_start();//continue session
     
 
     <!-- custom styles -->
-    <link rel="stylesheet" href="css/studentStyle.css">
+    <link rel="stylesheet" href="css/neutralStyle.css">
     <?php echo $style; ?>
 
     <!-- material design icons -->
@@ -59,11 +59,21 @@ Session_start();//continue session
     </ul>
 
     <ul class="navbar-nav  navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Welcome, Kerone</a>
+
+    <li class="nav-item">
+        <a class="nav-link" href="landingPage.php">Home</a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="">Logout</a>
+        <a class="nav-link" href="about.php">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Up</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" href="studentLogin">As Student </a>
+          <a class="dropdown-item" href="advisorLogin">As Advisor </a>
+          
+        </div>
       </li>
       
       
@@ -78,38 +88,18 @@ Session_start();//continue session
 
 
 
-<!-- header start   -->
-<header id="header">
-  <div class="container" >
-    
-    <div class="row"> 
-      <div class="col-md-12"> 
-        <h3> <span class="material-icons">home</span> <?php echo $header; ?> </h3>
-      </div>
-      
-    </div>
+<!-- carousel-->
 
-  </div>
-</header>
-<!-- header end   -->
+<!-- carousel  end-->
 
 
 
-<!-- breadcrumb -->
-<?php echo $crumb; ?>
-<!-- breadcrumb end -->
 
 
 
 <!-- main start--> 
 <section id="main">
 
-<div class="container">
-      <div class="row">
-        <?php echo $sidebar; ?>
-        <?php echo $main; ?>
-      </div>
-</div>
 
 </section>
 <!-- main end-->

@@ -18,14 +18,14 @@ Session_start();//continue session
     
 
     <!-- custom styles -->
-    <link rel="stylesheet" href="css/studentStyle.css">
+    <link rel="stylesheet" href="css/advisorStyle.css">
     <?php echo $style; ?>
 
     <!-- material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-    <title>Student | <?php echo $title; ?></title>
+    <title>Advisor| <?php echo $title; ?></title>
   </head>
   <body>
 
