@@ -1,9 +1,5 @@
 <?php 
-
 Session_start();//continue session
-
-
-
 ?>
 
 <!doctype html>
@@ -73,16 +69,90 @@ Session_start();//continue session
 
 
 <!-- carousel-->
-
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+	    <ol class="carousel-indicators">
+	    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    	<li data-target="#myCarousel" data-slide-to="1"></li>
+	    	<li data-target="#myCarousel" data-slide-to="2"></li>
+	    </ol>
+  	<div class="carousel-inner">
+	    <div class="carousel-item active" data-interval="5000">
+	      <img class="carousel-img" src="images/carousel-2.jpg" >
+	      <div class="carousel-caption d-md-block">
+	        <h5>Carousel 1 Image</h5>
+	        <a href="#" target="_blank"><button type="button" class="btn btn-outline-light btn-lg">Carousel 1 Link</button></a>
+	      </div>
+    	</div>
+	    <div class="carousel-item">
+	      <img class="carousel-img" src="images/carousel-1.jpg">
+	      <div class="carousel-caption d-md-block">
+	        <h5>Carousel 2 Image</h5>
+	        <a href="#" target="_blank"><button type="button" class="btn btn-outline-light btn-lg">Carousel 2 Link</button></a>
+	      </div>
+	    </div>
+	    <div class="carousel-item">
+	      <img class="carousel-img" src="images/carousel-3.jpg" >
+	      <div class="carousel-caption d-md-block">
+	        <h5>Carousel 3 Image</h5>
+	        <a href="#" target="_blank"><button type="button" class="btn btn-outline-light btn-lg">Carousel 3 Link</button></a>
+	      </div>
+	    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 <!-- carousel  end-->
-
-
-
-
 
 
 <!-- main start--> 
 <section id="main">
+  <div class="container-fluid padding">
+    <div class="row text-center padding">
+      <div class="col-12">
+        <h2 class="welcome-text grey-text">WELCOME TO FENC ADVISEMENT</h2>
+      </div>
+      <div class="col-md-4">
+        <img class="welcome-img" src="images/study.jpg">
+        <h3 class="precaution-text">Personal Study</h3>
+      </div>
+      <div class="col-md-4">
+        <img class="welcome-img" src="images/summer.jpg">
+        <h3 class="precaution-text">Summer Session</h3>
+      </div>
+      <div class="col-md-4">
+        <img class="welcome-img" src="images/global.jpg">
+        <h3 class="precaution-text">Global Education</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid padding register">
+    <div class="row text-center padding">
+      <div class="col-md">
+        <a href="#" target="_blank"><button type="button" class="btn btn-outline-dark btn-lg">
+          <h3 class="precaution-text">Sign In</h3>
+        </button></a>
+        <a href="#" target="_blank"><button type="button" class="btn btn-outline-dark btn-lg">
+          <h3 class="precaution-text">Sign Up</h3>
+        </button></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
 
 
 </section>
