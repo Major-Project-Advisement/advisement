@@ -110,7 +110,7 @@ Session_start();//continue session
 <!-- carousel  end-->
 
 
-<!-- main start--> 
+<!-- main start --> 
 <section id="main">
   <div class="container-fluid padding">
     <div class="row text-center padding">
