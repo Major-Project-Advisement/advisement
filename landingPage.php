@@ -118,16 +118,22 @@ Session_start();//continue session
         <h2 class="welcome-text grey-text">WELCOME TO FENC ADVISEMENT</h2>
       </div>
       <div class="col-md-4">
-        <img class="welcome-img" src="images/study.jpg">
-        <h3 class="precaution-text">Personal Study</h3>
+        <div class="jumbotron">
+          <img class="welcome-img" src="images/study.jpg">
+          <h3 class="precaution-text">Personal Study</h3>
+        </div>
       </div>
       <div class="col-md-4">
-        <img class="welcome-img" src="images/summer.jpg">
-        <h3 class="precaution-text">Summer Session</h3>
+        <div class="jumbotron">
+          <img class="welcome-img" src="images/summer.jpg">
+          <h3 class="precaution-text">Summer Session</h3>
+        </div>
       </div>
       <div class="col-md-4">
-        <img class="welcome-img" src="images/global.jpg">
-        <h3 class="precaution-text">Global Education</h3>
+        <div class="jumbotron">
+          <img class="welcome-img" src="images/global.jpg">
+          <h3 class="precaution-text">Global Education</h3>
+          </div>
       </div>
     </div>
   </div>
@@ -135,11 +141,14 @@ Session_start();//continue session
   <div class="container-fluid padding register">
     <div class="row text-center padding">
       <div class="col-md">
-        <a href="#" target="_blank"><button type="button" class="btn btn-outline-dark btn-lg">
-          <h3 class="precaution-text">Sign In</h3>
+        <a href="studentlogin.php"><button type="button" class="btn btn-outline-dark btn-lg">
+          <h3 class="signin-text" id="signin-text">Sign In<small>For Students</small></h3>
         </button></a>
-        <a href="#" target="_blank"><button type="button" class="btn btn-outline-dark btn-lg">
-          <h3 class="precaution-text">Sign Up</h3>
+        <a href="studentlogin.php"><button type="button" class="btn btn-outline-dark btn-lg">
+          <h3 class="signin-text" id="signin-text">Sign In<small>For Advisors</small></h3>
+        </button></a>
+        <a href="studentlogin.php"><button type="button" class="btn btn-outline-dark btn-lg">
+          <h3 class="signin-text" id="signin-text">Sign Up<small> .</small></h3>
         </button></a>
       </div>
     </div>
@@ -160,9 +169,7 @@ Session_start();//continue session
 
 <!-- Footer -->
 <footer id="footer">
-
   <p>Copyright ScitAdvisement, &copy; 2020</p>
-
 </footer>
 <!-- Footer end -->
 
