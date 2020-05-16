@@ -39,31 +39,29 @@ Session_start();//continue session
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
+      
       <li class="nav-item">
-        <a class="nav-link" href="studentresources.php">Resources</a>
+        <a class="nav-link" href="#">Meetings</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="studentModules.php">Modules</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
+        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="#">View</a>
           <a class="dropdown-item" href="#">Message</a>
-          <a class="dropdown-item" href="#">Request meeting</a>
+
         </div>
       </li>
     </ul>
 
     <ul class="navbar-nav  navbar-right">
       <li class="nav-item">
-        <a class="nav-link" href="#">Welcome, Kerone</a>
+        <a class="nav-link" href="#">Welcome</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Logout</a>
+        <a class="nav-link" href="">Login</a>
       </li>
       
       
