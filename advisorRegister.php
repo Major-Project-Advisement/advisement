@@ -341,8 +341,8 @@ include 'advisorTemplate.php';
             $('#list_personal_details').removeClass('active active_tab1');
             $('#list_personal_details').removeAttr('href data-toggle');
             $('#personal_details').removeClass('active');
-
             $('#list_personal_details').addClass('inactive_tab1');
+            
             $('#list_login_details').removeClass('inactive_tab1');
             $('#list_login_details').addClass('active_tab1');
             $('#list_login_details').attr('href','#login_details');
