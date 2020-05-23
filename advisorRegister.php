@@ -30,7 +30,7 @@ $main = '<div class="container box" style="max-width: 800px;">
 
     <div class="tab-content">
         
-        <div class="tab-pane fade" id="login_details">
+        <div class="tab-pane active" id="login_details">
 
             <div class="card border-light">
                 <div class="card-header main-color-bg">Step 1</div>
@@ -74,8 +74,6 @@ $main = '<div class="container box" style="max-width: 800px;">
 
             </div>
         </div>
-
-    
 
 
         <div class="tab-pane fade" id="personal_details">
@@ -161,7 +159,7 @@ $main = '<div class="container box" style="max-width: 800px;">
             </div>
         </div>
 
-        <div class="tab-pane active" id="contact_details">
+        <div class="tab-pane fade" id="contact_details">
 
             <div class="card border-light">
                 <div class="card-header main-color-bg">Step 3</div>
@@ -549,7 +547,7 @@ include 'advisorTemplate.php';
         });
 
         //Validation code for Finish button on Step 3
-        $('#btn_personal_details').click(()=>{
+        $('#btn_contact_details').click(()=>{
 
             let error_email =""
             let error_phone=""
@@ -575,7 +573,7 @@ include 'advisorTemplate.php';
 
                 //remove error messages 
                 error_email= '';
-                $('#error_email').text(email);
+                $('#error_email').text(error_email);
                 $('#email').removeClass('has-error')
 
             }
