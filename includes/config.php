@@ -2,7 +2,7 @@
 
 $dbservername="localhost";
 $dbUsername ="root";
-$dbpassword = "";
+$dbpassword = "mysql";
 $dbName = "Advisement";
 
 $conn = mysqli_connect($dbservername, $dbUsername, $dbpassword, $dbName) OR DIE ("Unable to connect to Database.");
