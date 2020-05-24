@@ -227,6 +227,16 @@ include 'advisorTemplate.php';
            
         });
 
+        //function to check if ID# is already in the database
+        let checkID = uid => {
+
+            $.ajax({
+                url: "advisorcheck.php",
+                method: "POST",
+                
+            })
+        }
+
 
         //Validation code
 
