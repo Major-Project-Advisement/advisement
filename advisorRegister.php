@@ -475,10 +475,10 @@ include 'advisorTemplate.php';
                 $('#lname').removeClass('has-error')
             }
 
-            //TITLE VALIDATION
+            //SCHOOL VALIDATION
             if($.trim($('#school').val()) == ""){
 
-                error_advisor_title = 'Please select a School';
+                error_school = 'Please select a School';
                 $('#error_school').text(error_school);
                 $('#school').addClass('has-error');
 
@@ -486,7 +486,7 @@ include 'advisorTemplate.php';
             else
             {
                 //remove error messages 
-                error_advisor_title = '';
+                error_school = '';
                 $('#error_school').text(error_school);
                 $('#school').removeClass('has-error')
 
