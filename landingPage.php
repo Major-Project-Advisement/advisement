@@ -30,13 +30,16 @@ Session_start();//continue session
 
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
   <a href="landingPage.php"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
+  <h3 class="welcome">
+    FENC Advisement
+  </h3>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto navbar-text welcome">
-      SCIT Advisement
+      
     </ul>
     <ul class="navbar-nav  navbar-right">
       <li class="nav-item">
@@ -45,15 +48,15 @@ Session_start();//continue session
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Up</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="studentLogin">As Student </a>
-          <a class="dropdown-item" href="advisorLogin">As Advisor </a>   
+          <a class="dropdown-item" href="studentRegister.php">As Student </a>
+          <a class="dropdown-item" href="advisorRegister.php">As Advisor </a>   
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign In</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="studentLogin">As Student </a>
-          <a class="dropdown-item" href="advisorLogin">As Advisor </a>   
+          <a class="dropdown-item" href="studentLogin.php">As Student </a>
+          <a class="dropdown-item" href="advisorLogin.php">As Advisor </a>   
         </div>
       </li>
     </ul>
@@ -106,57 +109,49 @@ Session_start();//continue session
 <section id="main">
   <div class="container-fluid padding">
     <div class="row text-center padding">
-      <div class="col-md-4">
-        <div class="jumbotron">
-          <img class="welcome-img" src="images/study.jpg">
-          <h3 class="precaution-text">Personal Study</h3>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="jumbotron">
-          <img class="welcome-img" src="images/summer.jpg">
-          <h3 class="precaution-text">Summer Session</h3>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="jumbotron">
-          <img class="welcome-img" src="images/global.jpg">
-          <h3 class="precaution-text">Global Education</h3>
-          </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container">
-  <div class="row">
-    <div class="col-md">
-      </div>
-        <div class="col-md-auto">
-          <a href="studentlogin.php">
+      <div class="col-lg-6">
+          <img class="welcome-img" src="images/advisor.jpg">
+          <h3 class="precaution-text">Become an Advisor</h3>
+          <p>
+            Sign up to advise students about academic requirements, selection of courses and much more
+          </p>
+          <a href="advisorlogin.php">
             <button type="button" class="btn btn-outline-dark btn-lg">
               <h3 class="signin-text" id="signin-text">Sign In<small>For Advisors</small></h3>
             </button>
           </a>
+          <a href="advisorRegister.php">
+            <button type="button" class="btn btn-outline-dark btn-lg">
+              <h3 class="signin-text" id="signin-text">Sign Up<small>For Advisors</small></h3>
+            </button>
+          </a>
+      </div>
+
+      <div class="col-lg-6">
+          <img class="welcome-img" src="images/student.jpeg">
+          <h3 class="precaution-text">Become a Student</h3>
+          <p>
+            Sign up and enroll now to nuture your academic abilities while pursuing your degree at UTech, Ja.
+          </p>
           <a href="studentlogin.php">
             <button type="button" class="btn btn-outline-dark btn-lg">
               <h3 class="signin-text" id="signin-text">Sign In<small>For Students</small></h3>
             </button>
           </a>
-          <a href="studentlogin.php">
-            <button type="button" class="btn btn-outline-dark btn-lg">
-              <h3 class="signin-text" id="signin-text">Sign Up<small>For Advisors</small></h3>
-            </button>
-          </a>
-          <a href="studentlogin.php">
+          <a href="studentRegister.php">
             <button type="button" class="btn btn-outline-dark btn-lg">
               <h3 class="signin-text" id="signin-text">Sign Up<small>For Students</small></h3>
             </button>
           </a>
-        </div>
-      <div class="col-md"> 
+      </div>
+
+   
+
     </div>
   </div>
-  </div>
+
+
 
 
 </section>
