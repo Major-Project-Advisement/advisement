@@ -51,7 +51,7 @@ $main = '<div class="container box" style="max-width: 800px;">
                     <br />
 
                     <div align="center">
-                        <button type="button" name="btn_login_details" id="btn_login_details" class="btn btn-light btn-lg">
+                        <button type="button" name="btn_login_details" id="btn_login_details" class="btn btn-light btn-lg btn-outline-dark">
                             Next
                         </button>
                     </div>
@@ -120,10 +120,10 @@ $main = '<div class="container box" style="max-width: 800px;">
                     <br />
 
                     <div align="center">
-                        <button type="button" name="previous_btn_personal_details" id="previous_btn_personal_details" class="btn btn-light btn-lg">
+                        <button type="button" name="previous_btn_personal_details" id="previous_btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
                             Prev
                         </button>
-                        <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-light btn-lg">
+                        <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
                             Next
                         </button>
                     </div>
@@ -158,12 +158,15 @@ $main = '<div class="container box" style="max-width: 800px;">
                     <br />
 
                     <div align="center">
-                        <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg">
+                        <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
                             Prev
                         </button>
-                        <button onclick="goToStudentDash()" type="button" name="btn_contact_details" id="btn_contact_details" class="btn btn-light btn-lg">
-                            Finish
-                        </button>
+
+                        <a href="studentLogin.php">
+                            <button  type="button" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details" name="btn_contact_details">
+                                Finish
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -175,8 +178,7 @@ $main = '<div class="container box" style="max-width: 800px;">
     </div>
 </form>
 
-</div>
-';
+</div>';
 
 include 'studentTemplate.php';
 ?>
