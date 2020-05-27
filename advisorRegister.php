@@ -5,7 +5,7 @@ $title = "Registration";
 
 $header = "Advisor Registration";
 
-$style = '<script src="js/jquery-3.5.1.js"></script>';
+$style = '';
 
 $crumb = '';
 
@@ -15,16 +15,16 @@ $main = '<div class="container box" style="max-width: 800px;">
 <h2 align="center">
     Registration form
 </h2>
-<form method="post" id="register_form">
+<form action="advisorInsert.php" method="post" enctype="multipart/form-data" id="register_form">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a href="" class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
+            <a  class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
+            <a  class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
+            <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
         </li>
     </ul>
 
@@ -121,7 +121,7 @@ $main = '<div class="container box" style="max-width: 800px;">
                                 <option value="1">SCIT</option>
                                 <option value="2">SOE</option>
                             </select>
-                            <span id="error_school" class="text_danger"></span>
+                            <span id="error_school" style="color: red;"></span>
 
                         </div>
 
@@ -212,6 +212,8 @@ $main = '<div class="container box" style="max-width: 800px;">
 </div>';
 
 include 'advisorTemplate.php';
+
+
 ?>
 
 
@@ -227,6 +229,8 @@ include 'advisorTemplate.php';
            
         });
 
+        
+
         //Validation code
 
         //Validation code for Next button on Step one
@@ -237,6 +241,12 @@ include 'advisorTemplate.php';
             let error_confirm = "";
             let uid = $('#UID').val();
             const idFilter = /^[0-9]*$/;
+
+            //function to get error_ID variable from ajax function
+            let setError_ID = message => {
+                error_ID = message;
+                console.log(error_ID)
+            }
 
             if ($.trim(uid).length < 7)//checks if id number is less than 7 characters
             {
@@ -260,12 +270,17 @@ include 'advisorTemplate.php';
                             method: "POST",
                             data:{userId : uid},
                             dataType: "text",
+                            async: false,
                             success: function (result){
-                                console.log(result);
+                                
+
                                 if (result != 0){
+
                                     error_ID = 'ID # already exists, please proceed to login';
                                     $('#error_ID').text(error_ID);
                                     $('#UID').addClass('has-error');
+                                    setError_ID(message);
+                                    
 
                                 } 
                                 else 
@@ -275,10 +290,13 @@ include 'advisorTemplate.php';
                                     error_ID = '';
                                     $('#error_ID').text(error_ID);
                                     $('#UID').removeClass('has-error')
+                                   
                                 }
                             }
                             
                         });
+                        
+                        
 
                         
                     }
@@ -300,7 +318,7 @@ include 'advisorTemplate.php';
                     $('#password').addClass('has-error');
                 }
                 else
-                {
+                {   
                     error_password = '';
                     $('#error_password').text(error_password);
                     $('#password').removeClass('has-error');
@@ -321,7 +339,7 @@ include 'advisorTemplate.php';
                                 $('#confirm').addClass('has-error');
                             }
                             else
-                            {
+                            {   
                                 error_confirm = '';
                                 $('#error_confirm').text(error_confirm);
                                 $('#confirm').removeClass('has-error');
@@ -333,7 +351,7 @@ include 'advisorTemplate.php';
                 }
 
             }
-
+            
             if(error_ID != '' || error_password != '' || error_confirm != '')
             {
                 return false;
@@ -373,13 +391,11 @@ include 'advisorTemplate.php';
         $('#previous_btn_personal_details').click(()=>{
 
             $('#list_personal_details').removeClass('active active_tab1');
-            $('#list_personal_details').removeAttr('href data-toggle');
             $('#personal_details').removeClass('active');
             $('#list_personal_details').addClass('inactive_tab1');
             
             $('#list_login_details').removeClass('inactive_tab1');
-            $('#list_login_details').addClass('active_tab1');
-            $('#list_login_details').attr('href','#login_details');
+            $('#list_login_details').addClass('active_tab1')
             $('#list_login_details').attr('data_toggle', 'tab');
             $('#login_details').removeClass('fade');
             $('#login_details').addClass('active');
@@ -525,7 +541,6 @@ include 'advisorTemplate.php';
             {   
                 //remove classes from Personal details tab
                 $('#list_personal_details').removeClass('active active_tab1');
-                $('#list_personal_details').removeAttr('href data-toggle');
 
                 //Make Personal details tab inactive
                 $('#list_personal_details').addClass('inactive_tab1');
@@ -541,7 +556,6 @@ include 'advisorTemplate.php';
                 $('#list_contact_details').addClass('active_tab1');
                 
                 //add toggle 
-                $('#list_contact_details').attr('href','#contact_details');
                 $('#list_contact_details').attr('data-toggle','tab');
 
 
@@ -555,13 +569,13 @@ include 'advisorTemplate.php';
         $('#previous_btn_contact_details').click(()=>{
 
             $('#list_contact_details').removeClass('active active_tab1');
-            $('#list_contact_details').removeAttr('href data-toggle');
+            
             $('#contact_details').removeClass('active');
             $('#list_contact_details').addClass('inactive_tab1');
 
             $('#list_personal_details').removeClass('inactive_tab1');
             $('#list_personal_details').addClass('active_tab1');
-            $('#list_personal_details').attr('href','#personal_details');
+           
             $('#list_personal_details').attr('data_toggle', 'tab');
             $('#personal_details').removeClass('fade');
             $('#personal_details').addClass('active');
@@ -632,6 +646,7 @@ include 'advisorTemplate.php';
             else
             {   
                 //redirect to php file
+                $('#register_form').submit();
 
 
             }
