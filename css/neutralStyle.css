@@ -123,6 +123,12 @@ html {
     margin-bottom: 15px;
 }
 
+.carousel-item{
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: bottom center !important;
+}
+
 /* breadcrumb */
 .breadcrumb{
     background:#cccccc;

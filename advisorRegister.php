@@ -5,7 +5,7 @@ $title = "Registration";
 
 $header = "Advisor Registration";
 
-$style = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
+$style = '<script src="js/jquery-3.5.1.js"></script>';
 
 $crumb = '';
 
@@ -227,17 +227,6 @@ include 'advisorTemplate.php';
            
         });
 
-        //function to check if ID# is already in the database
-        let checkID = uid => {
-
-            $.ajax({
-                url: "advisorcheck.php",
-                method: "POST",
-                
-            })
-        }
-
-
         //Validation code
 
         //Validation code for Next button on Step one
@@ -246,9 +235,10 @@ include 'advisorTemplate.php';
             let error_ID = "";
             let error_password = "";
             let error_confirm = "";
+            let uid = $('#UID').val();
             const idFilter = /^[0-9]*$/;
 
-            if ($.trim($('#UID').val()).length < 7)//checks if id number is less than 7 characters
+            if ($.trim(uid).length < 7)//checks if id number is less than 7 characters
             {
                 error_ID = 'Please enter 7 digit ID number';
                 $('#error_ID').text(error_ID);
@@ -256,21 +246,44 @@ include 'advisorTemplate.php';
             }
             else{
 
-                if(!idFilter.test($('#UID').val()))//makes sure id number is only numbers
+                if(!idFilter.test(uid))//makes sure id number is only numbers
                 {
                     error_ID = 'Your ID# should be all digits';
                     $('#error_ID').text(error_ID);
                     $('#UID').addClass('has-error');
+
                 }
                 else
-                {
-                    //remove error messages 
-                    error_ID = '';
-                    $('#error_ID').text(error_ID);
-                    $('#UID').removeClass('has-error')
+                    {
+                        $.ajax({
+                            url: "usercheck.php",
+                            method: "POST",
+                            data:{userId : uid},
+                            dataType: "text",
+                            success: function (result){
+                                console.log(result);
+                                if (result != 0){
+                                    error_ID = 'ID # already exists, please proceed to login';
+                                    $('#error_ID').text(error_ID);
+                                    $('#UID').addClass('has-error');
+
+                                } 
+                                else 
+                                {
+                                    
+                                    //remove error messages 
+                                    error_ID = '';
+                                    $('#error_ID').text(error_ID);
+                                    $('#UID').removeClass('has-error')
+                                }
+                            }
+                            
+                        });
+
+                        
+                    }
+                                
                 }
-                              
-            }
 
             if ($.trim($('#password').val()).length == 0) // checks if password was entered 
             {
@@ -462,10 +475,10 @@ include 'advisorTemplate.php';
                 $('#lname').removeClass('has-error')
             }
 
-            //TITLE VALIDATION
+            //SCHOOL VALIDATION
             if($.trim($('#school').val()) == ""){
 
-                error_advisor_title = 'Please select a School';
+                error_school = 'Please select a School';
                 $('#error_school').text(error_school);
                 $('#school').addClass('has-error');
 
@@ -473,7 +486,7 @@ include 'advisorTemplate.php';
             else
             {
                 //remove error messages 
-                error_advisor_title = '';
+                error_school = '';
                 $('#error_school').text(error_school);
                 $('#school').removeClass('has-error')
 

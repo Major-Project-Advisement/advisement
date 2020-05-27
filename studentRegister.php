@@ -2,7 +2,7 @@
 
 $title = "Registration";
 $header = "Student Registration";
-$style = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
+$style = '<script src="js/jquery-3.5.1.js"></script>';
 $crumb = '';
 $sidebar = '';
 $main = '<div class="container box" style="max-width: 800px;">
