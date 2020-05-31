@@ -1,199 +1,172 @@
 <?php
 
-$title = "Registration";
-$header = "Student Registration";
-$style = '<script src="js/jquery-3.5.1.js"></script>';
-$crumb = '';
-$sidebar = '';
-$main = '<div class="container box" style="max-width: 800px;">
-<h2 align="center">Student Registration Form</h2>
+    $title = "Registration";
+    $header = "Student Registration";
+    $style = '<script src="js/jquery-3.5.1.js"></script>';
+    $crumb = '';
+    $sidebar = '';
+    $main = '<div class="container box" style="max-width: 800px;">
+    <h2 align="center">Student Registration Form</h2>
 
-<form method="post" id="register_form">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
-        </li>
-    </ul>
+    <form method="POST" id="register_form" enctype="multipart/form-data" action="studentInsert.php">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
+            </li>
+        </ul>
 
-    <div class="tab-content">
-
-        <div class="tab-pane active" id="login_details">
-            <div class="card border-light">
-                <div class="card-header main-color-bg">Step 1</div>
-                <div class="card-body">
-                    <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-
-                        <div class="form-group">
-                            <label>Enter Identification number</label>
-                            <input required type="text" name="UID" id="UID" class="form-control" maxlength="7">
-                            <span id="error_ID" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Enter Password</label>
-                            <input required maxlenght="20" type="password" name="password" id="password" class="form-control">
-                            <span id="error_password" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Confirm Password</label>
-                            <input required maxlenght="20" type="password" name="confirm" id="confirm" class="form-control">
-                            <span id="error_confirm" class="text-danger"></span>
-                        </div>
-                    </div>
-
-                    <br />
-
-                    <div align="center">
-                        <button type="button" name="btn_login_details" id="btn_login_details" class="btn btn-light btn-lg btn-outline-dark">
-                            Next
-                        </button>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="personal_details">
-            <div class="card border-light">
-                <div class="card-header main-color-bg">Step 2</div>
-                <div class="card-body">
-                    <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-
-                        <div class="form-group" >
-                            <label>Title</label>
-                            <select style="max-width: 80px" id="advisor_title" name="advisor_title" class="form-control">
-                                <option value=""></option>
-                                <option value="Dr.">Dr.</option>
-                                <option value="Miss">Mr.</option>
-                                <option value="Mr.">Ms.</option>
-                                <option value="Mrs">Mrs.</option>
-                            </select>
-                            <span id="error_advisor_title" style="color: red;"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Enter First Name</label>
-                            <input required type="text" name="fname" id="fname" class="form-control">
-                            <span id="error_fname" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Enter Last Name</label>
-                            <input required type="text" name="lname" id="lname" class="form-control">
-                            <span id="error_lname" class="text-danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Select School</label>
-                            <select id="school" name="school" class="form-control">
-                                <option value="" ></option>
-                                <option value="1">SCIT (School of Computing and Information Technology)</option>
-                                <option value="2">SOE (School of Engineering)</option>
-                            </select>
-                            <span id="error_school" class="text_danger"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Upload Profile Picture <small>(Optional)</small></label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="img" id="img" aria-describedby="inputGroupFileAddon01">
-                                    <label id="img_label" class="custom-file-label" for="img">Choose file</label>
-                                </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="login_details">
+                <div class="card border-light">
+                    <div class="card-header main-color-bg">Step 1</div>
+                    <div class="card-body">
+                        <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+                            <div class="form-group">
+                                <label>Enter Identification number</label>
+                                <input required type="text" name="UID" id="UID" class="form-control" maxlength="7">
+                                <span id="error_ID" class="text-danger"></span>
                             </div>
-                            <span id="error_img" class="text-danger"></span>
+
+                            <div class="form-group">
+                                <label>Enter Password</label>
+                                <input required maxlenght="20" type="password" name="password" id="password" class="form-control">
+                                <span id="error_password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input required maxlenght="20" type="password" name="confirm" id="confirm" class="form-control">
+                                <span id="error_confirm" class="text-danger"></span>
+                            </div>
                         </div>
+
+                        <br>
+
+                        <div align="center">
+                            <button type="button" name="btn_login_details" id="btn_login_details" class="btn btn-light btn-lg btn-outline-dark">
+                                Next
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="personal_details">
+                <div class="card border-light">
+                    <div class="card-header main-color-bg">Step 2</div>
+                    <div class="card-body">
+                        <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+
+                            <div class="form-group" >
+                                <label>Title</label>
+                                <select style="max-width: 80px" id="title" name="title" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Dr.">Dr.</option>
+                                    <option value="Miss">Mr.</option>
+                                    <option value="Mr.">Ms.</option>
+                                    <option value="Mrs">Mrs.</option>
+                                </select>
+                                <span id="error_advisor_title" style="color: red;"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Enter First Name</label>
+                                <input required type="text" name="fname" id="fname" class="form-control">
+                                <span id="error_fname" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Enter Last Name</label>
+                                <input required type="text" name="lname" id="lname" class="form-control">
+                                <span id="error_lname" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select School</label>
+                                <select id="school" name="school" class="form-control">
+                                    <option value="" ></option>
+                                    <option value="SCIT">SCIT (School of Computing and Information Technology)</option>
+                                    <option value="SOE">SOE (School of Engineering)</option>
+                                </select>
+                                <span id="error_school" class="text_danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Upload Profile Picture <small>(Optional)</small></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="img" id="img" aria-describedby="inputGroupFileAddon01">
+                                        <label id="img_label" class="custom-file-label" for="img">Choose file</label>
+                                    </div>
+                                </div>
+                                <span id="error_img" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div align="center">
+                            <button type="button" name="previous_btn_personal_details" id="previous_btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
+                                Prev
+                            </button>
+                            <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
+                                Next
+                            </button>
+                        </div>
+
                     </div>
 
-                    <br />
-
-                    <div align="center">
-                        <button type="button" name="previous_btn_personal_details" id="previous_btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
-                            Prev
-                        </button>
-                        <button type="button" name="btn_personal_details" id="btn_personal_details" class="btn btn-light btn-lg btn-outline-dark">
-                            Next
-                        </button>
-                    </div>
 
                 </div>
-
-
             </div>
-        </div>
 
-        <div class="tab-pane fade" id="contact_details">
+            <div class="tab-pane fade" id="contact_details">
+                <div class="card border-light">
+                    <div class="card-header main-color-bg">Step 3</div>
+                    <div class="card-body">
+                        <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
+                            <div class="form-group">
+                                <label>Enter Email</label>
+                                <input required type="text" name="email" id="email" class="form-control">
+                                <span id="error_email" class="text-danger"></span>
+                            </div>
 
-            <div class="card border-light">
-                <div class="card-header main-color-bg">Step 3</div>
-                <div class="card-body">
-                    <div class="col-md-8 offset-md-2 col-lg-8 offset-lg-2">
-
-                        <div class="form-group">
-                            <label>Enter Email</label>
-                            <input required type="text" name="email" id="email" class="form-control">
-                            <span id="error_email" class="text-danger"></span>
+                            <div class="form-group">
+                                <label>Enter Phone Number</label>
+                                <input required type="text" name="phone" id="phone" class="form-control">
+                                <span id="error_phone" class="text-danger"></span>
+                            </div>    
                         </div>
 
-                        <div class="form-group">
-                            <label>Enter Phone Number</label>
-                            <input required type="text" name="phone" id="phone" class="form-control">
-                            <span id="error_phone" class="text-danger"></span>
-                        </div>
-                        
-                    </div>
+                        <br>
 
-                    <br />
-
-                    <div align="center">
-                        <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
-                            Prev
-                        </button>
-
-                        <a href="studentLogin.php">
-                            <button  type="button" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details" name="btn_contact_details">
+                        <div align="center">
+                            <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
+                                Prev
+                            </button>
+                            <button type="button submit" name="submit" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
                                 Finish
                             </button>
-                        </a>
+                        </div>
                     </div>
-
                 </div>
-
-
             </div>
         </div>
-
-    </div>
-</form>
-
+    </form>
 </div>';
 
-include 'studentTemplate.php';
+    include 'studentTemplate.php';
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
