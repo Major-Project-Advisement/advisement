@@ -1,5 +1,22 @@
 <?php 
+Session_start();//continue/start session
 
+if((isset($_SESSION['errFlag'])) && ($_SESSION['errFlag'])==1) //if the session error flag exist and is equal to 1
+{
+	//retrieve session variables	
+	foreach($_SESSION as $key => $value)
+	{
+		$$key = $value;
+	}
+		
+}
+else
+{
+    // DEFINE DEFAULT INFO on START UP
+    $UID="";
+
+    $error="";
+}
 
 $title="Login";
 
@@ -18,13 +35,13 @@ $main = '<div id="container"class="container">
       <br>
   <br>
             <div class="card">
-                <div class="card-header main-color-bg">login </div>
+                <div class="card-header main-color-bg">Login </div>
                 <div class="card-body">
-                    <form action="" method="">
+                    <form id="login_form" action="advisorLoginValid.php" method="POST">
                         <div class="form-group row">
                             <label for="UID" class="col-md-4 col-form-label text-md-right">User ID</label>
                             <div class="col-md-6">
-                                <input type="text" id="UID" class="form-control" name="UID" required="" autofocus="">
+                                <input maxlength="7" value="'.$UID.'" type="text" id="UID" class="form-control" name="UID" required="" autofocus="">
                             </div>
                         </div>
 
@@ -37,11 +54,13 @@ $main = '<div id="container"class="container">
 
                         
 
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Sign in
+                        
+                        <div align="center">
+                            <button type="submit" name="submit-button" id="submit-button" class="btn btn-light btn-lg">
+                                Sign In
                             </button>
                         </div>
+                        
                 </form></div>
                 
             </div>
@@ -52,5 +71,41 @@ $main = '<div id="container"class="container">
   
 
 </div>';
-include_once 'advisorTemplate.php'
+include_once 'advisorTemplate.php';
+
 ?>
+
+<script>
+$(document).ready(()=>{
+
+    $('#login_form').validate({
+
+        rules: {
+            UID: {
+                required: true,
+                digits: true
+
+            },
+            password: {
+                required: true
+
+            }
+            
+        },
+        messages: {
+            UID: {
+                required: '<span class="text-danger">Enter user ID</span>',
+                digits: '<span class="text-danger">user ID must be all digits</span>'
+            },
+            password: {
+                required: '<span class="text-danger">Enter password</span>'
+
+            }
+
+        }
+
+    });
+   
+});
+</script>
+

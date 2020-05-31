@@ -239,14 +239,9 @@ include 'advisorTemplate.php';
             let error_ID = "";
             let error_password = "";
             let error_confirm = "";
-            let uid = $('#UID').val();
+            
             const idFilter = /^[0-9]*$/;
 
-            //function to get error_ID variable from ajax function
-            let setError_ID = message => {
-                error_ID = message;
-                console.log(error_ID)
-            }
 
             if ($.trim(uid).length < 7)//checks if id number is less than 7 characters
             {

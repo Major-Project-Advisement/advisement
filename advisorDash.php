@@ -1,5 +1,6 @@
 <?php 
     Session_start();//continue/start session
+    
 
     var_dump($_SESSION);
 
@@ -107,16 +108,16 @@
   <br>
           <div class="card" >
               <div class="card-header main-color-bg">
-                Current Modules
+                Advisees
               </div>
   
               <table class="table table-striped table hover">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Module Code</th>
-                    <th>Type</th>
-                    <th>Credits</th>
+                    <th>Level</th>
+                    <th>Status</th>
+                    <th>Email</th>
                   </tr>
                 </thead>
   
@@ -156,6 +157,6 @@
           </div>
           
         ';
-    include 'studentTemplate.php';
+    include 'advisorTemplate.php';
 
 ?>
