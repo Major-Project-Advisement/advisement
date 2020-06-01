@@ -18,7 +18,7 @@ else
     $error="";
 }
 
-$title="Login";
+$page_title="Login";
 
 $header="Advisor Login";
 

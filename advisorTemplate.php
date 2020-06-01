@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-    <title>Advisor | <?php echo $title; ?></title>
+    <title>Advisor | <?php echo $page_title; ?></title>
   </head>
   <body>
 
@@ -48,14 +48,21 @@
         </div>
       </li>
     </ul>
-
+    
     <ul class="navbar-nav  navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Welcome</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="">Login</a>
-      </li>
+      <?php 
+
+        if(isset($username)){
+          echo '<li class="nav-item">
+                  <a class="nav-link" href="#">Welcome '.$username.'</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Logout</a>
+                </li>';
+        }
+      
+      ?>
+      
       
       
     </ul>

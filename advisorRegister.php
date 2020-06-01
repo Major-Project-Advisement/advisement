@@ -1,7 +1,7 @@
 <?php
 
 
-$title = "Registration";
+$page_title = "Registration";
 
 $header = "Advisor Registration";
 
