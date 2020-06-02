@@ -239,6 +239,7 @@ include 'advisorTemplate.php';
             let error_ID = "";
             let error_password = "";
             let error_confirm = "";
+            let uid = $('#UID').val();
             
             const idFilter = /^[0-9]*$/;
 
