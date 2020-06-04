@@ -275,7 +275,7 @@ include 'advisorTemplate.php';
                                     error_ID = 'ID # already exists, please proceed to login';
                                     $('#error_ID').text(error_ID);
                                     $('#UID').addClass('has-error');
-                                    setError_ID(message);
+                                    
                                     
 
                                 } 
