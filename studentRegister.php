@@ -151,10 +151,14 @@
                         <br>
 
                         <div align="center">
-                            <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
+                            <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg">
                                 Prev
                             </button>
+<<<<<<< HEAD
                             <button type="button" name="btn_contact_details" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
+=======
+                            <button type="button" name="btn_contact_details" id="btn_contact_details" class="btn btn-light btn-lg">
+>>>>>>> origin/Alex-Branch
                                 Finish
                             </button>
                         </div>
@@ -564,7 +568,10 @@
                 
                 //redirect to php file
                 $('#register_form').submit();
+<<<<<<< HEAD
                 
+=======
+>>>>>>> origin/Alex-Branch
             }
         });
     });
