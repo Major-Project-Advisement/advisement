@@ -11,10 +11,10 @@
     <form action="studentInsert.php" method="post" id="register_form" enctype="multipart/form-data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
+                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
+                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
@@ -22,7 +22,7 @@
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane fade" id="login_details">
+            <div class="tab-pane active" id="login_details">
                 <div class="card border-light">
                     <div class="card-header main-color-bg">Step 1</div>
                     <div class="card-body">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane active" id="personal_details">
+            <div class="tab-pane fade" id="personal_details">
                 <div class="card border-light">
                     <div class="card-header main-color-bg">Step 2</div>
                     <div class="card-body">
