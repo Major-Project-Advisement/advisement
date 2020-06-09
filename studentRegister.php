@@ -156,10 +156,10 @@
                         <br>
 
                         <div align="center">
-                            <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
+                            <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg">
                                 Prev
                             </button>
-                            <button type="button submit" name="submit" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
+                            <button type="button" name="btn_contact_details" id="btn_contact_details" class="btn btn-light btn-lg">
                                 Finish
                             </button>
                         </div>
@@ -562,9 +562,7 @@
             else
             {   
                 //redirect to php file
-                function goToStudentDash(){
-                    window.location.href="../studentDash.php"
-                }
+                $('#register_form').submit();
             }
         });
     });
