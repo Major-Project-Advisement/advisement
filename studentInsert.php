@@ -1,9 +1,10 @@
 <?php
 
+        
     $dbhost = "localhost";
     $dbuser = "root";
-    $dbpass = "Password444";
-    $db = "Advisement";
+    $dbpass = "root";
+    $db = "advisement";
 
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db) or die("Connecttion DAMN WELL failed: %s\n". $conn -> error);
 
@@ -53,10 +54,10 @@
         }
 
         //insert data into database
-        $sql = "INSERT INTO student (studentID, Title, FirstName, LastName, School, Email, CreatedOn, Phone, HashPassword, Photo)
-        VALUES ($UID, '$title', '$fname', '$lname', '$school', '$email', STR_TO_DATE('$date', '%m/%d/%Y'), $phone, '$hashedpwd', '$fileNameNew' )";
+        $sql = "INSERT INTO student (studentID, title, fname, lname, email, createdon, phone, password, image)
+        VALUES ($UID, '$title', '$fname', '$lname', '$email', STR_TO_DATE('$date', '%m/%d/%Y'), '$phone', '$hashedpwd', '$fileNameNew' )";
 
-        
+        var_dump($sql);
         try {
             //code...
             $stmt = mysqli_stmt_init($conn);
@@ -71,7 +72,7 @@
             echo $th;
         }
         session_destroy(); //end session
-        // header("Location: studentLogin.php");
+       // header("Location: studentLogin.php");
     }
 
 

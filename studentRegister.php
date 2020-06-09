@@ -5,15 +5,10 @@
     $style = '<script src="js/jquery-3.5.1.js"></script>';
     $crumb = '';
     $sidebar = '';
-    $main = '';
-
-    include 'studentTemplate.php';
-?>
-
-<div class="container box" style="max-width: 800px;">
+    $main = '<div class="container box" style="max-width: 800px;">
     <h2 align="center">Student Registration Form</h2>
 
-    <form method="POST" id="register_form" enctype="multipart/form-data" action="studentInsert.php">
+    <form action="studentInsert.php" method="post" id="register_form" enctype="multipart/form-data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
@@ -159,7 +154,7 @@
                             <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg btn-outline-dark">
                                 Prev
                             </button>
-                            <button type="button submit" name="submit" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
+                            <button type="button" name="btn_contact_details" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
                                 Finish
                             </button>
                         </div>
@@ -168,7 +163,12 @@
             </div>
         </div>
     </form>
-</div>
+</div>';
+
+    include 'studentTemplate.php';
+?>
+
+
 
 
 <script>
@@ -561,10 +561,10 @@
             }
             else
             {   
+                
                 //redirect to php file
-                function goToStudentDash(){
-                    window.location.href="../studentDash.php"
-                }
+                $('#register_form').submit();
+                
             }
         });
     });
