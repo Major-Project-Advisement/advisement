@@ -5,7 +5,12 @@
     $style = '<script src="js/jquery-3.5.1.js"></script>';
     $crumb = '';
     $sidebar = '';
-    $main = '<div class="container box" style="max-width: 800px;">
+    $main = '';
+
+    include 'studentTemplate.php';
+?>
+
+<div class="container box" style="max-width: 800px;">
     <h2 align="center">Student Registration Form</h2>
 
     <form method="POST" id="register_form" enctype="multipart/form-data" action="studentInsert.php">
@@ -73,7 +78,7 @@
                                     <option value="Mr.">Ms.</option>
                                     <option value="Mrs">Mrs.</option>
                                 </select>
-                                <span id="error_advisor_title" style="color: red;"></span>
+                                <span id="error_student_title" style="color: red;"></span>
                             </div>
 
                             <div class="form-group">
@@ -163,12 +168,7 @@
             </div>
         </div>
     </form>
-</div>';
-
-    include 'studentTemplate.php';
-?>
-
-
+</div>
 
 
 <script>
@@ -333,7 +333,7 @@
         //Validation code for Next button on Step 2
         $('#btn_personal_details').click(()=>{
 
-            let error_advisor_title=""
+            let error_student_title=""
             let error_fname=""
             let error_lname=""
             let error_school=""
@@ -342,19 +342,19 @@
             const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i
 
             //TITLE VALIDATION
-            if($.trim($('#advisor_title').val()) == ""){
+            if($.trim($('#title').val()) == ""){
 
-                error_advisor_title = 'Please select a title';
-                $('#error_advisor_title').text(error_advisor_title);
-                $('#advisor_title').addClass('has-error');
+                error_student_title = 'Please select a title';
+                $('#error_student_title').text(error_student_title);
+                $('#title').addClass('has-error');
 
             } 
             else
             {
                 //remove error messages 
-                error_advisor_title = '';
-                $('#error_advisor_title').text(error_advisor_title);
-                $('#advisor_title').removeClass('has-error')
+                error_student_title = '';
+                $('#error_student_title').text(error_student_title);
+                $('#title').removeClass('has-error')
 
             }
 
@@ -418,10 +418,10 @@
                 $('#lname').removeClass('has-error')
             }
 
-            //TITLE VALIDATION
+            //SCHOOL VALIDATION
             if($.trim($('#school').val()) == ""){
 
-                error_advisor_title = 'Please select a School';
+                error_school = 'Please select a School';
                 $('#error_school').text(error_school);
                 $('#school').addClass('has-error');
 
@@ -429,7 +429,7 @@
             else
             {
                 //remove error messages 
-                error_advisor_title = '';
+                error_school = '';
                 $('#error_school').text(error_school);
                 $('#school').removeClass('has-error')
 
@@ -460,7 +460,7 @@
                 $('#img').removeClass('has-error')
             }
 
-            if(error_advisor_title != '' || error_fname != '' || error_lname != '' || error_school != '' || error_img != '')
+            if(error_student_title != '' || error_fname != '' || error_lname != '' || error_school != '' || error_img != '')
             {
                 return false;
             }

@@ -180,7 +180,27 @@ html {
 
 }
 
+.active_tab1
+{
+  background-color: #177fb8;
+  color: #ffffff !important;
+  font-weight: 600;
 
+
+}
+
+.inactive_tab1
+{
+  background-color: #56b8ee;
+  color: #ffffff !important;
+  cursor: not-allowed;
+}
+
+.has-error
+{
+  border-color:#cc0000;
+  background-color:#f4f4f4;
+}
 
 
 
