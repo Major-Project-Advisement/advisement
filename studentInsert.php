@@ -3,7 +3,7 @@
         
     $dbhost = "localhost";
     $dbuser = "root";
-    $dbpass = "root";
+    $dbpass = "1QUKQvLUafY9TL2j";
     $db = "advisement";
 
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db) or die("Connecttion DAMN WELL failed: %s\n". $conn -> error);

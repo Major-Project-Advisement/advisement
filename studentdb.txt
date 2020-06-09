@@ -1,0 +1,20 @@
+Student Table
+    ID
+    Hashed Password
+    Title
+    First Name
+    Last Name
+    School
+    Picture
+    Email
+    Phone Number
+    Advisor (Default to "None")
+    Inbox
+    Year Group
+    Courses (Doing)     Each course has an ID, grade, Occurence etc.
+    Courses (Done)
+    Active Status
+    Created On
+    
+
+    Drop down list
