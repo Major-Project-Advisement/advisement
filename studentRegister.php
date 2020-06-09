@@ -1,5 +1,5 @@
 <?php
-
+    include_once 'includes/config.php';
     $title = "Registration";
     $header = "Student Registration";
     $style = '<script src="js/jquery-3.5.1.js"></script>';
@@ -11,10 +11,10 @@
     <form action="studentInsert.php" method="post" id="register_form" enctype="multipart/form-data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
+                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_login_details">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
+                <a class="nav-link active_tab1" style="border:1px solid #ccc" id="list_personal_details">Personal</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link inactive_tab1" style="border:1px solid #ccc" id="list_contact_details">Contact</a>
@@ -22,7 +22,7 @@
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="login_details">
+            <div class="tab-pane fade" id="login_details">
                 <div class="card border-light">
                     <div class="card-header main-color-bg">Step 1</div>
                     <div class="card-body">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="personal_details">
+            <div class="tab-pane active" id="personal_details">
                 <div class="card border-light">
                     <div class="card-header main-color-bg">Step 2</div>
                     <div class="card-body">
@@ -96,6 +96,28 @@
                                     <option value="SOE">SOE (School of Engineering)</option>
                                 </select>
                                 <span id="error_school" class="text_danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Program</label>
+                                <select id="school" name="school" class="form-control">
+                                    <?php
+                                        $sql = "SELECT * FROM module LIMIT 2";
+                                        $result = mysqli_query($conn, $sql);
+
+                                        if(mysqli_num_rows($result) > 0){
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                
+                                                echo "<option value="P1">$row["name"]</option>";
+                                                echo "<option value="P2">$row["name"]</option>";
+                                                
+                                            }
+                                        }else{
+                                            echo "<option value="P1">Didnt Work</option>";
+                                        }
+                                    ?>
+                                </select>
+
                             </div>
 
                             <div class="form-group">
@@ -154,11 +176,7 @@
                             <button type="button" name="previous_btn_contact_details" id="previous_btn_contact_details" class="btn btn-light btn-lg">
                                 Prev
                             </button>
-<<<<<<< HEAD
-                            <button type="button" name="btn_contact_details" class="btn btn-light btn-lg btn-outline-dark" id="btn_contact_details">
-=======
                             <button type="button" name="btn_contact_details" id="btn_contact_details" class="btn btn-light btn-lg">
->>>>>>> origin/Alex-Branch
                                 Finish
                             </button>
                         </div>
@@ -170,6 +188,7 @@
 </div>';
 
     include 'studentTemplate.php';
+    
 ?>
 
 
@@ -568,10 +587,6 @@
                 
                 //redirect to php file
                 $('#register_form').submit();
-<<<<<<< HEAD
-                
-=======
->>>>>>> origin/Alex-Branch
             }
         });
     });

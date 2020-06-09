@@ -72,7 +72,7 @@
             echo $th;
         }
         session_destroy(); //end session
-       // header("Location: studentLogin.php");
+        header("Location: studentLogin.php");
     }
 
 
