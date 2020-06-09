@@ -90,8 +90,8 @@
 
                             <div class="form-group">
                                 <label>Select School</label>
-                                <select id="school" name="school" class="form-control">
-                                    <option value="" ></option>
+                                <select id="school" name="school" class="form-control" onchange="hardCodedPrograms(this.value)">
+                                    <option value="1" ></option>
                                     <option value="SCIT">SCIT (School of Computing and Information Technology)</option>
                                     <option value="SOE">SOE (School of Engineering)</option>
                                 </select>
@@ -100,22 +100,8 @@
 
                             <div class="form-group">
                                 <label>Select Program</label>
-                                <select id="school" name="school" class="form-control">
-                                    <?php
-                                        $sql = "SELECT * FROM module LIMIT 2";
-                                        $result = mysqli_query($conn, $sql);
-
-                                        if(mysqli_num_rows($result) > 0){
-                                            while($row = mysqli_fetch_assoc($result)){
-                                                
-                                                echo "<option value="P1">$row["name"]</option>";
-                                                echo "<option value="P2">$row["name"]</option>";
-                                                
-                                            }
-                                        }else{
-                                            echo "<option value="P1">Didnt Work</option>";
-                                        }
-                                    ?>
+                                <select id="program" name="program" class="form-control">
+                                    
                                 </select>
 
                             </div>
@@ -192,120 +178,127 @@
 ?>
 
 
-
-
 <script>
+
+    function hardCodedPrograms(str){
+        if(str == "SCIT"){
+            document.getElementById("program").innerHTML = "<option>Animation Production and Development</option> <option>IT - Information Systems</option> <option>IT - Multimedia</option> <option>IT -Networking</option> <option>IT - Enterprise Systems</option> <option>Computer Science</option>";
+        }
+        if(str == "SOE"){
+            document.getElementById("program").innerHTML = "<option>Civil Engineering</option> <option>Industrial Engineering</option> <option>BSc Mechanical Engineering</option> <option>B.Eng. in Chemical Engineering</option> <option>B.Eng in Electrical Engineering (Instrumentation)</option> <option>B.Eng in Electrical Engineering (Power)</option> <option>B.Eng in Electrical Engineering (Communication)</option> <option>B.Eng in Electrical Engineering (Computing)</option>";
+        }
+        if(str == "1"){
+            document.getElementById("program").innerHTML = "<option>Please Select School</option>";
+        }
+    }    
+
+    function showProgram(str){
+        if(str == "1"){
+            document.getElementById("program").innerHTML = "<option>AHHH</option>";
+        }
+        if(str == ""){
+            document.getElementById("program").innerHTML = "";
+            return;
+        }else{
+            var xmlhttp = new XMLHTTPRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("program").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET","AJAXSchool.php", true);
+            xmlhttp.send();
+        }
+    }
+
     $(document).ready(() => {
+
+    
+
+
 
 
         //add file name to file upload
         $('#img').on('change',()=>{
-
-            
             $('#img_label').text($('#img').val().replace(/^.*[\\\/]/, ''))
-           
         });
 
         //function to check if ID# is already in the database
         let checkID = uid => {
-
             $.ajax({
                 url: "advisorcheck.php",
-                method: "POST",
-                
+                method: "POST", 
             })
         }
 
-
         //Validation code
-
         //Validation code for Next button on Step one
         $('#btn_login_details').click(()=>{
-
             let error_ID = "";
             let error_password = "";
             let error_confirm = "";
             const idFilter = /^[0-9]*$/;
 
-            if ($.trim($('#UID').val()).length < 7)//checks if id number is less than 7 characters
-            {
+            if ($.trim($('#UID').val()).length < 7){
+                //checks if id number is less than 7 characters
                 error_ID = 'Please enter 7 digit ID number';
                 $('#error_ID').text(error_ID);
                 $('#UID').addClass('has-error');
             }
             else{
-
-                if(!idFilter.test($('#UID').val()))//makes sure id number is only numbers
-                {
+                if(!idFilter.test($('#UID').val())){
+                    //makes sure id number is only numbers
                     error_ID = 'Your ID# should be all digits';
                     $('#error_ID').text(error_ID);
                     $('#UID').addClass('has-error');
                 }
-                else
-                {
+                else{
                     //remove error messages 
                     error_ID = '';
                     $('#error_ID').text(error_ID);
                     $('#UID').removeClass('has-error')
-                }
-                              
+                }              
             }
 
-            if ($.trim($('#password').val()).length == 0) // checks if password was entered 
-            {
+            if ($.trim($('#password').val()).length == 0){
+                // checks if password was entered 
                 error_password = 'Password is required';
                 $('#error_password').text(error_password);
                 $('#password').addClass('has-error');
-            }
-            else{
-
-                if($.trim($('#password').val()).length < 8 ) // checks if password is less than 8 characters
-                {
+            }else{
+                if($.trim($('#password').val()).length < 8 ){
+                    // checks if password is less than 8 characters
                     error_password = 'Password must be at least 8 characters';
                     $('#error_password').text(error_password);
                     $('#password').addClass('has-error');
-                }
-                else
-                {
+                }else{
                     error_password = '';
                     $('#error_password').text(error_password);
                     $('#password').removeClass('has-error');
 
-                    if ($.trim($('#confirm').val()).length == 0) // checks if confirm password was entered
-                    {
+                    if ($.trim($('#confirm').val()).length == 0){
+                        // checks if confirm password was entered
                         error_confirm = 'Please confirm password';
                         $('#error_confirm').text(error_confirm);
                         $('#confirm').addClass('has-error');
+                    }else{
+                        if($('#confirm').val() !== $('#password').val()){
+                            // checks if confirm password matched
+                            error_confirm = 'Passwords did not match';
+                            $('#error_confirm').text(error_confirm);
+                            $('#confirm').addClass('has-error');
+                        }else{
+                            error_confirm = '';
+                            $('#error_confirm').text(error_confirm);
+                            $('#confirm').removeClass('has-error');
+                        }
                     }
-                    else
-                    {
-
-                            if($('#confirm').val() !== $('#password').val()) // checks if confirm password matched
-                            {
-                                error_confirm = 'Passwords did not match';
-                                $('#error_confirm').text(error_confirm);
-                                $('#confirm').addClass('has-error');
-                            }
-                            else
-                            {
-                                error_confirm = '';
-                                $('#error_confirm').text(error_confirm);
-                                $('#confirm').removeClass('has-error');
-                            }
-
-                    }
-
-
                 }
-
             }
 
-            if(error_ID != '' || error_password != '' || error_confirm != '')
-            {
+            if(error_ID != '' || error_password != '' || error_confirm != ''){
                 return false;
-            }
-            else
-            {   
+            }else{   
                 //remove classes from Login details tab
                 $('#list_login_details').removeClass('active active_tab1');
                 $('#list_login_details').removeAttr('href data-toggle');
@@ -326,18 +319,11 @@
                 //add toggle 
                 $('#list_personal_details').attr('href','#personal_details');
                 $('#list_personal_details').attr('data-toggle','tab');
-
-
             }
-
-           
-
-
         });
 
         // when previous button is clicked on step 2
         $('#previous_btn_personal_details').click(()=>{
-
             $('#list_personal_details').removeClass('active active_tab1');
             $('#list_personal_details').removeAttr('href data-toggle');
             $('#personal_details').removeClass('active');
@@ -349,13 +335,10 @@
             $('#list_login_details').attr('data_toggle', 'tab');
             $('#login_details').removeClass('fade');
             $('#login_details').addClass('active');
-
-
         });
 
         //Validation code for Next button on Step 2
         $('#btn_personal_details').click(()=>{
-
             let error_student_title=""
             let error_fname=""
             let error_lname=""
@@ -366,81 +349,60 @@
 
             //TITLE VALIDATION
             if($.trim($('#title').val()) == ""){
-
                 error_student_title = 'Please select a title';
                 $('#error_student_title').text(error_student_title);
                 $('#title').addClass('has-error');
-
-            } 
-            else
-            {
+            }else{
                 //remove error messages 
                 error_student_title = '';
                 $('#error_student_title').text(error_student_title);
                 $('#title').removeClass('has-error')
-
             }
-
 
             //FIRST NAME VALIDATION
             if($.trim($('#fname').val()).length === 0 ){
-
-
                 error_fname = 'Name is required';
                 $('#error_fname').text(error_fname);
                 $('#fname').addClass('has-error');
+            }else{
+                if(!nameFilter.test($('#fname').val())){
+                    //test name for invalid characters
+                    error_fname = 'Please enter a valid name';
+                    $('#error_fname').text(error_fname);
+                    $('#fname').addClass('has-error');
+                }else{   
+                    //Make sure First letter is Capitalized
+                    let fname = $.trim($('#fname').val()).toLowerCase()
+                    fname = fname[0].toUpperCase()+fname.slice(1)
+                    $('#fname').val(fname)
 
+                    //remove error messages 
+                    error_fname = ''
+                    $('#error_fname').text(error_fname)
+                    $('#fname').removeClass('has-error')
+                }
             }
-            else 
-            if(!nameFilter.test($('#fname').val()))//test name for invalid characters
-            {
-
-                error_fname = 'Please enter a valid name';
-                $('#error_fname').text(error_fname);
-                $('#fname').addClass('has-error');
-
-            }
-            else
-            {   
-                //Make sure First letter is Capitalized
-                let fname = $.trim($('#fname').val()).toLowerCase()
-                fname = fname[0].toUpperCase()+fname.slice(1)
-                $('#fname').val(fname)
-
-                //remove error messages 
-                error_fname = ''
-                $('#error_fname').text(error_fname)
-                $('#fname').removeClass('has-error')
-            }
-
 
             //LAST NAME VALIDATION
             if($.trim($('#lname').val()).length === 0 ){
-
-
                 error_lname = 'Name is required';
                 $('#error_lname').text(error_lname);
                 $('#lname').addClass('has-error');
-
             }
-            else 
-            if(!nameFilter.test($('#lname').val()))//test name for invalid characters
-            {
-
-                error_lname = 'Please enter a valid name';
-                $('#error_lname').text(error_lname);
-                $('#lname').addClass('has-error');
-
+            else{
+                if(!nameFilter.test($('#lname').val())){
+                    //test name for invalid characters
+                    error_lname = 'Please enter a valid name';
+                    $('#error_lname').text(error_lname);
+                    $('#lname').addClass('has-error');
+                }
+                else{   
+                    //remove error messages 
+                    error_lname = ''
+                    $('#error_lname').text(error_lname)
+                    $('#lname').removeClass('has-error')
+                }
             }
-            else
-            {   
-                
-                //remove error messages 
-                error_lname = ''
-                $('#error_lname').text(error_lname)
-                $('#lname').removeClass('has-error')
-            }
-
             //SCHOOL VALIDATION
             if($.trim($('#school').val()) == ""){
 
@@ -460,27 +422,22 @@
 
             //IMAGE VALIDATION
             if($('#img').val() == ""){
-
-                 //remove error messages 
-                 error_img= '';
-                $('#error_img').text(error_img);
-                $('#img').removeClass('has-error')
-
-            } else
-           
-            if(!allowedExtensions.exec($('#img').val())){
-
-                error_img = 'Please upload file having extensions .jpg, .jpeg, .png or .gif';
-                $('#error_img').text(error_img);
-                $('#img').addClass('has-error');
-
-            }
-            else 
-            {
                 //remove error messages 
                 error_img= '';
                 $('#error_img').text(error_img);
-                $('#img').removeClass('has-error')
+                $('#img').removeClass('has-error');
+            }else{
+                if(!allowedExtensions.exec($('#img').val())){
+                    error_img = 'Please upload file having extensions .jpg, .jpeg, .png or .gif';
+                    $('#error_img').text(error_img);
+                    $('#img').addClass('has-error');
+
+                    }else {
+                    //remove error messages 
+                    error_img= '';
+                    $('#error_img').text(error_img);
+                    $('#img').removeClass('has-error')
+                }
             }
 
             if(error_student_title != '' || error_fname != '' || error_lname != '' || error_school != '' || error_img != '')
@@ -582,9 +539,7 @@
             {
                 return false;
             }
-            else
-            {   
-                
+            else{   
                 //redirect to php file
                 $('#register_form').submit();
             }
