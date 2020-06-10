@@ -11,7 +11,7 @@
     if(!$conn){
         echo 'Connection Error: ' . mysqli_connect_error();
     }else{
-        echo 'Okayyyyyy, it worked I guess. WOOOOOOOOOOOW';
+        echo 'Connection to DB Established! ';
     }
 
 
@@ -53,24 +53,42 @@
             $fileNameNew = "null";
         }
 
-        //insert data into database
-        $sql = "INSERT INTO student (studentID, title, fname, lname, email, createdon, phone, password, image)
-        VALUES ($UID, '$title', '$fname', '$lname', '$email', STR_TO_DATE('$date', '%m/%d/%Y'), '$phone', '$hashedpwd', '$fileNameNew' )";
+
+        //Select data from Program where thing = $program
+        $sql1 = "SELECT `ProgramID` FROM `program` WHERE `Name` = '$program'";
+
+        
+        $result = mysqli_query($conn, $sql1);
+        if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+
+                $ProgramID = $row['ProgramID'];
+
+                 //insert data into student
+                $sql = "INSERT INTO student (StudentID, Title, FirstName, LastName, Email, CreatedOn, Phone, Password, Image, ProgramID)
+                VALUES ($UID, '$title', '$fname', '$lname', '$email', STR_TO_DATE('$date', '%m/%d/%Y'), '$phone', '$hashedpwd', '$fileNameNew', $ProgramID)";
+ 
+                try {//code...
+                    $stmt = mysqli_stmt_init($conn);
+                    mysqli_stmt_prepare($stmt, $sql);
+                    mysqli_stmt_execute($stmt);
+                    echo "It worked I guess";    
+                } catch (\Throwable $th) {//throw $th;
+                    echo $th;
+                }
+            }
+
+        }else{
+            echo "Guess It no worketh";
+        }
+
+
+       
 
         var_dump($sql);
-        try {
-            //code...
-            $stmt = mysqli_stmt_init($conn);
+        
 
-            mysqli_stmt_prepare($stmt, $sql);
-            mysqli_stmt_execute($stmt);
-            echo "It worked I guess";
-            
-            
-        } catch (\Throwable $th) {
-            //throw $th;
-            echo $th;
-        }
+        mysqli_close($conn);
         session_destroy(); //end session
         header("Location: studentLogin.php");
     }

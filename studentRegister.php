@@ -91,9 +91,9 @@
                             <div class="form-group">
                                 <label>Select School</label>
                                 <select id="school" name="school" class="form-control" onchange="hardCodedPrograms(this.value)">
-                                    <option value="1" ></option>
-                                    <option value="SCIT">SCIT (School of Computing and Information Technology)</option>
-                                    <option value="SOE">SOE (School of Engineering)</option>
+                                    <option value="0" ></option>
+                                    <option value="1">SCIT (School of Computing and Information Technology)</option>
+                                    <option value="2">SOE (School of Engineering)</option>
                                 </select>
                                 <span id="error_school" class="text_danger"></span>
                             </div>
@@ -181,13 +181,13 @@
 <script>
 
     function hardCodedPrograms(str){
-        if(str == "SCIT"){
-            document.getElementById("program").innerHTML = "<option>Animation Production and Development</option> <option>IT - Information Systems</option> <option>IT - Multimedia</option> <option>IT -Networking</option> <option>IT - Enterprise Systems</option> <option>Computer Science</option>";
-        }
-        if(str == "SOE"){
-            document.getElementById("program").innerHTML = "<option>Civil Engineering</option> <option>Industrial Engineering</option> <option>BSc Mechanical Engineering</option> <option>B.Eng. in Chemical Engineering</option> <option>B.Eng in Electrical Engineering (Instrumentation)</option> <option>B.Eng in Electrical Engineering (Power)</option> <option>B.Eng in Electrical Engineering (Communication)</option> <option>B.Eng in Electrical Engineering (Computing)</option>";
-        }
         if(str == "1"){
+            document.getElementById("program").innerHTML = "<option value='Animation Production and Development'>Animation Production and Development</option> <option value='IT - Information Systems'>IT - Information Systems</option> <option value='IT - Multimedia'>IT - Multimedia</option> <option value='IT -Networking'>IT -Networking</option> <option value='IT - Enterprise Systems'>IT - Enterprise Systems</option> <option value='Computer Science'>Computer Science</option>";
+        }
+        if(str == "2"){
+            document.getElementById("program").innerHTML = "<option value='Civil Engineering'>Civil Engineering</option> <option value='Industrial Engineering'>Industrial Engineering</option> <option value='BSc Mechanical Engineering'>BSc Mechanical Engineering</option> <option value='B.Eng. in Chemical Engineering'>B.Eng. in Chemical Engineering</option> <option value='B.Eng in Electrical Engineering (Instrumentation)'>B.Eng in Electrical Engineering (Instrumentation)</option> <option value='B.Eng in Electrical Engineering (Power)'>B.Eng in Electrical Engineering (Power)</option> <option value='B.Eng in Electrical Engineering (Communication)'>B.Eng in Electrical Engineering (Communication)</option> <option value='B.Eng in Electrical Engineering (Computing)'>B.Eng in Electrical Engineering (Computing)</option>";
+        }
+        if(str == "0"){
             document.getElementById("program").innerHTML = "<option>Please Select School</option>";
         }
     }    
