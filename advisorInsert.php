@@ -52,7 +52,7 @@ if(isset($_POST['UID'])){
     
 
     //insert data into database
-    $sql = "INSERT INTO advisor (title, employeeID, fname, lname, schoolID, email, createdon, phone, password, image)
+    $sql = "INSERT INTO advisor (Title, EmployeeID, FirstName, LastName, SchoolID, Email, CreatedOn, Phone, Password, Image)
     VALUES ('$advisor_title' , $UID, '$fname', '$lname', $school, '$email', STR_TO_DATE('$date', '%m/%d/%Y'), '$phone', '$hashedpwd', '$fileNameNew' )";
 
     

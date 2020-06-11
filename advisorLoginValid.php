@@ -20,7 +20,7 @@ if(isset($_POST['submit-button'])){
     }
     else
     {
-        $sql = "SELECT * FROM advisor WHERE employeeID=?;"; //sql statement with ? placeholder 
+        $sql = "SELECT * FROM advisor WHERE EmployeeID=?;"; //sql statement with ? placeholder 
 		$stmt = mysqli_stmt_init($conn);
 
 		if(!mysqli_stmt_prepare($stmt, $sql)) {
