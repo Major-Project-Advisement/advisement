@@ -47,12 +47,9 @@
             //store image
             $fileDestination = 'uploads/'.$fileNameNew;
             move_uploaded_file($fileTmpName, $fileDestination); 
-        } 
-        else 
-        {
+        }else {
             $fileNameNew = "null";
         }
-
 
         //Select data from Program where thing = $program
         $sql1 = "SELECT `ProgramID` FROM `program` WHERE `Name` = '$program'";
@@ -77,17 +74,12 @@
                     echo $th;
                 }
             }
-
         }else{
             echo "Guess It no worketh";
         }
 
-
-       
-
         var_dump($sql);
         
-
         mysqli_close($conn);
         session_destroy(); //end session
         header("Location: studentLogin.php");

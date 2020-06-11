@@ -17,11 +17,11 @@
             <div class="card">
                 <div class="card-header main-color-bg">Login</div>
                 <div class="card-body">
-                    <form action="" method="">
+                    <form id="login_form" action="studentLoginValid.php" method="POST">
                         <div class="form-group row">
-                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <label class="col-md-4 col-form-label text-md-right">User ID</label>
                             <div class="col-md-6">
-                                <input type="text" id="email_address" class="form-control" name="email-address" required="" autofocus="">
+                                <input type="text" id="UID" class="form-control" name="UID" required="" autofocus="">
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" name="submit" class="btn btn-primary">
                                 Login
                             </button>
                             <a href="#" class="btn btn-link">

@@ -6,7 +6,6 @@
     $crumb = '';
     $sidebar = '';
     $main = '<div class="container box" style="max-width: 800px;">
-    <h2 align="center">Student Registration Form</h2>
 
     <form action="studentInsert.php" method="post" id="register_form" enctype="multipart/form-data">
         <ul class="nav nav-tabs">
