@@ -26,7 +26,7 @@
                     $_SESSION[$key] = $value; //SESSION
                 }
 
-                header("Location: studentDash.php?login=success");
+                header("Location: studentDash.php");
             }else{      
                 header("Location: studentLogin.php?error=wronginfo");
             } 

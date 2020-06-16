@@ -37,7 +37,7 @@ if(isset($_POST['submit-button'])){
             if($row = mysqli_fetch_assoc($result)){
 
 
-                if(password_verify($password, $row['password'])){
+                if(password_verify($password, $row['Password'])){
 
                     session_destroy();
                     session_start();

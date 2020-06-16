@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+<?php 
+
+Session_start();//continue session
+
+?>
+
+>>>>>>> origin/Alex-Branch
 <!doctype html>
 <html lang="en">
   <head>
