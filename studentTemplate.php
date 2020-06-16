@@ -2,8 +2,6 @@
 
 Session_start();//continue session
 
-
-
 ?>
 
 <!doctype html>
