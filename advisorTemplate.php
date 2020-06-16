@@ -25,7 +25,7 @@
 
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="#"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
+  <a href="#"><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

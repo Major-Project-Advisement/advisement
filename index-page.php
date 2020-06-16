@@ -17,7 +17,7 @@
   <section class="showcase">
 
     <div class="content blur">
-      <img src="https://image.ibb.co/ims4Ep/logo.png" class="logo" alt="logo">
+      <img src="images/academics-white.png" class="logo" alt="logo">
       <div class="title">
         Advisement System
       </div>
