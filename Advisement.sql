@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 31, 2020 at 03:16 AM
+-- Generation Time: Jun 09, 2020 at 07:01 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -56,7 +56,8 @@ CREATE TABLE `advisor` (
 
 INSERT INTO `advisor` (`advisorID`, `employeeID`, `schoolID`, `fname`, `lname`, `email`, `isActive`, `createdon`, `updatedon`, `title`, `phone`, `password`, `image`) VALUES
 (5, 1201935, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$3ENBNZWw09BaRPWWr18f1eSvcJQjpE1rRCb/FHsG/E.iG/rYJ6iBe', 'null'),
-(6, 1612783, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$LNnQ9r0a9wIZogCEevMrYOnqY5Lpd1gtkPpIbvFBRyt5Kjf8c95wu', '5ece20778721e5.88169612.jpeg');
+(6, 1612783, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$LNnQ9r0a9wIZogCEevMrYOnqY5Lpd1gtkPpIbvFBRyt5Kjf8c95wu', '5ece20778721e5.88169612.jpeg'),
+(7, 4534534, 1, 'Trudi-ann', 'Nicholson', 'trudiann.nicholson@gmail.com', 1, '2020-06-06', NULL, 'Miss', '8769194356', '$2y$10$oMDbMANMzJEBHkq69mqI9eCVokWeeEGWd2jDXjr386a15YMom7vde', '5edb0060911128.08752877.jpg');
 
 -- --------------------------------------------------------
 
@@ -333,7 +334,8 @@ CREATE TABLE `student` (
   `phone` tinytext,
   `password` longtext NOT NULL,
   `level` tinyint(4) DEFAULT NULL,
-  `status` tinytext NOT NULL
+  `title` tinytext,
+  `image` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -453,7 +455,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `advisor`
 --
 ALTER TABLE `advisor`
-  MODIFY `advisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `advisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `attachment`
@@ -501,7 +503,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
