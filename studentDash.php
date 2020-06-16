@@ -2,7 +2,6 @@
   Session_start();//continue/start session
     
   if(isset($_SESSION['StudentID'])){
-
     foreach($_SESSION as $key => $value){ //create local variables based on $_SESSION keys and values
       //$key = $value;
       $_SESSION[$key] = $value;
@@ -19,9 +18,8 @@
     }else{
       $status = 'Inactive';
     }
-    
-  }
 
+  }
 
   $username = $_SESSION['FirstName'];
 
