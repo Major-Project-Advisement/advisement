@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,28 +24,34 @@
 
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="#"><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
+  <a href="index-page.php"><img style="height:40px; width:40px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      
-      <li class="nav-item">
-        <a class="nav-link" href="#">Meetings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">View</a>
-          <a class="dropdown-item" href="#">Message</a>
+      <?php
+        if(isset($username)){
+          echo '<li class="nav-item">
+          <a class="nav-link" href="#">Meetings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">View</a>
+            <a class="dropdown-item" href="#">Message</a>
+  
+          </div>
+        </li>';
 
-        </div>
-      </li>
+        }
+      
+      ?>
+      
     </ul>
     
     <ul class="navbar-nav  navbar-right">
@@ -57,7 +62,15 @@
                   <a class="nav-link" href="#">Welcome '.$username.'</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Logout</a>
+                  <a class="nav-link" href="logout.php">Logout</a>
+                </li>';
+        }
+        else{
+          echo '<li class="nav-item">
+                  <a class="nav-link" href="#">Welcome</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Login</a>
                 </li>';
         }
       

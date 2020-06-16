@@ -1,9 +1,34 @@
 <?php 
     Session_start();//continue/start session
 
-    var_dump($_SESSION);
+    if(isset($_SESSION['StudentID'])){
+      
+      foreach($_SESSION as $key => $value) //create local variables based on $_SESSION keys and values
+      {
+        $$key = $value;
+      
+      }
+      
+      if($Image == 'null')
+      {
+        $Image = 'images/placeholder.jpg';
+      }
+      else
+      {
+        $Image = 'uploads/'.$Image;
+      }
 
-    $title="Profile";
+      if($isActive == 1){
+        $status = 'Active';
+      }
+      else
+      {
+        $status = 'Inactive';
+      }
+
+    }
+    $username = $FirstName;
+    $page_title="Profile";
     $header="Dashboard";
     $style='';
 
@@ -26,16 +51,16 @@
               <!-- SIDEBAR USERPIC -->
       <div class="card-body">
               <div class="profile-userpic">
-                  <img src="images/profilepic.jpeg" class="img-responsive" alt="profile picture">
+                  <img src="'.$Image.'" class="img-responsive" alt="profile picture">
               </div>
               <!-- END SIDEBAR USERPIC -->
               <!-- SIDEBAR USER TITLE -->
               <div class="profile-usertitle">
                   <div class="profile-usertitle-name">
-                      Kerone Creary
+                     '.$title.' '.$FirstName.' '.$LastName.'
                   </div>
                   <div class="profile-usertitle-job">
-                      Aspiring Developer
+                      '.$status.'
                   </div>
       </div>
               </div>

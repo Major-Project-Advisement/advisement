@@ -1,11 +1,3 @@
-<?php 
-
-Session_start();//continue session
-
-
-
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,110 +17,65 @@ Session_start();//continue session
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-    <title>Student | <?php echo $title; ?></title>
+    <title>Student | <?php echo $page_title; ?></title>
   </head>
   <body>
 
 
-<<<<<<< HEAD
-    <!-- navbar start  
-    <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-      <a href="#"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="studentresources.php">Resources</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="studentModules.php">Modules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">View</a>
-              <a class="dropdown-item" href="#">Message</a>
-              <a class="dropdown-item" href="#">Request meeting</a>
-            </div>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav  navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Welcome, Kerone</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Logout</a>
-          </li>
-              
-        </ul> 
-      </div>
-    </nav>
-     navbar end -->
-
-
-    <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-      <a href="#"><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">  
-          <li class="nav-item">
-            <a class="nav-link" href="studentresources.php">Resources</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="studentModules.php">Modules</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
-          </li>
-        </ul>
-      </div>
-=======
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="#"><img style="height:35px; width:35px; filter: invert(100%);" src="images/logo.png"> </img></a>
+  <a href="index-page.php"><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="studentresources.php">Resources</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="studentModules.php">Modules</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">View</a>
-          <a class="dropdown-item" href="#">Message</a>
-          <a class="dropdown-item" href="#">Request meeting</a>
-        </div>
-      </li>
+    <?php
+        if(isset($username)){
+          echo '<li class="nav-item">
+          <a class="nav-link" href="studentresources.php">Resources</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="studentModules.php">Modules</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">View</a>
+            <a class="dropdown-item" href="#">Message</a>
+            <a class="dropdown-item" href="#">Request meeting</a>
+          </div>
+        </li>';
+
+        }
+    ?>
+      
     </ul>
 
     <ul class="navbar-nav  navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Welcome, Kerone</a>
+    <?php 
+
+      if(isset($username)){
+        echo '<li class="nav-item">
+        <a class="nav-link" href="#">Welcome '.$username.'</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Logout</a>
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>';
+      }else {
+        echo '<li class="nav-item">
+        <a class="nav-link" href="#">Welcome</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="studentLogin.php">login</a>
+      </li>';
+      }
+    ?>
+     
       
       
     </ul>
@@ -138,7 +85,6 @@ Session_start();//continue session
   </div>
 </nav>
 <!-- navbar end -->
->>>>>>> 80fa7ccfbd7267d45c317df3560a54506a71f5aa
 
 
 

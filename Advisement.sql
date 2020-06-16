@@ -1,17 +1,24 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: May 31, 2020 at 03:16 AM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Host: localhost
+-- Generation Time: Jun 16, 2020 at 07:06 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Database: `Advisement`
+-- Database: `advisement`
 --
 
 -- --------------------------------------------------------
@@ -22,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `UID` int(11) NOT NULL,
-  `employeeID` tinytext NOT NULL,
-  `password` longtext NOT NULL,
-  `fname` tinytext NOT NULL,
-  `lname` tinytext
+  `EmployeeID` tinytext NOT NULL,
+  `Password` longtext NOT NULL,
+  `FirstName` tinytext NOT NULL,
+  `LastName` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -35,28 +42,31 @@ CREATE TABLE `admin` (
 --
 
 CREATE TABLE `advisor` (
-  `advisorID` int(11) NOT NULL,
-  `employeeID` int(11) NOT NULL,
-  `schoolID` int(11) NOT NULL,
-  `fname` tinytext,
-  `lname` tinytext NOT NULL,
-  `email` tinytext,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `createdon` date NOT NULL,
-  `updatedon` date DEFAULT NULL,
-  `title` tinytext NOT NULL,
-  `phone` tinytext NOT NULL,
-  `password` longtext NOT NULL,
-  `image` longtext
+  `AdvisorID` int(11) NOT NULL,
+  `EmployeeID` int(11) NOT NULL,
+  `SchoolID` int(11) NOT NULL,
+  `FirstName` tinytext DEFAULT NULL,
+  `LastName` tinytext NOT NULL,
+  `Email` tinytext DEFAULT NULL,
+  `IsActive` tinyint(1) NOT NULL DEFAULT 1,
+  `CreatedOn` date NOT NULL,
+  `UpdatedOn` date DEFAULT NULL,
+  `Title` tinytext NOT NULL,
+  `Phone` tinytext NOT NULL,
+  `Password` longtext NOT NULL,
+  `Image` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `advisor`
 --
 
-INSERT INTO `advisor` (`advisorID`, `employeeID`, `schoolID`, `fname`, `lname`, `email`, `isActive`, `createdon`, `updatedon`, `title`, `phone`, `password`, `image`) VALUES
+INSERT INTO `advisor` (`AdvisorID`, `EmployeeID`, `SchoolID`, `FirstName`, `LastName`, `Email`, `IsActive`, `CreatedOn`, `UpdatedOn`, `Title`, `Phone`, `Password`, `Image`) VALUES
 (5, 1201935, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$3ENBNZWw09BaRPWWr18f1eSvcJQjpE1rRCb/FHsG/E.iG/rYJ6iBe', 'null'),
-(6, 1612783, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$LNnQ9r0a9wIZogCEevMrYOnqY5Lpd1gtkPpIbvFBRyt5Kjf8c95wu', '5ece20778721e5.88169612.jpeg');
+(6, 1612783, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$LNnQ9r0a9wIZogCEevMrYOnqY5Lpd1gtkPpIbvFBRyt5Kjf8c95wu', '5ece20778721e5.88169612.jpeg'),
+(7, 4534534, 1, 'Trudi-ann', 'Nicholson', 'trudiann.nicholson@gmail.com', 1, '2020-06-06', NULL, 'Miss', '8769194356', '$2y$10$oMDbMANMzJEBHkq69mqI9eCVokWeeEGWd2jDXjr386a15YMom7vde', '5edb0060911128.08752877.jpg'),
+(9, 1234567, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-11', NULL, 'Dr.', '1234567890', '$2y$10$uDAp1TS2VVXxQ8BE7m0Gd.oOh80xjcUZnX2p8TwdyleImwexBLssa', '5ee1a2b2253072.09776216.jpg'),
+(10, 1231231, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-15', NULL, 'Dr.', '1234567890', '$2y$10$xnm22rmMwA46SP3Ff06TCu1gYngfQRSw8ofQeB1XVGuS7vrWKbXNe', '5ee7eb6a7dc690.00503048.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,11 +75,11 @@ INSERT INTO `advisor` (`advisorID`, `employeeID`, `schoolID`, `fname`, `lname`, 
 --
 
 CREATE TABLE `attachment` (
-  `attachmentID` int(11) NOT NULL,
-  `filename` varchar(50) NOT NULL,
-  `filesize` float NOT NULL,
-  `messageID` int(11) NOT NULL,
-  `filetype` tinytext
+  `AttachmentID` int(11) NOT NULL,
+  `FileName` varchar(50) NOT NULL,
+  `FileSize` float NOT NULL,
+  `MessageID` int(11) NOT NULL,
+  `FileType` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -79,10 +89,10 @@ CREATE TABLE `attachment` (
 --
 
 CREATE TABLE `editadvisor` (
-  `advisorID` int(11) NOT NULL,
-  `adminID` int(11) NOT NULL,
-  `editedon` int(11) NOT NULL,
-  `action` tinytext NOT NULL
+  `AdvisorID` int(11) NOT NULL,
+  `AdminID` int(11) NOT NULL,
+  `EditedOn` int(11) NOT NULL,
+  `Action` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,9 +102,9 @@ CREATE TABLE `editadvisor` (
 --
 
 CREATE TABLE `editstudent` (
-  `editedon` date NOT NULL,
-  `studentID` int(11) NOT NULL,
-  `adminID` int(11) NOT NULL
+  `EditedOn` date NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `AdminID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -104,9 +114,9 @@ CREATE TABLE `editstudent` (
 --
 
 CREATE TABLE `inbox` (
-  `inboxID` int(11) NOT NULL,
-  `advisorID` int(11) DEFAULT NULL,
-  `studentID` int(11) DEFAULT NULL
+  `InboxID` int(11) NOT NULL,
+  `AdvisorID` int(11) DEFAULT NULL,
+  `StudentID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -116,13 +126,13 @@ CREATE TABLE `inbox` (
 --
 
 CREATE TABLE `meeting` (
-  `meetingID` int(11) NOT NULL,
-  `studentID` int(11) NOT NULL,
-  `advisorID` int(11) NOT NULL,
-  `topic` tinytext NOT NULL,
-  `date` date NOT NULL,
-  `description` tinytext NOT NULL,
-  `status` tinytext NOT NULL
+  `MeetingID` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `AdvisorID` int(11) NOT NULL,
+  `Topic` tinytext NOT NULL,
+  `Date` date NOT NULL,
+  `Description` tinytext NOT NULL,
+  `Status` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -132,13 +142,13 @@ CREATE TABLE `meeting` (
 --
 
 CREATE TABLE `message` (
-  `messageID` int(11) NOT NULL,
-  `studentID` int(11) DEFAULT NULL,
-  `subject` tinytext,
-  `content` longtext,
-  `sentOn` date NOT NULL,
-  `inboxID` int(11) NOT NULL,
-  `advisorID` int(11) DEFAULT NULL
+  `MessageID` int(11) NOT NULL,
+  `StudentID` int(11) DEFAULT NULL,
+  `Subject` tinytext DEFAULT NULL,
+  `Content` longtext DEFAULT NULL,
+  `SentOn` date NOT NULL,
+  `InboxID` int(11) NOT NULL,
+  `AdvisorID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -148,20 +158,20 @@ CREATE TABLE `message` (
 --
 
 CREATE TABLE `module` (
-  `moduleID` int(11) NOT NULL,
-  `moduleCode` tinytext NOT NULL,
-  `name` tinytext NOT NULL,
-  `type` tinytext,
-  `credits` tinyint(4) DEFAULT NULL,
-  `Major` tinytext,
-  `Prerequisite` tinytext
+  `ModuleID` int(11) NOT NULL,
+  `ModuleCode` tinytext NOT NULL,
+  `Name` tinytext NOT NULL,
+  `Type` tinytext DEFAULT NULL,
+  `Credits` tinyint(4) DEFAULT NULL,
+  `Major` tinytext DEFAULT NULL,
+  `Prerequisite` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `module`
 --
 
-INSERT INTO `module` (`moduleID`, `moduleCode`, `name`, `type`, `credits`, `Major`, `Prerequisite`) VALUES
+INSERT INTO `module` (`ModuleID`, `ModuleCode`, `Name`, `Type`, `Credits`, `Major`, `Prerequisite`) VALUES
 (1, 'ANI1001', 'Animation Theory l', 'Compulsory', 3, 'Animation Production and Development(121-126 credits)', 'None'),
 (2, 'ANI1002', 'Animation Tools l', 'Compulsory', 3, 'Animation Production and Development(121-126 credits)', 'INT1001(C)'),
 (3, 'ANI1003', 'Animation History l', 'Compulsory', 3, 'Animation Production and Development(121-126 credits)', 'None'),
@@ -263,9 +273,9 @@ INSERT INTO `module` (`moduleID`, `moduleCode`, `name`, `type`, `credits`, `Majo
 --
 
 CREATE TABLE `passedmodules` (
-  `studentID` int(11) NOT NULL,
-  `moduleID` int(11) NOT NULL,
-  `grade` int(11) NOT NULL
+  `StudentID` int(11) NOT NULL,
+  `ModuleID` int(11) NOT NULL,
+  `Grade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -275,11 +285,31 @@ CREATE TABLE `passedmodules` (
 --
 
 CREATE TABLE `program` (
-  `programID` int(11) NOT NULL,
-  `schoolID` int(11) NOT NULL,
-  `name` tinyint(4) NOT NULL,
-  `datecreated` date DEFAULT NULL
+  `ProgramID` int(11) NOT NULL,
+  `SchoolID` int(11) NOT NULL,
+  `Name` tinytext NOT NULL,
+  `DateCreated` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `program`
+--
+
+INSERT INTO `program` (`ProgramID`, `SchoolID`, `Name`, `DateCreated`) VALUES
+(1, 1, 'Computer Science', '2020-06-09'),
+(2, 1, 'IT - Enterprise Systems', '2020-06-09'),
+(3, 1, 'IT - Networking', '2020-06-09'),
+(4, 1, 'IT - Multimedia', '2020-06-09'),
+(5, 1, 'IT - Information Systems', '2020-06-09'),
+(6, 1, 'Animation Production and Development', '2020-06-09'),
+(7, 2, 'Civil Engineering', '2020-06-09'),
+(8, 2, 'Industrial Engineering', '2020-06-09'),
+(9, 2, 'BSc Mechanical Engineering', '2020-06-09'),
+(10, 2, 'B.Eng. in Chemical Engineering', '2020-06-09'),
+(11, 2, 'B.Eng in Electrical Engineering (Instrumentation)', '2020-06-09'),
+(12, 2, 'B.Eng in Electrical Engineering (Power)', '2020-06-09'),
+(13, 2, 'B.Eng in Electrical Engineering (Communication)', '2020-06-09'),
+(14, 2, 'B.Eng in Electrical Engineering (Computing)', '2020-06-09');
 
 -- --------------------------------------------------------
 
@@ -288,9 +318,9 @@ CREATE TABLE `program` (
 --
 
 CREATE TABLE `programmodules` (
-  `programID` int(11) NOT NULL,
-  `moduleID` int(11) NOT NULL,
-  `type` tinytext
+  `ProgramID` int(11) NOT NULL,
+  `ModuleID` int(11) NOT NULL,
+  `Type` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -300,16 +330,16 @@ CREATE TABLE `programmodules` (
 --
 
 CREATE TABLE `school` (
-  `schoolID` int(11) NOT NULL,
-  `name` tinytext NOT NULL,
-  `faculty` tinytext
+  `SchoolID` int(11) NOT NULL,
+  `Name` tinytext NOT NULL,
+  `Faculty` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school`
 --
 
-INSERT INTO `school` (`schoolID`, `name`, `faculty`) VALUES
+INSERT INTO `school` (`SchoolID`, `Name`, `Faculty`) VALUES
 (1, 'School of Computing and Information Technology', 'Faculty of Engineering and Computing'),
 (2, 'School of Engineering', 'Faculty of Engineering and Computing');
 
@@ -321,20 +351,28 @@ INSERT INTO `school` (`schoolID`, `name`, `faculty`) VALUES
 
 CREATE TABLE `student` (
   `UID` int(11) NOT NULL,
-  `studentID` int(11) NOT NULL,
-  `advisorID` int(11) DEFAULT NULL,
-  `programID` int(11) DEFAULT NULL,
-  `fname` tinytext,
-  `lname` tinytext,
-  `email` tinytext,
-  `isActive` tinyint(1) NOT NULL DEFAULT '1',
-  `createdon` date DEFAULT NULL,
-  `updatedon` date DEFAULT NULL,
-  `phone` tinytext,
-  `password` longtext NOT NULL,
-  `level` tinyint(4) DEFAULT NULL,
-  `status` tinytext NOT NULL
+  `StudentID` int(11) NOT NULL,
+  `AdvisorID` int(11) DEFAULT NULL,
+  `ProgramID` int(11) DEFAULT NULL,
+  `FirstName` tinytext DEFAULT NULL,
+  `LastName` tinytext DEFAULT NULL,
+  `Email` tinytext DEFAULT NULL,
+  `IsActive` tinyint(1) NOT NULL DEFAULT 1,
+  `CreatedOn` date DEFAULT NULL,
+  `UpdatedOn` date DEFAULT NULL,
+  `Phone` tinytext DEFAULT NULL,
+  `Password` longtext NOT NULL,
+  `Level` tinyint(4) DEFAULT NULL,
+  `Title` tinytext DEFAULT NULL,
+  `Image` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`UID`, `StudentID`, `AdvisorID`, `ProgramID`, `FirstName`, `LastName`, `Email`, `IsActive`, `CreatedOn`, `UpdatedOn`, `Phone`, `Password`, `Level`, `Title`, `Image`) VALUES
+(12, 1234567, NULL, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-10', NULL, '1234567890', '$2y$10$OSZsA51imzaACE0aWqoZtevL72SzS3GDh/SZ26M.buewy9u9IYjfm', NULL, 'Dr.', '5ee1377e0361a9.71063872.jpg');
 
 --
 -- Indexes for dumped tables
@@ -350,94 +388,94 @@ ALTER TABLE `admin`
 -- Indexes for table `advisor`
 --
 ALTER TABLE `advisor`
-  ADD PRIMARY KEY (`advisorID`),
-  ADD KEY `schoolID` (`schoolID`);
+  ADD PRIMARY KEY (`AdvisorID`),
+  ADD KEY `schoolID` (`SchoolID`);
 
 --
 -- Indexes for table `attachment`
 --
 ALTER TABLE `attachment`
-  ADD PRIMARY KEY (`attachmentID`);
+  ADD PRIMARY KEY (`AttachmentID`);
 
 --
 -- Indexes for table `editadvisor`
 --
 ALTER TABLE `editadvisor`
-  ADD PRIMARY KEY (`adminID`,`advisorID`),
-  ADD KEY `advisorID` (`advisorID`);
+  ADD PRIMARY KEY (`AdminID`,`AdvisorID`),
+  ADD KEY `advisorID` (`AdvisorID`);
 
 --
 -- Indexes for table `editstudent`
 --
 ALTER TABLE `editstudent`
-  ADD PRIMARY KEY (`studentID`,`adminID`),
-  ADD KEY `adminID` (`adminID`);
+  ADD PRIMARY KEY (`StudentID`,`AdminID`),
+  ADD KEY `adminID` (`AdminID`);
 
 --
 -- Indexes for table `inbox`
 --
 ALTER TABLE `inbox`
-  ADD PRIMARY KEY (`inboxID`),
-  ADD KEY `studentID` (`studentID`),
-  ADD KEY `advisorID` (`advisorID`);
+  ADD PRIMARY KEY (`InboxID`),
+  ADD KEY `studentID` (`StudentID`),
+  ADD KEY `advisorID` (`AdvisorID`);
 
 --
 -- Indexes for table `meeting`
 --
 ALTER TABLE `meeting`
-  ADD PRIMARY KEY (`meetingID`),
-  ADD KEY `studentID` (`studentID`),
-  ADD KEY `advisorID` (`advisorID`);
+  ADD PRIMARY KEY (`MeetingID`),
+  ADD KEY `studentID` (`StudentID`),
+  ADD KEY `advisorID` (`AdvisorID`);
 
 --
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`messageID`),
-  ADD KEY `studentID` (`studentID`),
-  ADD KEY `inboxID` (`inboxID`),
-  ADD KEY `advisorID` (`advisorID`);
+  ADD PRIMARY KEY (`MessageID`),
+  ADD KEY `studentID` (`StudentID`),
+  ADD KEY `inboxID` (`InboxID`),
+  ADD KEY `advisorID` (`AdvisorID`);
 
 --
 -- Indexes for table `module`
 --
 ALTER TABLE `module`
-  ADD PRIMARY KEY (`moduleID`);
+  ADD PRIMARY KEY (`ModuleID`);
 
 --
 -- Indexes for table `passedmodules`
 --
 ALTER TABLE `passedmodules`
-  ADD PRIMARY KEY (`studentID`,`moduleID`),
-  ADD KEY `moduleID` (`moduleID`);
+  ADD PRIMARY KEY (`StudentID`,`ModuleID`),
+  ADD KEY `moduleID` (`ModuleID`);
 
 --
 -- Indexes for table `program`
 --
 ALTER TABLE `program`
-  ADD PRIMARY KEY (`programID`),
-  ADD KEY `schoolID` (`schoolID`);
+  ADD PRIMARY KEY (`ProgramID`),
+  ADD KEY `schoolID` (`SchoolID`);
 
 --
 -- Indexes for table `programmodules`
 --
 ALTER TABLE `programmodules`
-  ADD PRIMARY KEY (`moduleID`,`programID`),
-  ADD KEY `programID` (`programID`);
+  ADD PRIMARY KEY (`ModuleID`,`ProgramID`),
+  ADD KEY `programID` (`ProgramID`);
 
 --
 -- Indexes for table `school`
 --
 ALTER TABLE `school`
-  ADD PRIMARY KEY (`schoolID`);
+  ADD PRIMARY KEY (`SchoolID`);
 
 --
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`UID`),
-  ADD KEY `advisorID` (`advisorID`),
-  ADD KEY `programID` (`programID`);
+  ADD KEY `advisorID` (`AdvisorID`),
+  ADD KEY `programID` (`ProgramID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -453,55 +491,49 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `advisor`
 --
 ALTER TABLE `advisor`
-  MODIFY `advisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `AdvisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `attachment`
 --
 ALTER TABLE `attachment`
-  MODIFY `attachmentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AttachmentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inbox`
 --
 ALTER TABLE `inbox`
-  MODIFY `inboxID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `InboxID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
-  MODIFY `meetingID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MeetingID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `module`
 --
 ALTER TABLE `module`
-  MODIFY `moduleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
-
---
--- AUTO_INCREMENT for table `program`
---
-ALTER TABLE `program`
-  MODIFY `programID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ModuleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `schoolID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `SchoolID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
@@ -517,8 +549,8 @@ ALTER TABLE `attachment`
 -- Constraints for table `editadvisor`
 --
 ALTER TABLE `editadvisor`
-  ADD CONSTRAINT `editadvisor_ibfk_1` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`),
-  ADD CONSTRAINT `editadvisor_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`),
+  ADD CONSTRAINT `editadvisor_ibfk_1` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`),
+  ADD CONSTRAINT `editadvisor_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`),
   ADD CONSTRAINT `editadvisor_ibfk_3` FOREIGN KEY (`adminID`) REFERENCES `admin` (`UID`);
 
 --
@@ -533,14 +565,14 @@ ALTER TABLE `editstudent`
 --
 ALTER TABLE `inbox`
   ADD CONSTRAINT `inbox_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `inbox_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`);
+  ADD CONSTRAINT `inbox_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
 
 --
 -- Constraints for table `meeting`
 --
 ALTER TABLE `meeting`
   ADD CONSTRAINT `meeting_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `meeting_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`);
+  ADD CONSTRAINT `meeting_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
 
 --
 -- Constraints for table `message`
@@ -548,7 +580,7 @@ ALTER TABLE `meeting`
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
   ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`inboxID`) REFERENCES `inbox` (`inboxID`),
-  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`);
+  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
 
 --
 -- Constraints for table `passedmodules`
@@ -574,5 +606,10 @@ ALTER TABLE `programmodules`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`advisorID`),
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`AdvisorID`) REFERENCES `advisor` (`AdvisorID`),
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`ProgramID`) REFERENCES `program` (`programID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

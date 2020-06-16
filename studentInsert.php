@@ -1,20 +1,9 @@
 <?php
 
         
-    $dbhost = "localhost";
-    $dbuser = "root";
-    $dbpass = "1QUKQvLUafY9TL2j";
-    $db = "advisement";
+    include_once 'includes/config.php';
 
-    $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db) or die("Connecttion DAMN WELL failed: %s\n". $conn -> error);
-
-    if(!$conn){
-        echo 'Connection Error: ' . mysqli_connect_error();
-    }else{
-        echo 'Connection to DB Established! ';
-    }
-
-
+    
     session_start(); //start session
 
     if(isset($_POST['UID'])){
