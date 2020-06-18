@@ -1,6 +1,6 @@
 <?php
     include_once 'includes/config.php';
-    $title = "Registration";
+    $page_title = "Registration";
     $header = "Student Registration";
     $style = '<script src="js/jquery-3.5.1.js"></script>';
     $crumb = '';

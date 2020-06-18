@@ -1,7 +1,7 @@
 <?php 
 
 
-    $title="Login";
+    $page_title="Login";
 
     $header="Student Login";
 

@@ -18,7 +18,7 @@
         $Image = 'uploads/'.$Image;
       }
 
-      if($isActive == 1){
+      if($IsActive == 1){
         $status = 'Active';
       }
       else

@@ -66,12 +66,23 @@
                 </li>';
         }
         else{
-          echo '<li class="nav-item">
+          if($page_title == 'Registration'){
+           echo  '<li class="nav-item">
+            <a class="nav-link" href="#">Welcome</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="advisorLogin.php">Login</a>
+          </li>';
+
+
+          }else{
+            echo '<li class="nav-item">
                   <a class="nav-link" href="#">Welcome</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="advisorRegister.php">Sign up</a>
                 </li>';
+          }
         }
       
       ?>

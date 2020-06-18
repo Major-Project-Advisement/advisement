@@ -3,7 +3,7 @@
     
     
     
-    if(isset($_SESSION['employeeID'])){
+    if(isset($_SESSION['EmployeeID'])){
       
       foreach($_SESSION as $key => $value) //create local variables based on $_SESSION keys and values
       {
@@ -11,16 +11,16 @@
       
       }
       
-      if($image == 'null')
+      if($Image == 'null')
       {
         $image = 'images/placeholder.jpg';
       }
       else
       {
-        $image = 'uploads/'.$image;
+        $image = 'uploads/'.$Image;
       }
 
-      if($isActive == 1){
+      if($IsActive == 1){
         $status = 'Active';
       }
       else
@@ -29,7 +29,7 @@
       }
 
     }
-    $username = $fname;
+    $username = $FirstName;
     $page_title="Profile";
     $header="Dashboard";
     $style='';
@@ -59,7 +59,7 @@
               <!-- SIDEBAR USER TITLE -->
               <div class="profile-usertitle">
                   <div class="profile-usertitle-name">
-                      '.$title.' '.$fname.' '.$lname.'
+                      '.$Title.' '.$FirstName.' '.$LastName.'
                   </div>
                   <div class="profile-usertitle-job">
                       '.$status.'

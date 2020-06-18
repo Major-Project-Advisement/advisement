@@ -66,12 +66,20 @@
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Logout</a>
       </li>';
-      }else {
+      }
+      else if($page_title == 'Registration'){
         echo '<li class="nav-item">
         <a class="nav-link" href="#">Welcome</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="studentLogin.php">login</a>
+      </li>';
+      }else{
+        echo '<li class="nav-item">
+        <a class="nav-link" href="#">Welcome</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="studentRegister.php">Sign up</a>
       </li>';
       }
     ?>
