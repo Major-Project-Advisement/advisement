@@ -57,7 +57,7 @@
               <!-- SIDEBAR USER TITLE -->
               <div class="profile-usertitle">
                   <div class="profile-usertitle-name">
-                     '.$title.' '.$FirstName.' '.$LastName.'
+                     '.$Title.' '.$FirstName.' '.$LastName.'
                   </div>
                   <div class="profile-usertitle-job">
                       '.$status.'
