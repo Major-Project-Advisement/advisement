@@ -11,7 +11,7 @@
 
     <!-- custom styles -->
     <link rel="stylesheet" href="css/studentStyle.css">
-    <?php echo $style; ?>
+    
 
     <!-- material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -145,7 +145,9 @@
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.5.1.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <?php echo $style; ?>
   </body>
 </html>

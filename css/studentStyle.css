@@ -202,7 +202,19 @@ html {
   background-color:#f4f4f4;
 }
 
+/*modules page*/
+a.custom-card{
+  color: inherit;
+}
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: none;
+}
 
+a.custom-card :hover {
+  color: inherit;
+  text-decoration: none;
+}
 
 
 

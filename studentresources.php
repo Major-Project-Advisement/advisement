@@ -1,5 +1,5 @@
 <?php 
-    $page_title="Profile";
+    $page_title="Resources";
     $header="Dashboard";
     $style='';
 
