@@ -18,3 +18,74 @@ Student Table
     
 
     Drop down list
+
+
+
+
+
+
+
+    Message Table 
+        To
+        From
+        Subject
+        Message
+        Date
+        Time
+
+
+    When message is sent from student to advisor, insert data into message table.
+
+    To          From            Subject             Message             Date                Time
+    Advisor1    Student1        Meeting             Lets Meet           6/25/2020           5:00pm
+    Student1    Advisor1        Meeting             Ok                  6/25/2020           5:20pm
+    Student5    Advisor1        Sup Visor           Hello there         6/26/2020           12:00pm
+    Advisor2    Student10       Advise Me Now       Please              6/26/2020           12:00pm
+    Advisor1    Student1        Ahhhhh              Im failing          6/27/2020           1:00pm
+
+
+    To set up inbox for Student1, 
+    select from table where To is Student1 and From is Student1 
+
+
+    To          From            Subject             Message             Date                Time
+    Advisor1    Student1        Meeting             Lets Meet           6/25/2020           5:00pm
+    Student1    Advisor1        Meeting             Ok                  6/25/2020           5:20pm
+    Advisor1    Student1        Ahhhhh              Im failing          6/27/2020           1:00pm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select from messages where to=student1 or from=student1
+

@@ -61,11 +61,6 @@
               <div class="profile-usertitle-job">
                 '.$status.'
               </div>
-              <div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CreateMessage">
-                  Create Modal Message
-                </button>
-              </div>
             </div>
           </div>
         <!-- END SIDEBAR USER TITLE -->
@@ -142,7 +137,10 @@
 
             <tbody>
               <tr>
-                <td>&nbsp;</td>
+                <td>
+                
+                
+                </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -170,12 +168,28 @@
     
         </div>
       </div>
+
+
+
+      
+
+
+
+
+
+
+
+
       ';
 
     include 'studentTemplate.php';
 
     
+    
 
 ?>
+
+
+
 
     
