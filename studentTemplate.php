@@ -24,7 +24,7 @@
 
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="index-page.php"><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
+  <a <?php if(isset($username)){ echo 'href="studentDash.php"';}else{echo 'href="index-page.php"';} ?>><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -33,15 +33,16 @@
     <ul class="navbar-nav mr-auto">
     <?php
         if(isset($username)){
-          echo '<li class="nav-item">
-          <a class="nav-link" href="studentresources.php">Resources</a>
+          echo '
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Modules</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown02">
+            <a class="dropdown-item" href="studentModules.php">Completed Modules</a>
+            <a class="dropdown-item" href="studentCurrentModules.php">Current Modules</a>
+            
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="studentModules.php">Modules</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Update</a>
-        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -49,7 +50,17 @@
             <a class="dropdown-item" href="#">Message</a>
             <a class="dropdown-item" href="#">Request meeting</a>
           </div>
-        </li>';
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="studentresources.php">Resources</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="studentUpdate.php" tabindex="-1" aria-disabled="true">Account</a>
+        </li>
+
+        ';
 
         }
     ?>

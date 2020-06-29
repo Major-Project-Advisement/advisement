@@ -145,31 +145,8 @@
                   </tr>
                 </thead>
   
-                <tbody>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
+                <tbody  id="currentmodules" data="'.$StudentID.'" >
+                  
                 </tbody>
               </table>
   
@@ -184,3 +161,31 @@
     include 'studentTemplate.php';
 
 ?>
+
+<script>
+  $(document).ready(function(){
+    $.ajax({
+
+url: "getCurrentModules.php",
+method: "POST",
+data:{uid : $("#currentmodules").attr('data')},
+dataType: "text",
+async: false,
+success: function (html){
+    
+    if (html != ""){
+
+        $("#currentmodules").html(html);
+        
+    } 
+    else 
+    {
+        //display error
+        $("#currentmodules").html("Not currently enrolled in any module");
+       
+    }
+}
+
+});
+  });
+</script>
