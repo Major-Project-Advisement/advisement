@@ -35,8 +35,8 @@
 
     $username = $FirstName;
     $page_title="Modules";
-    $header="Module Selection";
-    $style='<script src="js/modules.js"></script>';
+    $header="Current Modules";
+    $style='<script src="js/current-modules.js"></script>';
 
     $crumb='<div class="container">
     <nav aria-label="breadcrumb">
@@ -53,10 +53,10 @@
 
     $main = '<div class="container col-md-12">
     <div class="title text-center">
-        <h1>Required Modules for <span id="programName"></span></h1>
-        <p>Click to indicate the modules you have completed</p>
+        <h1>Remaining Modules for <span id="programName"></span></h1>
+        <p>Click to indicate the modules you are currently enrolled in</p>
     </div>
-    <div id="module-list" student="'.$_SESSION['UID'].'" data="'.$ProgramID.'" class="row">
+    <div id="module-list" page="current" student="'.$_SESSION['UID'].'" data="'.$ProgramID.'" class="row">
         
                
     </div>

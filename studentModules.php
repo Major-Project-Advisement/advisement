@@ -56,7 +56,7 @@
         <h1>Required Modules for <span id="programName"></span></h1>
         <p>Click to indicate the modules you have completed</p>
     </div>
-    <div id="module-list" student="'.$_SESSION['UID'].'" data="'.$ProgramID.'" class="row">
+    <div id="module-list" page="passed" student="'.$_SESSION['UID'].'" data="'.$ProgramID.'" class="row">
         
                
     </div>

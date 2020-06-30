@@ -59,7 +59,7 @@ $(document).ready(() => {
 
         $.ajax({
 
-            url: "updatePassedModules.php",
+            url: "updateCurrentModules.php",
             method: "POST",
             data:{
                 UID : $("#module-list").attr('student'),
@@ -76,7 +76,7 @@ $(document).ready(() => {
 
         if(action == 0){
             $(this).parents("div#module-card").attr("data-completed","1");
-            $(this).find("span").html("<b>Passed</b>");
+            $(this).find("span").html("<b>Doing</b>");
         }else
         if(action == 1){
             $(this).parents("div#module-card").attr("data-completed","0");

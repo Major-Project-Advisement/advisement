@@ -68,8 +68,8 @@
                                 <select style="max-width: 80px" id="title" name="title" class="form-control">
                                     <option value=""></option>
                                     <option value="Dr.">Dr.</option>
-                                    <option value="Miss">Mr.</option>
-                                    <option value="Mr.">Ms.</option>
+                                    <option value="Miss">Ms.</option>
+                                    <option value="Mr.">Mr.</option>
                                     <option value="Mrs">Mrs.</option>
                                 </select>
                                 <span id="error_student_title" style="color: red;"></span>
