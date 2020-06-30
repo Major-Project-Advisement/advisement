@@ -47,7 +47,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="#">View</a>
-            <a class="dropdown-item" href="#">Message</a>
+            <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateModal">Message</a>
             <a class="dropdown-item" href="#">Request meeting</a>
           </div>
         </li>

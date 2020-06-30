@@ -1,5 +1,6 @@
 <?php 
     Session_start();//continue/start session
+    include_once 'includes/config.php';
 
     if(isset($_SESSION['StudentID'])){
       
@@ -32,6 +33,14 @@
     $header="Dashboard";
     $style='';
 
+    //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
+    $sql = "SELECT `FirstName`, `LastName` FROM `advisor` WHERE `AdvisorID` = '".$AdvisorID."' LIMIT 1 ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $AdvisorFirstName = $row['FirstName'];
+    $AdvisorLastName = $row['LastName'];
+
     $crumb='<div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -56,13 +65,13 @@
               <!-- END SIDEBAR USERPIC -->
               <!-- SIDEBAR USER TITLE -->
               <div class="profile-usertitle">
-                  <div class="profile-usertitle-name">
-                     '.$Title.' '.$FirstName.' '.$LastName.'
-                  </div>
-                  <div class="profile-usertitle-job">
-                      '.$status.'
-                  </div>
-      </div>
+                <div class="profile-usertitle-name">
+                    '.$Title.' '.$FirstName.' '.$LastName.'
+                </div>
+                <div class="profile-usertitle-job">
+                    '.$status.'
+                </div>
+              </div>
               </div>
               <!-- END SIDEBAR USER TITLE -->
               </div>
@@ -156,6 +165,43 @@
   
   
           </div>
+
+
+
+
+          <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form action="studentMessage.php" method="post" id="register_form" enctype="multipart/form-data">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Create Message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>From: <b>Me</b></label>
+                    <br>
+                    <label>To: <b>'.$AdvisorFirstName.' '.$AdvisorLastName.'</b> </label>
+                  </div>  
+                  <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+                  </div>
+                  <div class="form-group">
+                    <label>Message</label>
+                    <input type="text" name="message" class="form-control" placeholder="Message">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
           
         ';
     include 'studentTemplate.php';
