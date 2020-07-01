@@ -26,6 +26,16 @@
         $status = 'Inactive';
       }
 
+      include_once "includes/config.php";
+
+      $sql = "SELECT COUNT(*) as count FROM passedmodules WHERE StudentID=$UID";
+      $result = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_assoc($result);
+      $completed=$row["count"];
+      $level = floor($completed/10) +1;
+      $remaining = 44-$completed;
+
+
     }
     $username = $FirstName;
     $page_title="Profile";
@@ -71,11 +81,11 @@
       <a href="#" class="list-group-item list-group-item-action active main-color-bg">
         <span class="material-icons">school</span> Progress</a>
       <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Completed <span class="badge badge-dark">40</span></a>
+        Completed <span class="badge badge-dark">'.$completed.'</span></a>
       <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Level  <span class="badge badge-dark">4</span> </a>
+        Level  <span class="badge badge-dark">'.$level.'</span> </a>
       <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-        Remaining  <span class="badge badge-dark ">7</span></a>
+        Remaining  <span class="badge badge-dark ">'.$remaining.'</span></a>
       </div>
       
       <br>
@@ -145,7 +155,7 @@
                   </tr>
                 </thead>
   
-                <tbody  id="currentmodules" data="'.$StudentID.'" >
+                <tbody  id="currentmodules" data="'.$UID.'" >
                   
                 </tbody>
               </table>
@@ -164,28 +174,29 @@
 
 <script>
   $(document).ready(function(){
-    $.ajax({
-
-url: "getCurrentModules.php",
-method: "POST",
-data:{uid : $("#currentmodules").attr('data')},
-dataType: "text",
-async: false,
-success: function (html){
     
-    if (html != ""){
+        $.ajax({
 
-        $("#currentmodules").html(html);
+    url: "getCurrentModules.php",
+    method: "POST",
+    data:{uid : $("#currentmodules").attr('data')},
+    dataType: "text",
+    async: false,
+    success: function (html){
         
-    } 
-    else 
-    {
-        //display error
-        $("#currentmodules").html("Not currently enrolled in any module");
-       
-    }
-}
+        if (html != ""){
 
-});
+            $("#currentmodules").html(html);
+            
+        } 
+        else 
+        {
+            //display error
+            $("#currentmodules").html("Not currently enrolled in any module");
+          
+        }
+    }
+
+    });
   });
 </script>
