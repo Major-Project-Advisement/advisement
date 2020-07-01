@@ -16,8 +16,10 @@ if(isset($_SESSION['StudentID'])){
             $_SESSION[$key] = $value; //SESSION
         }
 
-        $sql = "INSERT INTO message (StudentID, Subject, Content, SentOn, AdvisorID)
-        VALUES ($UID, '$subject', '$message', STR_TO_DATE(now(), '%m/%d/%Y'), $AdvisorID)";
+        $date = date('m/d/Y');
+
+        $sql = "INSERT INTO message (Sender, Recipient, Subject, Content, SentOn)
+        VALUES ($UID, '$AdvisorID', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
 
         try{
             $stmt = mysqli_stmt_init($conn);
@@ -27,14 +29,13 @@ if(isset($_SESSION['StudentID'])){
         }catch(\Throwable $th){
             echo $th;
         }
-        //header("Location: studentDash.php");
+        header("Location: studentDash.php?Message=success");
 
     }else{
         echo "POST Did Not Work!";
         exit();
     }
     
-    session_destroy(); //end session
 }else{
     echo "Session Did Not Work!";
     //header("Location: studentLogin.php?error=cantlogin");
