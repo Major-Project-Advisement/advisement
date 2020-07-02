@@ -32,6 +32,7 @@
     $page_title="Profile";
     $header="Dashboard";
     $style='';
+    $date = date('Y/m/d');
 
     //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
     $sql = "SELECT `FirstName`, `LastName` FROM `advisor` WHERE `AdvisorID` = '".$AdvisorID."' LIMIT 1 ";
@@ -170,38 +171,81 @@
 
 
           <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <form action="studentMessage.php" method="post" id="register_form" enctype="multipart/form-data">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Create Message</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label>From: <b>Me</b></label>
-                    <br>
-                    <label>To: <b>'.$AdvisorFirstName.' '.$AdvisorLastName.'</b> </label>
-                  </div>  
-                  <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form action="studentMessage.php" method="post" id="register_form" enctype="multipart/form-data">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                  <div class="form-group">
-                    <label>Message</label>
-                    <input type="text" name="message" class="form-control" placeholder="Message">
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>From: <b>Me</b></label>
+                      <br>
+                      <label>To: <b>'.$AdvisorFirstName.' '.$AdvisorLastName.'</b> </label>
+                    </div>  
+                    <div class="form-group">
+                      <label>Subject</label>
+                      <input type="text" name="subject" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                      <label>Message</label>
+                      <input type="text" name="message" class="form-control" placeholder="Message">
+                    </div>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-primary">Send Message</button>
-                </div>
-              </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div class="modal fade" id="RequestMeeting" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form action="studentMeeting.php" method="post" id="register_form" enctype="multipart/form-data">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Request A Meeting</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label>Time: <br><input type="time" id="MeetingTime" name="MeetingTime"
+                      min="09:00" max="18:00" required> </label>
+                      <br>
+                      <label>Date: <br><input type="date" id="MeetingDate" name="MeetingDate"
+                      value="'.$date.'"
+                      min="'.$date.'" ></label>
+                    </div>  
+                    <div class="form-group">
+                      <label>Topic:<br></label>
+                      <select id="topic" name="topic" class="form-control">
+                        <option value="Grades">Issue With Grades</option>
+                        <option value="Course">Course Selection</option>
+                        <option value="Personal">Personal Challlenges</option>
+                        <option value="Financial">Financial Challenges</option>
+                        <option value="Explanation">Explanation of Rules and Procedures</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Description:<br></label>
+                      <input type="text" name="description" class="form-control" placeholder="Description">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Request Meeting</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
           
         ';
     include 'studentTemplate.php';

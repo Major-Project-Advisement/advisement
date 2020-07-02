@@ -48,7 +48,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="#">View</a>
             <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateModal">Message</a>
-            <a class="dropdown-item" href="#">Request meeting</a>
+            <a class="dropdown-item" href="#RequestMeeting" data-toggle="modal" data-target="#RequestMeeting">Request A Meeting</a>
           </div>
         </li>
         
