@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2020 at 07:06 AM
+-- Generation Time: Jul 02, 2020 at 07:52 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -110,18 +110,6 @@ CREATE TABLE `editstudent` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inbox`
---
-
-CREATE TABLE `inbox` (
-  `InboxID` int(11) NOT NULL,
-  `AdvisorID` int(11) DEFAULT NULL,
-  `StudentID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `meeting`
 --
 
@@ -143,13 +131,21 @@ CREATE TABLE `meeting` (
 
 CREATE TABLE `message` (
   `MessageID` int(11) NOT NULL,
-  `StudentID` int(11) DEFAULT NULL,
+  `Sender` int(11) DEFAULT NULL,
+  `Recipient` int(11) DEFAULT NULL,
   `Subject` tinytext DEFAULT NULL,
   `Content` longtext DEFAULT NULL,
-  `SentOn` date NOT NULL,
-  `InboxID` int(11) NOT NULL,
-  `AdvisorID` int(11) DEFAULT NULL
+  `SentOn` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`MessageID`, `Sender`, `Recipient`, `Subject`, `Content`, `SentOn`) VALUES
+(21, 12, 5, 'Test Sub', 'Test Message!!!!', '2020-07-01'),
+(22, 12, 5, 'Subby', 'Hello There!', '2020-07-01'),
+(23, 12, 5, 'New Sub', 'Ahhhh Message!!!', '2020-07-01');
 
 -- --------------------------------------------------------
 
@@ -372,7 +368,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`UID`, `StudentID`, `AdvisorID`, `ProgramID`, `FirstName`, `LastName`, `Email`, `IsActive`, `CreatedOn`, `UpdatedOn`, `Phone`, `Password`, `Level`, `Title`, `Image`) VALUES
-(12, 1234567, NULL, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-10', NULL, '1234567890', '$2y$10$OSZsA51imzaACE0aWqoZtevL72SzS3GDh/SZ26M.buewy9u9IYjfm', NULL, 'Dr.', '5ee1377e0361a9.71063872.jpg');
+(12, 1234567, 5, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-10', NULL, '1234567890', '$2y$10$OSZsA51imzaACE0aWqoZtevL72SzS3GDh/SZ26M.buewy9u9IYjfm', NULL, 'Dr.', '5ee1377e0361a9.71063872.jpg'),
+(13, 3213213, NULL, 1, 'Gregory', 'King', 'test@email.com', 1, '2020-06-16', NULL, '1234567890', '$2y$10$C842Vv8SVVA.RkNvlkNNgu2bZFmKmYtGd1iqKmgaVs8l.7qD2E1iO', NULL, 'Dr.', '5ee868ff1ffc18.30265553.jpg');
 
 --
 -- Indexes for dumped tables
@@ -412,14 +409,6 @@ ALTER TABLE `editstudent`
   ADD KEY `adminID` (`AdminID`);
 
 --
--- Indexes for table `inbox`
---
-ALTER TABLE `inbox`
-  ADD PRIMARY KEY (`InboxID`),
-  ADD KEY `studentID` (`StudentID`),
-  ADD KEY `advisorID` (`AdvisorID`);
-
---
 -- Indexes for table `meeting`
 --
 ALTER TABLE `meeting`
@@ -432,9 +421,8 @@ ALTER TABLE `meeting`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`MessageID`),
-  ADD KEY `studentID` (`StudentID`),
-  ADD KEY `inboxID` (`InboxID`),
-  ADD KEY `advisorID` (`AdvisorID`);
+  ADD KEY `StudentID` (`Sender`) USING BTREE,
+  ADD KEY `AdvisorID` (`Recipient`) USING BTREE;
 
 --
 -- Indexes for table `module`
@@ -500,12 +488,6 @@ ALTER TABLE `attachment`
   MODIFY `AttachmentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `inbox`
---
-ALTER TABLE `inbox`
-  MODIFY `InboxID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `meeting`
 --
 ALTER TABLE `meeting`
@@ -515,7 +497,7 @@ ALTER TABLE `meeting`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `module`
@@ -533,7 +515,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -561,26 +543,11 @@ ALTER TABLE `editstudent`
   ADD CONSTRAINT `editstudent_ibfk_2` FOREIGN KEY (`adminID`) REFERENCES `admin` (`UID`);
 
 --
--- Constraints for table `inbox`
---
-ALTER TABLE `inbox`
-  ADD CONSTRAINT `inbox_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `inbox_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
-
---
 -- Constraints for table `meeting`
 --
 ALTER TABLE `meeting`
   ADD CONSTRAINT `meeting_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
   ADD CONSTRAINT `meeting_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
-
---
--- Constraints for table `message`
---
-ALTER TABLE `message`
-  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `message_ibfk_3` FOREIGN KEY (`inboxID`) REFERENCES `inbox` (`inboxID`),
-  ADD CONSTRAINT `message_ibfk_4` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
 
 --
 -- Constraints for table `passedmodules`
