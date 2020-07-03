@@ -94,56 +94,40 @@
 
 
     $main = '
-    
-        
         <!-- main document -->
         <div class="col-md-9">
-  
           <div class="card">
             <div class="card-header main-color-bg">
              <span class="material-icons">account_box</span> Overview
             </div>
-  
-           <div class="card-body row">
+            <div class="card-body row">
               <div class="col-4" style="text-align: center;">
-  
                 <div class="well dash-box">
                   <h2><span class="material-icons">inbox</span> 5</h2>
                   <h4>Inbox</h4>
-  
                 </div>
-  
               </div>
-  
               <div class="col-4" style="text-align: center;">
-  
                 <div class="well dash-box">
                   <h2><span class="material-icons">inbox</span> 5</h2>
                   <h4>Inbox</h4>
-  
                 </div>
-  
               </div>
-  
               <div class="col-4" style="text-align: center;">
-  
                 <div class="well dash-box">
                   <h2><span class="material-icons">inbox</span> 5</h2>
                   <h4>Inbox</h4>
-  
                 </div>
-  
               </div>
-  
             </div>
-  
           </div>
   
-  <br>
+          <br>
+
           <div class="card" >
-              <div class="card-header main-color-bg">
-                Current Modules
-              </div>
+            <div class="card-header main-color-bg">
+              Current Modules
+            </div>
   
               <table class="table table-striped table hover">
                 <thead>
