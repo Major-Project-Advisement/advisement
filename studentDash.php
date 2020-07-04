@@ -35,12 +35,28 @@
     $date = date('Y/m/d');
 
     //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
-    $sql = "SELECT `FirstName`, `LastName` FROM `advisor` WHERE `AdvisorID` = '".$AdvisorID."' LIMIT 1 ";
+    $sql = "SELECT * FROM `advisor` WHERE `AdvisorID` = '".$AdvisorID."' LIMIT 1 ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
     $AdvisorFirstName = $row['FirstName'];
     $AdvisorLastName = $row['LastName'];
+    $AdvisorImage = $row['Image'];
+    if($AdvisorImage == 'null'){
+      $AdvisorImage = 'images/placeholder.jpg';
+    }else{
+      $AdvisorImage = 'uploads/'.$AdvisorImage;
+    }
+    $AdvisorPhone = $row['Phone'];
+    $AdvisorEmail = $row['Email'];
+    $AdvisorTitle = $row['Title'];
+    $AdvisorSchool = $row['SchoolID'];
+
+    if($AdvisorSchool == 1){
+      $AdvisorSchool = "School of Computing and Information Technology";
+    }else{
+      $AdvisorSchool = "School of Engineering";
+    }
 
     $crumb='<div class="container">
     <nav aria-label="breadcrumb">
@@ -94,34 +110,33 @@
 
 
     $main = '
-        <!-- main document -->
-        <div class="col-md-9">
-          <div class="card">
-            <div class="card-header main-color-bg">
-             <span class="material-icons">account_box</span> Overview
-            </div>
-            <div class="card-body row">
-              <div class="col-4" style="text-align: center;">
-                <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
-                </div>
-              </div>
-              <div class="col-4" style="text-align: center;">
-                <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
-                </div>
-              </div>
-              <div class="col-4" style="text-align: center;">
-                <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
-                </div>
-              </div>
+    <!-- main document -->
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header main-color-bg">
+         <span class="material-icons">account_box</span> Overview
+        </div>
+        <div class="card-body row">
+          <div class="col-4" style="text-align: center;">
+            <div class="well dash-box">
+              <h2><span class="material-icons">inbox</span> 5</h2>
+              <h4>Inbox</h4>
             </div>
           </div>
-  
+          <div class="col-4" style="text-align: center;">
+            <div class="well dash-box">
+              <h2><span class="material-icons">inbox</span> 5</h2>
+              <h4>Inbox</h4>
+            </div>
+          </div>
+          <div class="col-4" style="text-align: center;">
+            <div class="well dash-box">
+              <h2><span class="material-icons">inbox</span> 5</h2>
+              <h4>Inbox</h4>
+            </div>
+          </div>
+        </div>
+      </div>
           <br>
 
           <div class="card" >
@@ -225,6 +240,43 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Request Meeting</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="ViewAdvisor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <form action="viewAdvisor.php" method="post" id="register_form" enctype="multipart/form-data">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View Advisor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="profile-userpic text-center">
+                      <img src="'.$AdvisorImage.'" class="img-responsive" alt="profile picture">
+                    </div>
+                    <div class="text-center">
+                      '.$AdvisorTitle.' '.$AdvisorFirstName.' '.$AdvisorLastName.'
+                    </div>
+                    <div class="text-center">
+                      '.$AdvisorEmail.'
+                    </div>
+                    <div class="text-center">
+                      '.$AdvisorPhone.'
+                    </div>
+                    <div class="text-center">
+                      '.$AdvisorSchool.'
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </form>
               </div>
