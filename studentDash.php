@@ -18,7 +18,8 @@
         $Image = 'uploads/'.$Image;
       }
 
-      if($IsActive == 1){
+      if($IsActive == 1)
+      {
         $status = 'Active';
       }
       else
@@ -108,8 +109,8 @@
               <div class="col-4" style="text-align: center;">
   
                 <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
+                  <h2><span class="material-icons">forum</span> 5</h2>
+                  <h4>Meetings</h4>
   
                 </div>
   
@@ -128,8 +129,8 @@
               <div class="col-4" style="text-align: center;">
   
                 <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
+                  <h2><span class="material-icons">next_week</span> 5</h2>
+                  <h4>Sent Items</h4>
   
                 </div>
   
