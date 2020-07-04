@@ -86,6 +86,7 @@
                 <span id="programName"></span> Advisors
                  
                 </h1>
+                <div class="col-12" style="text-align:center"> <p>if you do not see your advisor check back later as more advisors are added each day</p></div>
                 <input type="text" id="filterInput" class="form-control col-md-8 offset-md-2 col-ms-8 offset-ms-2 mb-2 col-12" placeholder="Search names...">
                 <div class="col-md-6 offset-md-2 offset-ms-2 col-12" >
                 <ul id="names" style="list-style: none; padding-left:0;" >
