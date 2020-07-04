@@ -55,7 +55,10 @@ $(document).ready(() => {
 
     $('div.card').click(function(){
       
+
+
         action = $(this).parents("div#module-card").attr('data-completed');
+
 
         $.ajax({
 
