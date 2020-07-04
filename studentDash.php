@@ -128,12 +128,7 @@
          <span class="material-icons">account_box</span> Overview
         </div>
         <div class="card-body row">
-          <div class="col-4" style="text-align: center;">
-            <div class="well dash-box">
-              <h2><span class="material-icons">inbox</span> 5</h2>
-              <h4>Inbox</h4>
-            </div>
-  
+       
            <div class="card-body row">
               <div class="col-4" style="text-align: center;">
   
@@ -166,13 +161,7 @@
               </div>
   
             </div>
-          </div>
-          <div class="col-4" style="text-align: center;">
-            <div class="well dash-box">
-              <h2><span class="material-icons">inbox</span> 5</h2>
-              <h4>Inbox</h4>
-            </div>
-          </div>
+          
         </div>
       </div>
           <br>
@@ -196,6 +185,9 @@
                   
                 </tbody>
               </table>
+              <div id="currentmoduleserror" class="col-12" style="text-align: center">
+              
+              </div>
   
   
               
@@ -338,15 +330,17 @@
     async: false,
     success: function (html){
         
-        if (html != ""){
+        if (html.length != 3 ){
 
+          
             $("#currentmodules").html(html);
             
         } 
         else 
         {
+            
             //display error
-            $("#currentmodules").html("Not currently enrolled in any module");
+            $("#currentmoduleserror").html('<p>Not currently enrolled in any module</p>');
           
         }
     }
@@ -354,3 +348,4 @@
     });
   });
 </script>
+
