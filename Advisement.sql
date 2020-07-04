@@ -1,24 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 02, 2020 at 07:52 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Host: localhost:8889
+-- Generation Time: Jul 04, 2020 at 04:46 AM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Database: `advisement`
+-- Database: `Advisement`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +25,7 @@ CREATE TABLE `admin` (
   `EmployeeID` tinytext NOT NULL,
   `Password` longtext NOT NULL,
   `FirstName` tinytext NOT NULL,
-  `LastName` tinytext DEFAULT NULL
+  `LastName` tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,16 +38,16 @@ CREATE TABLE `advisor` (
   `AdvisorID` int(11) NOT NULL,
   `EmployeeID` int(11) NOT NULL,
   `SchoolID` int(11) NOT NULL,
-  `FirstName` tinytext DEFAULT NULL,
+  `FirstName` tinytext,
   `LastName` tinytext NOT NULL,
-  `Email` tinytext DEFAULT NULL,
-  `IsActive` tinyint(1) NOT NULL DEFAULT 1,
+  `Email` tinytext,
+  `IsActive` tinyint(1) NOT NULL DEFAULT '1',
   `CreatedOn` date NOT NULL,
   `UpdatedOn` date DEFAULT NULL,
   `Title` tinytext NOT NULL,
   `Phone` tinytext NOT NULL,
   `Password` longtext NOT NULL,
-  `Image` longtext DEFAULT NULL
+  `Image` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,10 +56,9 @@ CREATE TABLE `advisor` (
 
 INSERT INTO `advisor` (`AdvisorID`, `EmployeeID`, `SchoolID`, `FirstName`, `LastName`, `Email`, `IsActive`, `CreatedOn`, `UpdatedOn`, `Title`, `Phone`, `Password`, `Image`) VALUES
 (5, 1201935, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$3ENBNZWw09BaRPWWr18f1eSvcJQjpE1rRCb/FHsG/E.iG/rYJ6iBe', 'null'),
-(6, 1612783, 1, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-05-27', NULL, 'Mr.', '8762860850', '$2y$10$LNnQ9r0a9wIZogCEevMrYOnqY5Lpd1gtkPpIbvFBRyt5Kjf8c95wu', '5ece20778721e5.88169612.jpeg'),
-(7, 4534534, 1, 'Trudi-ann', 'Nicholson', 'trudiann.nicholson@gmail.com', 1, '2020-06-06', NULL, 'Miss', '8769194356', '$2y$10$oMDbMANMzJEBHkq69mqI9eCVokWeeEGWd2jDXjr386a15YMom7vde', '5edb0060911128.08752877.jpg'),
 (9, 1234567, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-11', NULL, 'Dr.', '1234567890', '$2y$10$uDAp1TS2VVXxQ8BE7m0Gd.oOh80xjcUZnX2p8TwdyleImwexBLssa', '5ee1a2b2253072.09776216.jpg'),
-(10, 1231231, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-15', NULL, 'Dr.', '1234567890', '$2y$10$xnm22rmMwA46SP3Ff06TCu1gYngfQRSw8ofQeB1XVGuS7vrWKbXNe', '5ee7eb6a7dc690.00503048.jpg');
+(10, 1231231, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-15', NULL, 'Dr.', '1234567890', '$2y$10$xnm22rmMwA46SP3Ff06TCu1gYngfQRSw8ofQeB1XVGuS7vrWKbXNe', '5ee7eb6a7dc690.00503048.jpg'),
+(11, 4260148, 1, 'Kareem', 'Abraham', 'kcreary@bluechipstrategies.com', 1, '2020-06-30', NULL, 'Dr.', '8765573822', '$2y$10$pRT86GtJxDqtE9o4MRWnduFkQ51WF/nAImWp/GaUiwUw3PwAL5Amy', '5efada7a62e372.69547335.jpg');
 
 -- --------------------------------------------------------
 
@@ -78,9 +70,33 @@ CREATE TABLE `attachment` (
   `AttachmentID` int(11) NOT NULL,
   `FileName` varchar(50) NOT NULL,
   `FileSize` float NOT NULL,
-  `MessageID` int(11) NOT NULL,
-  `FileType` tinytext DEFAULT NULL
+  `FileType` tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `currentmodules`
+--
+
+CREATE TABLE `currentmodules` (
+  `StudentID` int(11) NOT NULL,
+  `ModuleID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `currentmodules`
+--
+
+INSERT INTO `currentmodules` (`StudentID`, `ModuleID`) VALUES
+(16, 10),
+(16, 29),
+(16, 36),
+(16, 38),
+(16, 42),
+(16, 49),
+(16, 82),
+(16, 83);
 
 -- --------------------------------------------------------
 
@@ -133,19 +149,20 @@ CREATE TABLE `message` (
   `MessageID` int(11) NOT NULL,
   `Sender` int(11) DEFAULT NULL,
   `Recipient` int(11) DEFAULT NULL,
-  `Subject` tinytext DEFAULT NULL,
-  `Content` longtext DEFAULT NULL,
-  `SentOn` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Subject` tinytext,
+  `Content` longtext,
+  `SentOn` date DEFAULT NULL,
+  `AttachmentID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `message`
 --
 
-INSERT INTO `message` (`MessageID`, `Sender`, `Recipient`, `Subject`, `Content`, `SentOn`) VALUES
-(21, 12, 5, 'Test Sub', 'Test Message!!!!', '2020-07-01'),
-(22, 12, 5, 'Subby', 'Hello There!', '2020-07-01'),
-(23, 12, 5, 'New Sub', 'Ahhhh Message!!!', '2020-07-01');
+INSERT INTO `message` (`MessageID`, `Sender`, `Recipient`, `Subject`, `Content`, `SentOn`, `AttachmentID`) VALUES
+(21, 12, 5, 'Test Sub', 'Test Message!!!!', '2020-07-01', NULL),
+(22, 12, 5, 'Subby', 'Hello There!', '2020-07-01', NULL),
+(23, 12, 5, 'New Sub', 'Ahhhh Message!!!', '2020-07-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -157,10 +174,10 @@ CREATE TABLE `module` (
   `ModuleID` int(11) NOT NULL,
   `ModuleCode` tinytext NOT NULL,
   `Name` tinytext NOT NULL,
-  `Type` tinytext DEFAULT NULL,
+  `Type` tinytext,
   `Credits` tinyint(4) DEFAULT NULL,
-  `Major` tinytext DEFAULT NULL,
-  `Prerequisite` tinytext DEFAULT NULL
+  `Major` tinytext,
+  `Prerequisite` tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -271,8 +288,46 @@ INSERT INTO `module` (`ModuleID`, `ModuleCode`, `Name`, `Type`, `Credits`, `Majo
 CREATE TABLE `passedmodules` (
   `StudentID` int(11) NOT NULL,
   `ModuleID` int(11) NOT NULL,
-  `Grade` int(11) NOT NULL
+  `Grade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `passedmodules`
+--
+
+INSERT INTO `passedmodules` (`StudentID`, `ModuleID`, `Grade`) VALUES
+(16, 5, NULL),
+(16, 10, NULL),
+(16, 11, NULL),
+(16, 16, NULL),
+(16, 19, NULL),
+(16, 23, NULL),
+(16, 24, NULL),
+(16, 29, NULL),
+(16, 35, NULL),
+(16, 36, NULL),
+(16, 37, NULL),
+(16, 38, NULL),
+(16, 40, NULL),
+(16, 41, NULL),
+(16, 42, NULL),
+(16, 43, NULL),
+(16, 44, NULL),
+(16, 45, NULL),
+(16, 46, NULL),
+(16, 48, NULL),
+(16, 49, NULL),
+(16, 54, NULL),
+(16, 55, NULL),
+(16, 56, NULL),
+(16, 64, NULL),
+(16, 65, NULL),
+(16, 67, NULL),
+(16, 80, NULL),
+(16, 81, NULL),
+(16, 82, NULL),
+(16, 83, NULL),
+(16, 90, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,8 +371,475 @@ INSERT INTO `program` (`ProgramID`, `SchoolID`, `Name`, `DateCreated`) VALUES
 CREATE TABLE `programmodules` (
   `ProgramID` int(11) NOT NULL,
   `ModuleID` int(11) NOT NULL,
-  `Type` tinytext DEFAULT NULL
+  `Type` tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `programmodules`
+--
+
+INSERT INTO `programmodules` (`ProgramID`, `ModuleID`, `Type`) VALUES
+(3, 1, NULL),
+(4, 1, NULL),
+(5, 1, NULL),
+(6, 1, NULL),
+(3, 2, NULL),
+(4, 2, NULL),
+(5, 2, NULL),
+(6, 2, NULL),
+(3, 3, NULL),
+(4, 3, NULL),
+(5, 3, NULL),
+(6, 3, NULL),
+(3, 4, NULL),
+(4, 4, NULL),
+(5, 4, NULL),
+(6, 4, NULL),
+(1, 5, NULL),
+(2, 5, NULL),
+(3, 5, NULL),
+(4, 5, NULL),
+(5, 5, NULL),
+(6, 5, NULL),
+(3, 6, NULL),
+(4, 6, NULL),
+(5, 6, NULL),
+(6, 6, NULL),
+(3, 7, NULL),
+(4, 7, NULL),
+(5, 7, NULL),
+(6, 7, NULL),
+(3, 8, NULL),
+(4, 8, NULL),
+(5, 8, NULL),
+(6, 8, NULL),
+(3, 9, NULL),
+(4, 9, NULL),
+(5, 9, NULL),
+(6, 9, NULL),
+(1, 10, NULL),
+(2, 10, NULL),
+(3, 10, NULL),
+(4, 10, NULL),
+(5, 10, NULL),
+(6, 10, NULL),
+(1, 11, NULL),
+(2, 11, NULL),
+(3, 11, NULL),
+(4, 11, NULL),
+(5, 11, NULL),
+(6, 11, NULL),
+(3, 12, NULL),
+(4, 12, NULL),
+(5, 12, NULL),
+(6, 12, NULL),
+(3, 13, NULL),
+(4, 13, NULL),
+(5, 13, NULL),
+(6, 13, NULL),
+(3, 14, NULL),
+(4, 14, NULL),
+(5, 14, NULL),
+(6, 14, NULL),
+(3, 15, NULL),
+(4, 15, NULL),
+(5, 15, NULL),
+(6, 15, NULL),
+(1, 16, NULL),
+(2, 16, NULL),
+(3, 16, NULL),
+(4, 16, NULL),
+(5, 16, NULL),
+(6, 16, NULL),
+(3, 17, NULL),
+(4, 17, NULL),
+(5, 17, NULL),
+(6, 17, NULL),
+(3, 18, NULL),
+(4, 18, NULL),
+(5, 18, NULL),
+(6, 18, NULL),
+(2, 19, NULL),
+(3, 19, NULL),
+(4, 19, NULL),
+(5, 19, NULL),
+(6, 19, NULL),
+(3, 20, NULL),
+(4, 20, NULL),
+(5, 20, NULL),
+(6, 20, NULL),
+(3, 21, NULL),
+(4, 21, NULL),
+(5, 21, NULL),
+(6, 21, NULL),
+(3, 22, NULL),
+(4, 22, NULL),
+(5, 22, NULL),
+(6, 22, NULL),
+(1, 23, NULL),
+(2, 23, NULL),
+(3, 23, NULL),
+(4, 23, NULL),
+(5, 23, NULL),
+(6, 23, NULL),
+(1, 24, NULL),
+(2, 24, NULL),
+(3, 24, NULL),
+(4, 24, NULL),
+(5, 24, NULL),
+(6, 24, NULL),
+(1, 25, NULL),
+(2, 25, NULL),
+(3, 25, NULL),
+(4, 25, NULL),
+(5, 25, NULL),
+(6, 25, NULL),
+(3, 26, NULL),
+(4, 26, NULL),
+(5, 26, NULL),
+(6, 26, NULL),
+(3, 27, NULL),
+(4, 27, NULL),
+(5, 27, NULL),
+(6, 27, NULL),
+(3, 28, NULL),
+(4, 28, NULL),
+(5, 28, NULL),
+(6, 28, NULL),
+(1, 29, NULL),
+(2, 29, NULL),
+(3, 29, NULL),
+(4, 29, NULL),
+(5, 29, NULL),
+(6, 29, NULL),
+(3, 30, NULL),
+(4, 30, NULL),
+(5, 30, NULL),
+(6, 30, NULL),
+(3, 31, NULL),
+(4, 31, NULL),
+(5, 31, NULL),
+(6, 31, NULL),
+(3, 32, NULL),
+(4, 32, NULL),
+(5, 32, NULL),
+(6, 32, NULL),
+(1, 33, NULL),
+(2, 33, NULL),
+(3, 33, NULL),
+(4, 33, NULL),
+(5, 33, NULL),
+(6, 33, NULL),
+(1, 34, NULL),
+(2, 34, NULL),
+(3, 34, NULL),
+(4, 34, NULL),
+(5, 34, NULL),
+(6, 34, NULL),
+(1, 35, NULL),
+(2, 35, NULL),
+(3, 35, NULL),
+(4, 35, NULL),
+(5, 35, NULL),
+(6, 35, NULL),
+(1, 36, NULL),
+(2, 36, NULL),
+(3, 36, NULL),
+(4, 36, NULL),
+(5, 36, NULL),
+(6, 36, NULL),
+(1, 37, NULL),
+(2, 37, NULL),
+(3, 37, NULL),
+(4, 37, NULL),
+(5, 37, NULL),
+(6, 37, NULL),
+(1, 38, NULL),
+(2, 38, NULL),
+(3, 38, NULL),
+(4, 38, NULL),
+(5, 38, NULL),
+(6, 38, NULL),
+(1, 39, NULL),
+(2, 39, NULL),
+(3, 39, NULL),
+(4, 39, NULL),
+(5, 39, NULL),
+(6, 39, NULL),
+(1, 40, NULL),
+(2, 40, NULL),
+(3, 40, NULL),
+(4, 40, NULL),
+(5, 40, NULL),
+(6, 40, NULL),
+(1, 41, NULL),
+(2, 41, NULL),
+(3, 41, NULL),
+(4, 41, NULL),
+(5, 41, NULL),
+(6, 41, NULL),
+(1, 42, NULL),
+(2, 42, NULL),
+(3, 42, NULL),
+(4, 42, NULL),
+(5, 42, NULL),
+(6, 42, NULL),
+(1, 43, NULL),
+(2, 43, NULL),
+(3, 43, NULL),
+(4, 43, NULL),
+(5, 43, NULL),
+(6, 43, NULL),
+(1, 44, NULL),
+(2, 44, NULL),
+(3, 44, NULL),
+(4, 44, NULL),
+(5, 44, NULL),
+(6, 44, NULL),
+(1, 45, NULL),
+(2, 45, NULL),
+(3, 45, NULL),
+(4, 45, NULL),
+(5, 45, NULL),
+(6, 45, NULL),
+(1, 46, NULL),
+(2, 46, NULL),
+(3, 46, NULL),
+(4, 46, NULL),
+(5, 46, NULL),
+(6, 46, NULL),
+(1, 47, NULL),
+(2, 47, NULL),
+(3, 47, NULL),
+(4, 47, NULL),
+(5, 47, NULL),
+(6, 47, NULL),
+(1, 48, NULL),
+(2, 48, NULL),
+(3, 48, NULL),
+(4, 48, NULL),
+(5, 48, NULL),
+(6, 48, NULL),
+(1, 49, NULL),
+(2, 49, NULL),
+(3, 49, NULL),
+(4, 49, NULL),
+(5, 49, NULL),
+(6, 49, NULL),
+(1, 50, NULL),
+(2, 50, NULL),
+(3, 50, NULL),
+(4, 50, NULL),
+(5, 50, NULL),
+(6, 50, NULL),
+(1, 51, NULL),
+(2, 51, NULL),
+(3, 51, NULL),
+(4, 51, NULL),
+(5, 51, NULL),
+(6, 51, NULL),
+(1, 52, NULL),
+(2, 52, NULL),
+(3, 52, NULL),
+(4, 52, NULL),
+(5, 52, NULL),
+(6, 52, NULL),
+(1, 53, NULL),
+(2, 53, NULL),
+(3, 53, NULL),
+(4, 53, NULL),
+(5, 53, NULL),
+(6, 53, NULL),
+(1, 54, NULL),
+(2, 54, NULL),
+(3, 54, NULL),
+(4, 54, NULL),
+(5, 54, NULL),
+(6, 54, NULL),
+(1, 55, NULL),
+(2, 55, NULL),
+(3, 55, NULL),
+(4, 55, NULL),
+(5, 55, NULL),
+(6, 55, NULL),
+(2, 56, NULL),
+(3, 56, NULL),
+(4, 56, NULL),
+(5, 56, NULL),
+(6, 56, NULL),
+(3, 57, NULL),
+(4, 57, NULL),
+(5, 57, NULL),
+(6, 57, NULL),
+(3, 58, NULL),
+(4, 58, NULL),
+(5, 58, NULL),
+(6, 58, NULL),
+(1, 59, NULL),
+(2, 59, NULL),
+(3, 59, NULL),
+(4, 59, NULL),
+(5, 59, NULL),
+(6, 59, NULL),
+(3, 60, NULL),
+(4, 60, NULL),
+(5, 60, NULL),
+(6, 60, NULL),
+(3, 61, NULL),
+(4, 61, NULL),
+(5, 61, NULL),
+(6, 61, NULL),
+(2, 62, NULL),
+(3, 62, NULL),
+(4, 62, NULL),
+(5, 62, NULL),
+(6, 62, NULL),
+(3, 63, NULL),
+(4, 63, NULL),
+(5, 63, NULL),
+(6, 63, NULL),
+(1, 64, NULL),
+(2, 64, NULL),
+(3, 64, NULL),
+(4, 64, NULL),
+(5, 64, NULL),
+(6, 64, NULL),
+(1, 65, NULL),
+(2, 65, NULL),
+(3, 65, NULL),
+(4, 65, NULL),
+(5, 65, NULL),
+(6, 65, NULL),
+(1, 66, NULL),
+(2, 66, NULL),
+(3, 66, NULL),
+(4, 66, NULL),
+(5, 66, NULL),
+(6, 66, NULL),
+(1, 67, NULL),
+(2, 67, NULL),
+(3, 67, NULL),
+(4, 67, NULL),
+(5, 67, NULL),
+(6, 67, NULL),
+(3, 68, NULL),
+(4, 68, NULL),
+(5, 68, NULL),
+(6, 68, NULL),
+(3, 69, NULL),
+(4, 69, NULL),
+(5, 69, NULL),
+(6, 69, NULL),
+(3, 70, NULL),
+(4, 70, NULL),
+(5, 70, NULL),
+(6, 70, NULL),
+(3, 71, NULL),
+(4, 71, NULL),
+(5, 71, NULL),
+(6, 71, NULL),
+(3, 72, NULL),
+(4, 72, NULL),
+(5, 72, NULL),
+(6, 72, NULL),
+(3, 73, NULL),
+(4, 73, NULL),
+(5, 73, NULL),
+(6, 73, NULL),
+(3, 74, NULL),
+(4, 74, NULL),
+(5, 74, NULL),
+(6, 74, NULL),
+(3, 75, NULL),
+(4, 75, NULL),
+(5, 75, NULL),
+(6, 75, NULL),
+(3, 76, NULL),
+(4, 76, NULL),
+(5, 76, NULL),
+(6, 76, NULL),
+(3, 77, NULL),
+(4, 77, NULL),
+(5, 77, NULL),
+(6, 77, NULL),
+(3, 78, NULL),
+(4, 78, NULL),
+(5, 78, NULL),
+(6, 78, NULL),
+(3, 79, NULL),
+(4, 79, NULL),
+(5, 79, NULL),
+(6, 79, NULL),
+(2, 80, NULL),
+(3, 80, NULL),
+(4, 80, NULL),
+(5, 80, NULL),
+(6, 80, NULL),
+(2, 81, NULL),
+(3, 81, NULL),
+(4, 81, NULL),
+(5, 81, NULL),
+(6, 81, NULL),
+(2, 82, NULL),
+(3, 82, NULL),
+(4, 82, NULL),
+(5, 82, NULL),
+(6, 82, NULL),
+(2, 83, NULL),
+(3, 83, NULL),
+(4, 83, NULL),
+(5, 83, NULL),
+(6, 83, NULL),
+(1, 84, NULL),
+(3, 84, NULL),
+(4, 84, NULL),
+(5, 84, NULL),
+(6, 84, NULL),
+(1, 85, NULL),
+(3, 85, NULL),
+(4, 85, NULL),
+(5, 85, NULL),
+(6, 85, NULL),
+(1, 86, NULL),
+(3, 86, NULL),
+(4, 86, NULL),
+(5, 86, NULL),
+(6, 86, NULL),
+(3, 87, NULL),
+(4, 87, NULL),
+(5, 87, NULL),
+(6, 87, NULL),
+(1, 88, NULL),
+(3, 88, NULL),
+(4, 88, NULL),
+(5, 88, NULL),
+(6, 88, NULL),
+(1, 89, NULL),
+(3, 89, NULL),
+(4, 89, NULL),
+(5, 89, NULL),
+(6, 89, NULL),
+(1, 90, NULL),
+(2, 90, NULL),
+(3, 90, NULL),
+(4, 90, NULL),
+(5, 90, NULL),
+(6, 90, NULL),
+(1, 91, NULL),
+(3, 91, NULL),
+(4, 91, NULL),
+(5, 91, NULL),
+(6, 91, NULL),
+(1, 92, NULL),
+(3, 92, NULL),
+(4, 92, NULL),
+(5, 92, NULL),
+(6, 92, NULL),
+(1, 93, NULL),
+(3, 93, NULL),
+(4, 93, NULL),
+(5, 93, NULL),
+(6, 93, NULL);
 
 -- --------------------------------------------------------
 
@@ -328,7 +850,7 @@ CREATE TABLE `programmodules` (
 CREATE TABLE `school` (
   `SchoolID` int(11) NOT NULL,
   `Name` tinytext NOT NULL,
-  `Faculty` tinytext DEFAULT NULL
+  `Faculty` tinytext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -350,17 +872,17 @@ CREATE TABLE `student` (
   `StudentID` int(11) NOT NULL,
   `AdvisorID` int(11) DEFAULT NULL,
   `ProgramID` int(11) DEFAULT NULL,
-  `FirstName` tinytext DEFAULT NULL,
-  `LastName` tinytext DEFAULT NULL,
-  `Email` tinytext DEFAULT NULL,
-  `IsActive` tinyint(1) NOT NULL DEFAULT 1,
+  `FirstName` tinytext,
+  `LastName` tinytext,
+  `Email` tinytext,
+  `IsActive` tinyint(1) NOT NULL DEFAULT '1',
   `CreatedOn` date DEFAULT NULL,
   `UpdatedOn` date DEFAULT NULL,
-  `Phone` tinytext DEFAULT NULL,
+  `Phone` tinytext,
   `Password` longtext NOT NULL,
   `Level` tinyint(4) DEFAULT NULL,
-  `Title` tinytext DEFAULT NULL,
-  `Image` longtext DEFAULT NULL
+  `Title` tinytext,
+  `Image` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -368,8 +890,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`UID`, `StudentID`, `AdvisorID`, `ProgramID`, `FirstName`, `LastName`, `Email`, `IsActive`, `CreatedOn`, `UpdatedOn`, `Phone`, `Password`, `Level`, `Title`, `Image`) VALUES
-(12, 1234567, 5, 1, 'Alex', 'King', 'test@email.com', 1, '2020-06-10', NULL, '1234567890', '$2y$10$OSZsA51imzaACE0aWqoZtevL72SzS3GDh/SZ26M.buewy9u9IYjfm', NULL, 'Dr.', '5ee1377e0361a9.71063872.jpg'),
-(13, 3213213, NULL, 1, 'Gregory', 'King', 'test@email.com', 1, '2020-06-16', NULL, '1234567890', '$2y$10$C842Vv8SVVA.RkNvlkNNgu2bZFmKmYtGd1iqKmgaVs8l.7qD2E1iO', NULL, 'Dr.', '5ee868ff1ffc18.30265553.jpg');
+(15, 1201935, NULL, 2, 'Kerone', 'Creary', 'kerone.ant.creary@hotmail.com', 1, '2020-06-27', NULL, '8762860850', '$2y$10$iR8XUkcz/fSQ7LGadynm.OhjYPzqlnwj6DZqTqlThjZBUpI2qBKWy', NULL, 'Mr', '5ef6d0497f0741.08211091.jpg'),
+(16, 2860850, NULL, 2, 'Trudi-ann', 'Nicholson', 'trudiann.nicholson@gmail.com', 1, '2020-06-29', NULL, '8769194356', '$2y$10$wHYZhI4Xw.II6tzJClKY0OS.iANVazq0GBsPTf3zvFFu9xVsM/qaO', NULL, 'Miss', '5ef9b710318a03.16997221.jpg');
 
 --
 -- Indexes for dumped tables
@@ -393,6 +915,13 @@ ALTER TABLE `advisor`
 --
 ALTER TABLE `attachment`
   ADD PRIMARY KEY (`AttachmentID`);
+
+--
+-- Indexes for table `currentmodules`
+--
+ALTER TABLE `currentmodules`
+  ADD PRIMARY KEY (`ModuleID`,`StudentID`),
+  ADD KEY `currentmodules_ibfk_2` (`StudentID`);
 
 --
 -- Indexes for table `editadvisor`
@@ -420,9 +949,7 @@ ALTER TABLE `meeting`
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`MessageID`),
-  ADD KEY `StudentID` (`Sender`) USING BTREE,
-  ADD KEY `AdvisorID` (`Recipient`) USING BTREE;
+  ADD PRIMARY KEY (`MessageID`);
 
 --
 -- Indexes for table `module`
@@ -479,7 +1006,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `advisor`
 --
 ALTER TABLE `advisor`
-  MODIFY `AdvisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `AdvisorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `attachment`
@@ -515,7 +1042,7 @@ ALTER TABLE `school`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `UID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -525,58 +1052,60 @@ ALTER TABLE `student`
 -- Constraints for table `attachment`
 --
 ALTER TABLE `attachment`
-  ADD CONSTRAINT `attachment_ibfk_1` FOREIGN KEY (`attachmentID`) REFERENCES `message` (`messageID`);
+  ADD CONSTRAINT `attachment_ibfk_1` FOREIGN KEY (`AttachmentID`) REFERENCES `message` (`MessageID`);
+
+--
+-- Constraints for table `currentmodules`
+--
+ALTER TABLE `currentmodules`
+  ADD CONSTRAINT `currentmodules_ibfk_1` FOREIGN KEY (`ModuleID`) REFERENCES `module` (`ModuleID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `currentmodules_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`UID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `editadvisor`
 --
 ALTER TABLE `editadvisor`
-  ADD CONSTRAINT `editadvisor_ibfk_1` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`),
-  ADD CONSTRAINT `editadvisor_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`),
-  ADD CONSTRAINT `editadvisor_ibfk_3` FOREIGN KEY (`adminID`) REFERENCES `admin` (`UID`);
+  ADD CONSTRAINT `editadvisor_ibfk_1` FOREIGN KEY (`AdvisorID`) REFERENCES `advisor` (`AdvisorID`),
+  ADD CONSTRAINT `editadvisor_ibfk_2` FOREIGN KEY (`AdvisorID`) REFERENCES `advisor` (`AdvisorID`),
+  ADD CONSTRAINT `editadvisor_ibfk_3` FOREIGN KEY (`AdminID`) REFERENCES `admin` (`UID`);
 
 --
 -- Constraints for table `editstudent`
 --
 ALTER TABLE `editstudent`
-  ADD CONSTRAINT `editstudent_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `editstudent_ibfk_2` FOREIGN KEY (`adminID`) REFERENCES `admin` (`UID`);
+  ADD CONSTRAINT `editstudent_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `student` (`UID`),
+  ADD CONSTRAINT `editstudent_ibfk_2` FOREIGN KEY (`AdminID`) REFERENCES `admin` (`UID`);
 
 --
 -- Constraints for table `meeting`
 --
 ALTER TABLE `meeting`
-  ADD CONSTRAINT `meeting_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`),
-  ADD CONSTRAINT `meeting_ibfk_2` FOREIGN KEY (`advisorID`) REFERENCES `advisor` (`AdvisorID`);
+  ADD CONSTRAINT `meeting_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `student` (`UID`),
+  ADD CONSTRAINT `meeting_ibfk_2` FOREIGN KEY (`AdvisorID`) REFERENCES `advisor` (`AdvisorID`);
 
 --
 -- Constraints for table `passedmodules`
 --
 ALTER TABLE `passedmodules`
-  ADD CONSTRAINT `passedmodules_ibfk_1` FOREIGN KEY (`moduleID`) REFERENCES `module` (`moduleID`),
-  ADD CONSTRAINT `passedmodules_ibfk_2` FOREIGN KEY (`studentID`) REFERENCES `student` (`UID`);
+  ADD CONSTRAINT `passedmodules_ibfk_1` FOREIGN KEY (`ModuleID`) REFERENCES `module` (`ModuleID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `passedmodules_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`UID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `program`
 --
 ALTER TABLE `program`
-  ADD CONSTRAINT `program_ibfk_1` FOREIGN KEY (`schoolID`) REFERENCES `school` (`schoolID`);
+  ADD CONSTRAINT `program_ibfk_1` FOREIGN KEY (`SchoolID`) REFERENCES `school` (`SchoolID`);
 
 --
 -- Constraints for table `programmodules`
 --
 ALTER TABLE `programmodules`
-  ADD CONSTRAINT `programmodules_ibfk_1` FOREIGN KEY (`programID`) REFERENCES `program` (`programID`),
-  ADD CONSTRAINT `programmodules_ibfk_2` FOREIGN KEY (`moduleID`) REFERENCES `module` (`moduleID`);
+  ADD CONSTRAINT `programmodules_ibfk_1` FOREIGN KEY (`ProgramID`) REFERENCES `program` (`ProgramID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `programmodules_ibfk_2` FOREIGN KEY (`ModuleID`) REFERENCES `module` (`ModuleID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`AdvisorID`) REFERENCES `advisor` (`AdvisorID`),
-  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`ProgramID`) REFERENCES `program` (`programID`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`ProgramID`) REFERENCES `program` (`ProgramID`);
