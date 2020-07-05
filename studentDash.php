@@ -129,36 +129,8 @@
         </div>
         <div class="card-body row">
        
-           <div class="card-body row">
-              <div class="col-4" style="text-align: center;">
-  
-                <div class="well dash-box">
-                  <h2><span class="material-icons">forum</span> 5</h2>
-                  <h4>Meetings</h4>
-  
-                </div>
-  
-              </div>
-  
-              <div class="col-4" style="text-align: center;">
-  
-                <div class="well dash-box">
-                  <h2><span class="material-icons">inbox</span> 5</h2>
-                  <h4>Inbox</h4>
-  
-                </div>
-  
-              </div>
-  
-              <div class="col-4" style="text-align: center;">
-  
-                <div class="well dash-box">
-                  <h2><span class="material-icons">next_week</span> 5</h2>
-                  <h4>Sent Items</h4>
-  
-                </div>
-  
-              </div>
+           <div id="overview" data="'.$UID.'"  class="card-body row">
+             
   
             </div>
           
@@ -346,6 +318,22 @@
     }
 
     });
+
+    $.ajax({
+
+            url: "getStudentOverview.php",
+            method: "POST",
+            data:{UID : $("#overview").attr('data')},
+            dataType: "text",
+            async: false,
+            success: function (html){
+                  
+              $("#overview").html(html);
+                                                                        
+            }
+
+    });
+    
   });
 </script>
 
