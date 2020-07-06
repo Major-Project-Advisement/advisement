@@ -1,3 +1,24 @@
+<?php
+  include_once 'includes/config.php';
+  $Valid = null;
+  if(isset($AdvisorID)){
+    //Code to Select all the students and place them in a drop down selector
+    $sql = "SELECT * FROM student where AdvisorID='".$AdvisorID."'";
+    $result = mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_assoc($result)){
+      //Print the students ID and their full name
+     // echo '<option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>';
+     $Valid .= '
+      <option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
+     ';
+    }
+  }
+  
+?>  
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -40,13 +61,13 @@
           <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Student</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">View</a>
-            <a class="dropdown-item" href="#">Message</a>
-  
+            <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
+            <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateMessage">Message</a>
           </div>
-        </li>';
+        </li>
+        ';
 
         }
       
@@ -144,8 +165,48 @@
 </footer>
 <!-- Footer end -->
 
+<?php
+  echo '<div class="modal fade" id="CreateMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form action="advisorMeeting.php" method="post" id="register_form" enctype="multipart/form-data">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Send A Message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>From: <b>Me</b></label>
+            <br>
+            <label>To: </label>
+            <select>
+          '.$Valid.'
+            </select>
+          </div>  
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" name="subject" class="form-control" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <input type="text" name="message" class="form-control" placeholder="Message">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>';
+?>
 
-    
+
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.5.1.js"></script> 

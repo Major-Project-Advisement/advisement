@@ -1,7 +1,9 @@
 <?php
     $date = date('Y/m/d');
 
-    //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
+    if(isset($AdvisorID)){
+      //Advisor is present
+      //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
     $sql = "SELECT * FROM `advisor` WHERE `AdvisorID` = '".$AdvisorID."' LIMIT 1 ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -24,6 +26,10 @@
     }else{
       $AdvisorSchool = "School of Engineering";
     }
+    }else{
+      //There is no Advisor
+    }
+    
 ?>
 <!doctype html>
 <html lang="en">

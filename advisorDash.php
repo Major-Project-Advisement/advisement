@@ -1,8 +1,6 @@
 <?php 
     Session_start();//continue/start session
     
-    
-    
     if(isset($_SESSION['EmployeeID'])){
       
       foreach($_SESSION as $key => $value) //create local variables based on $_SESSION keys and values
