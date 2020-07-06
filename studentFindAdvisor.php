@@ -33,7 +33,7 @@
 
       $result = mysqli_query($conn, $sql);
       $advisorList = "";
-      $headerLetter="";
+      $headerLetter = "";
       
       while ($row = mysqli_fetch_assoc($result)){
 
@@ -46,7 +46,7 @@
         }
 
         $advisorList = $advisorList.' <li class="collection-item">
-                        <h4><a class="advisor-item text-primary" style="cursor: pointer;">'.$row["Title"].' '.$row["LastName"].', '.$row["FirstName"].'</a></h4>
+                        <h4><a data-fname="'.$row["FirstName"].'" data-lname="'.$row["LastName"].'" data-id="'.$row["AdvisorID"].'" data-image="'.$row["Image"].'" data-title="'.$row["Title"].'" data-email="'.$row["Email"].'" class="advisor-item text-primary" style="cursor: pointer;">'.$row["Title"].' '.$row["LastName"].', '.$row["FirstName"].'</a></h4>
                         </li>';
 
 
@@ -78,7 +78,7 @@
         <div class="col-md-12">
         
           <div class="card">
-            <div id="advisorSearch" data="'.$ProgramID.'" class="card-body">
+            <div id="advisorSearch" data="'.$ProgramID.'"  data-user="'.$UID.'"=class="card-body">
             
             
               <div class="container">
@@ -109,6 +109,8 @@
 <script>
     $(document).ready(()=>{
 
+      swal("No selected advisor!", "Please select your assigned advisor from the listing provided", "info");
+      
       //get name of program
     $.ajax({
 
@@ -133,8 +135,50 @@
         }
         
     });
+
+    $(".advisor-item").click(function (){
+      //get data from element
+      image = $(this).attr("data-image")
+      fname = $(this).attr("data-fname")
+      lname = $(this).attr("data-lname")
+      title = $(this).attr("data-title")
+      email = $(this).attr("data-email")
+      id = $(this).attr("data-id")
+
+
+      //display modal with advisor
+      $("#ViewAdvisor").find("img").attr("src","uploads/"+image)
+      $("#ViewAdvisor").find("div.full-name").html(title+" "+fname+" "+lname)
+      $("#ViewAdvisor").find("div.email-address").html(email)
+
+      $("#ViewAdvisor").modal("show")
+
+      $("#ConfirmAdvisor").click(()=>{
+        $.ajax({
+
+        url: "selectAdvisor.php",
+        method: "POST",
+        data:{uid : $("#advisorSearch").attr('data-user'),
+              aid : id
+        },
+        dataType: "text",
+        async: false,
+        success: function (html){
+            
+          location.replace("studentRefresh.php")
+        }
+
+        });
+
+        $("#ViewAdvisor").modal("hide")
+      });
+      
+      
+   
+    });
     
     })
+
     // Get input element
     let filterInput = document.getElementById('filterInput');
     // Add event listener

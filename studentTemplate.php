@@ -1,4 +1,6 @@
 <?php
+
+  if(isset($AdvisorID)){
     $date = date('Y/m/d');
 
     //Create a SQL statement to get the Advisors name using $AdvisorID and set it to a variable to use for the modal
@@ -24,6 +26,7 @@
     }else{
       $AdvisorSchool = "School of Engineering";
     }
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,18 +71,26 @@
             <a class="dropdown-item" href="studentCurrentModules.php">Current Modules</a>
             
           </div>
-        </li>
+        </li>';
 
-        <li class="nav-item dropdown">
+        if(!is_null($AdvisorID)){
+          echo '<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
             <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateModal">Message</a>
             <a class="dropdown-item" href="#RequestMeeting" data-toggle="modal" data-target="#RequestMeeting">Request A Meeting</a>
           </div>
-        </li>
+        </li>';
+        }else{
+
+          echo '<li class="nav-item">
+          <a class="nav-link" href="studentFindAdvisor.php">Advisor</a>
+          </li>';
+        }
         
-        <li class="nav-item">
+        
+        echo '<li class="nav-item">
           <a class="nav-link" href="studentresources.php">Resources</a>
         </li>
 
@@ -180,6 +191,7 @@
 <!-- Footer end -->
 
 <?php
+
 echo '
 <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -246,7 +258,7 @@ echo '
                     </div>
                     <div class="form-group">
                       <label>Description:<br></label>
-                      <input type="text" name="description" class="form-control" placeholder="Description">
+                      <textarea name="description" class="form-control" placeholder="Description"></textarea>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -272,28 +284,23 @@ echo '
                     <div class="profile-userpic text-center">
                       <img src="'.$AdvisorImage.'" class="img-responsive" alt="profile picture">
                     </div>
-                    <div class="text-center">
+                    <div class="text-center full-name">
                       '.$AdvisorTitle.' '.$AdvisorFirstName.' '.$AdvisorLastName.'
                     </div>
-                    <div class="text-center">
+                    <div class="text-center email-address">
                       '.$AdvisorEmail.'
                     </div>
-                    <div class="text-center">
-                      '.$AdvisorPhone.'
-                    </div>
-                    <div class="text-center">
-                      '.$AdvisorSchool.'
-                    </div>
-                    
+                   
                     
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="ConfirmAdvisor" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>';
+
 ?>
 
           
@@ -305,6 +312,7 @@ echo '
     <script src="js/jquery-3.5.1.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <?php echo $style; ?>
 
    
