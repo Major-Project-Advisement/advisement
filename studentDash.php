@@ -115,7 +115,7 @@
 
       <div id="currentModules" class="card overview-card mb-3"  >
               <div class="card-header main-color-bg">
-                Sent Items
+                Current Modules
               </div>
 
                 <table class="table table-striped table hover">
@@ -141,24 +141,25 @@
             </div>
       <div id="meetings" class="card overview-card mb-3" style="display: none;" >
       <div class="card-header main-color-bg">
-        Sent Items
+        Meetings
       </div>
 
         <table class="table table-striped table hover">
           <thead>
             <tr>
-              <th>Sender</th>
-              <th>Subject</th>
-              <th>Date Received</th>
-              <th>Credits</th>
+              <th>Topic</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
 
-          <tbody  id="currentmodules" data="'.$UID.'" >
+          <tbody  id="currentMeetings" data="'.$UID.'" >
             
           </tbody>
         </table>
-        <div id="currentmoduleserror" class="col-12" style="text-align: center">
+        <div id="currentMeetingsError" class="col-12" style="text-align: center">
         
         </div>
 
@@ -168,24 +169,25 @@
 
             <div id="inbox" class="card overview-card mb-3" style="display: none;">
               <div class="card-header main-color-bg">
-                Current Modules
+                Inbox
               </div>
 
                 <table class="table table-striped table hover">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Module Code</th>
-                      <th>Type</th>
-                      <th>Credits</th>
+                      <th>Sender</th>
+                      <th>Subject</th>
+                      <th>Date </th>
+                      <th>Status</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
 
-                  <tbody  id="currentmodules" data="'.$UID.'" >
+                  <tbody  id="currentInbox" data="'.$UID.'" >
                     
                   </tbody>
                 </table>
-                <div id="currentmoduleserror" class="col-12" style="text-align: center">
+                <div id="currentInboxError" class="col-12" style="text-align: center">
                 
                 </div>
 
@@ -196,16 +198,17 @@
           
           <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
             <div class="card-header main-color-bg">
-              Meetings
+              Sent Items
             </div>
   
               <table class="table table-striped table hover">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Module Code</th>
-                    <th>Type</th>
-                    <th>Credits</th>
+                    <th>Recipient</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
   
@@ -280,6 +283,34 @@
 
     });
 
+    $.ajax({
+
+      url: "getStudentMeetings.php",
+      method: "POST",
+      data:{uid : $("#currentmodules").attr('data')},
+      dataType: "text",
+      async: false,
+      success: function (html){
+          
+          if (html.length != 3 ){
+
+            
+              $("#currentMeetings").html(html);
+              
+          } 
+          else 
+          {
+              
+              //display error
+              $("#currentMeetingError").html('<p>You have no meetings at this time</p>');
+            
+          }
+      }
+
+      });
+
+
+
     $(".overview-section").click(function(){
       $(".overview-section").children("div").removeClass("text-primary")
         $(this).children("div").addClass("text-primary")
@@ -287,7 +318,6 @@
         id="#"+$(this).attr("data")
         $("div"+id).show();
 
-        console.log($(id));
     });
 
 
