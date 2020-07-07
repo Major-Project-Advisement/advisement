@@ -99,7 +99,7 @@
     $main = '
     <!-- main document -->
     <div class="col-md-9">
-      <div class="card">
+      <div class="card mb-3" >
         <div class="card-header main-color-bg">
          <span class="material-icons">account_box</span> Overview
         </div>
@@ -108,15 +108,95 @@
            <div id="overview" data="'.$UID.'"  class="card-body row">
              
   
-            </div>
+          </div>
           
         </div>
       </div>
-          <br>
 
-          <div class="card" >
+      <div id="currentModules" class="card overview-card mb-3"  >
+              <div class="card-header main-color-bg">
+                Sent Items
+              </div>
+
+                <table class="table table-striped table hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Module Code</th>
+                      <th>Type</th>
+                      <th>Credits</th>
+                    </tr>
+                  </thead>
+
+                  <tbody  id="currentmodules" data="'.$UID.'" >
+                    
+                  </tbody>
+                </table>
+                <div id="currentmoduleserror" class="col-12" style="text-align: center">
+                
+                </div>
+
+
+              
+            </div>
+      <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+      <div class="card-header main-color-bg">
+        Sent Items
+      </div>
+
+        <table class="table table-striped table hover">
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Subject</th>
+              <th>Date Received</th>
+              <th>Credits</th>
+            </tr>
+          </thead>
+
+          <tbody  id="currentmodules" data="'.$UID.'" >
+            
+          </tbody>
+        </table>
+        <div id="currentmoduleserror" class="col-12" style="text-align: center">
+        
+        </div>
+
+
+      
+    </div>
+
+            <div id="inbox" class="card overview-card mb-3" style="display: none;">
+              <div class="card-header main-color-bg">
+                Current Modules
+              </div>
+
+                <table class="table table-striped table hover">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Module Code</th>
+                      <th>Type</th>
+                      <th>Credits</th>
+                    </tr>
+                  </thead>
+
+                  <tbody  id="currentmodules" data="'.$UID.'" >
+                    
+                  </tbody>
+                </table>
+                <div id="currentmoduleserror" class="col-12" style="text-align: center">
+                
+                </div>
+
+
+              
+            </div>
+
+          
+          <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
             <div class="card-header main-color-bg">
-              Current Modules
+              Meetings
             </div>
   
               <table class="table table-striped table hover">
@@ -144,9 +224,14 @@
   
           </div>
 
+          
+          
 
-
-        ';
+          
+  
+  
+          </div>
+';
     include 'studentTemplate.php';
 
 ?>
@@ -194,6 +279,17 @@
             }
 
     });
+
+    $(".overview-section").click(function(){
+      $(".overview-section").children("div").removeClass("text-primary")
+        $(this).children("div").addClass("text-primary")
+        $(".overview-card").hide();
+        id="#"+$(this).attr("data")
+        $("div"+id).show();
+
+        console.log($(id));
+    });
+
 
   });
 </script>

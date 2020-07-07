@@ -91,7 +91,7 @@
         
         
         echo '<li class="nav-item">
-          <a class="nav-link" href="studentresources.php">Resources</a>
+          <a class="nav-link" href="studentResources.php">Resources</a>
         </li>
 
         <li class="nav-item">
