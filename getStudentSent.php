@@ -6,7 +6,7 @@
  {
    $uid = (int)$_POST["uid"];
 
-   $sql = "SELECT * FROM message WHERE StudentRecipient = $uid";
+   $sql = "SELECT * FROM message WHERE StudentSender = $uid";
 
   
    $result = mysqli_query($conn, $sql);
@@ -23,8 +23,9 @@
         $html = $html.'<tr>
         <td data="'.$row["AdvisorRecipient"].'">'.$row1["Title"].' '.$row1["LastName"].'</td>
         <td>'.$row["Subject"].'</td>
-        <td>'.$row["Date"].'</td>
-        <td>'.$row[""].'</td>
+        <td>'.$row["SentOn"].'</td>';
+        
+        $html = $html.'<td></td>
       </tr>';
 
    }

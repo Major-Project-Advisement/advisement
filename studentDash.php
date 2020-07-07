@@ -151,7 +151,6 @@
               <th>Date</th>
               <th>Description</th>
               <th>Status</th>
-              <th>Action</th>
             </tr>
           </thead>
 
@@ -212,11 +211,11 @@
                   </tr>
                 </thead>
   
-                <tbody  id="currentmodules" data="'.$UID.'" >
+                <tbody  id="currentSent" data="'.$UID.'" >
                   
                 </tbody>
               </table>
-              <div id="currentmoduleserror" class="col-12" style="text-align: center">
+              <div id="currentSentError" class="col-12" style="text-align: center">
               
               </div>
   
@@ -241,7 +240,8 @@
 
 <script>
   $(document).ready(function(){
-    
+
+        //ajax call for populating Current Modules Table
         $.ajax({
 
     url: "getCurrentModules.php",
@@ -268,6 +268,7 @@
 
     });
 
+    //ajax call for populating The Overview
     $.ajax({
 
             url: "getStudentOverview.php",
@@ -283,6 +284,7 @@
 
     });
 
+    //ajax call for populating Meetings Table
     $.ajax({
 
       url: "getStudentMeetings.php",
@@ -294,6 +296,7 @@
           
           if (html.length != 3 ){
 
+              
             
               $("#currentMeetings").html(html);
               
@@ -302,7 +305,35 @@
           {
               
               //display error
-              $("#currentMeetingError").html('<p>You have no meetings at this time</p>');
+              $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
+            
+          }
+      }
+
+      });
+
+      //ajax call for populating Sent Items Table
+    $.ajax({
+
+      url: "getStudentSent.php",
+      method: "POST",
+      data:{uid : $("#currentmodules").attr('data')},
+      dataType: "text",
+      async: false,
+      success: function (html){
+          
+          if (html.length != 3 ){
+
+              
+            
+              $("#currentSent").html(html);
+              
+          } 
+          else 
+          {
+              
+              //display error
+              $("#currentSentError").html('<p>You have no sent items</p>');
             
           }
       }

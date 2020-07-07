@@ -29,7 +29,7 @@
    $sent = mysqli_fetch_assoc($result);
 
    $html = '
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="cmodules" class="overview-section" data="currentModules" style="cursor: pointer;">
                     <div class="well dash-box text-primary">
                         <h2><span class="material-icons">library_books</span>'.$modules["Modules"].'</h2>
@@ -39,7 +39,7 @@
                 </a>
             </div>
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="meetings" class="overview-section" data="meetings" style="cursor: pointer;">
                     <div class="well dash-box">
                         <h2><span class="material-icons">forum</span>'.$meetings["Meetings"].'</h2>
@@ -50,7 +50,7 @@
             </div>
                
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="inbox" class="overview-section" data="inbox" style="cursor: pointer;">
                     <div class="well dash-box">
                         <h2><span class="material-icons">inbox</span>'.$inbox["Inbox"].'</h2>
@@ -60,7 +60,7 @@
                 </a>
             </div>
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="sent" class="overview-section" data="sentItems" style="cursor: pointer;">
                     <div class="well dash-box">
                         <h2><span class="material-icons">next_week</span>'.$sent["Sent"].'</h2>

@@ -221,7 +221,7 @@ echo '
                     </div>
                     <div class="form-group">
                       <label>Message</label>
-                      <input type="text" name="message" class="form-control" placeholder="Message">
+                      <textarea type="text" name="message" class="form-control" placeholder="Message"></textarea>
                     </div>
                   </div>
                   <div class="modal-footer">
