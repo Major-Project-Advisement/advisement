@@ -20,12 +20,11 @@
     $result1 = mysqli_query($conn, $sql1);
     $row1 = mysqli_fetch_assoc($result1);
 
-        $html = $html.'<tr>
-        <td data="'.$row["AdvisorRecipient"].'">'.$row1["Title"].' '.$row1["LastName"].'</td>
+        $html = $html.'<tr data-advisor="'.$row["AdvisorRecipient"].'" data-message="'.$row["MessageID"].'">
+        <td >'.$row1["Title"].' '.$row1["LastName"].'</td>
         <td>'.$row["Subject"].'</td>
-        <td>'.$row["SentOn"].'</td>';
-        
-        $html = $html.'<td></td>
+        <td>'.$row["SentOn"].'</td>
+        <td><a class="btn btn-warning read-message"> Delete </a></td>
       </tr>';
 
    }

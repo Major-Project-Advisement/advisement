@@ -29,7 +29,7 @@
                         <td><a class="btn btn-info read-message"> Read </a></td>';
         }else{
             $html = $html.'<td class="text-secondary">unread</td> 
-                        <td><a class="btn btn-danger read-message"> Delete</a>/td>';
+                        <td><a class="btn btn-danger delete-message"> Delete</a>/td>';
         }    
         $html = $html.'</tr>';
 

@@ -206,7 +206,6 @@
                     <th>Recipient</th>
                     <th>Subject</th>
                     <th>Date</th>
-                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -339,6 +338,34 @@
       }
 
       });
+
+        //ajax call for populating Sent Items Table
+    $.ajax({
+
+        url: "getStudentInbox.php",
+        method: "POST",
+        data:{uid : $("#currentmodules").attr('data')},
+        dataType: "text",
+        async: false,
+        success: function (html){
+            
+            if (html.length != 3 ){
+
+                
+              
+                $("#currentInbox").html(html);
+                
+            } 
+            else 
+            {
+                
+                //display error
+                $("#currentInboxError").html('<p>You have no new messages</p>');
+              
+            }
+        }
+
+        });
 
 
 
