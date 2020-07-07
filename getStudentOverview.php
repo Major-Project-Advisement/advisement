@@ -8,34 +8,41 @@
    
 
     
-   
-    $sql = "SELECT a.StudentID, a.Meetings, b.Inbox, c.Sent FROM 
-            (SELECT StudentID, count(*) as Meetings FROM meeting WHERE StudentID=$uid) a, 
-            (SELECT Recipient as StudentID, count(*) as Inbox FROM message where Recipient=$uid) b, 
-            (SELECT Sender as StudentID, count(*) as Sent FROM message where Sender=$uid) c 
-            WHERE a.StudentID = b.StudentID and b.StudentID = c.StudentID";
+    $sql1 = "SELECT count(*) as Modules FROM currentmodules WHERE StudentID=$uid";
+    $sql2 = "SELECT count(*) as Meetings FROM meeting WHERE StudentID=$uid";
+    $sql3 = "SELECT count(*) as Inbox FROM message WHERE StudentRecipient=$uid";
+    $sql4 = "SELECT count(*) as Sent FROM message WHERE StudentSender=$uid";
     
 
    
   
-   $result = mysqli_query($conn, $sql);
-   $row = mysqli_fetch_assoc($result);
+   $result = mysqli_query($conn, $sql1);
+   $modules = mysqli_fetch_assoc($result);
+
+   $result = mysqli_query($conn, $sql2);
+   $meetings = mysqli_fetch_assoc($result);
+
+   $result = mysqli_query($conn, $sql3);
+   $inbox = mysqli_fetch_assoc($result);
+
+   $result = mysqli_query($conn, $sql4);
+   $sent = mysqli_fetch_assoc($result);
 
    $html = '
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="cmodules" class="overview-section" data="currentModules" style="cursor: pointer;">
                     <div class="well dash-box text-primary">
-                        <h2><span class="material-icons">library_books</span>10</h2>
+                        <h2><span class="material-icons">library_books</span>'.$modules["Modules"].'</h2>
                         <h4>Current Modules</h4>
 
                     </div>
                 </a>
             </div>
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="meetings" class="overview-section" data="meetings" style="cursor: pointer;">
                     <div class="well dash-box">
-                        <h2><span class="material-icons">forum</span>'.$row["Meetings"].'</h2>
+                        <h2><span class="material-icons">forum</span>'.$meetings["Meetings"].'</h2>
                         <h4>Meeting</h4>
 
                     </div>
@@ -43,20 +50,20 @@
             </div>
                
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="inbox" class="overview-section" data="inbox" style="cursor: pointer;">
                     <div class="well dash-box">
-                        <h2><span class="material-icons">inbox</span>'.$row["Inbox"].'</h2>
+                        <h2><span class="material-icons">inbox</span>'.$inbox["Inbox"].'</h2>
                         <h4>Inbox</h4>
 
                     </div>
                 </a>
             </div>
 
-            <div class="col-3" style="text-align: center;">
+            <div class="col-md-3 col-6" style="text-align: center;">
                 <a id="sent" class="overview-section" data="sentItems" style="cursor: pointer;">
                     <div class="well dash-box">
-                        <h2><span class="material-icons">next_week</span>'.$row["Sent"].'</h2>
+                        <h2><span class="material-icons">next_week</span>'.$sent["Sent"].'</h2>
                         <h4>Sent Items</h4>
 
                     </div>
