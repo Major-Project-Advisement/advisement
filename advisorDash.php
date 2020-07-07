@@ -42,14 +42,14 @@
   }
 
   //SQL to get the number of Messages assigned to this Advisor
-  $sql = "SELECT * FROM message WHERE Sender='".$EmployeeID."' OR Recipient='".$EmployeeID."' ";
+  $sql = "SELECT * FROM message WHERE AdvisorSender='".$AdvisorID."' OR AdvisorRecipient='".$AdvisorID."' ";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
     $numInbox = $numInbox + 1;
   }
 
   //SQL to get the number of Meetings assigned to this Advisor
-  $sql = "SELECT * FROM meeting WHERE AdvisorID='".$EmployeeID."'";
+  $sql = "SELECT * FROM meeting WHERE AdvisorID='".$AdvisorID."'";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
     $numMeetings = $numMeetings + 1;
