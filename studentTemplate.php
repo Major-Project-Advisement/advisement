@@ -254,7 +254,7 @@ echo '
                     </div>  
                     <div class="form-group">
                       <label>Topic:<br></label>
-                      <select id="topic" name="topic" class="form-control">
+                      <select id="topic" name="Topic" class="form-control">
                         <option value="Grades">Issue With Grades</option>
                         <option value="Course">Course Selection</option>
                         <option value="Personal">Personal Challlenges</option>
@@ -264,7 +264,7 @@ echo '
                     </div>
                     <div class="form-group">
                       <label>Description:<br></label>
-                      <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                      <textarea name="Description" class="form-control" placeholder="Description"></textarea>
                     </div>
                   </div>
                   <div class="modal-footer">

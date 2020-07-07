@@ -10,19 +10,20 @@ if(isset($_SESSION['StudentID'])){
         
     }
 
-    if(isset($_POST['description'])){
+    if(isset($_POST['Description'])){
         foreach($_POST as $key => $value){	//create local  AND SESSION variables based on $_POST keys and values
             $$key = $value; //local
             $_SESSION[$key] = $value; //SESSION
         }
 
         $sql = "INSERT INTO meeting (StudentID, AdvisorID, Topic, Date, Time, Description, Status)
-        VALUES ($UID, $AdvisorID, '$topic', '$MeetingDate', '$MeetingTime', '$description', 'Status')";
+        VALUES ($UID, $AdvisorID, '$Topic', '$MeetingDate', '$MeetingTime', '$Description', 'Status Here...')";
 
         try{
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql);
             mysqli_stmt_execute($stmt);
+            var_dump($sql);
             
         }catch(\Throwable $th){
             echo $th;
