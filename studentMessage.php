@@ -18,7 +18,7 @@ if(isset($_SESSION['StudentID'])){
 
         $date = date('m/d/Y');
 
-        $sql = "INSERT INTO message (Sender, Recipient, Subject, Content, SentOn)
+        $sql = "INSERT INTO message (StudentSender, AdvisorRecipient, Subject, Content, SentOn)
         VALUES ($UID, '$AdvisorID', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
 
         try{

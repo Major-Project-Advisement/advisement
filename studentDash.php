@@ -149,6 +149,7 @@
             <tr>
               <th>Topic</th>
               <th>Date</th>
+              <th>Time</th>
               <th>Description</th>
               <th>Status</th>
             </tr>

@@ -17,7 +17,7 @@ if(isset($_SESSION['StudentID'])){
         }
 
         $sql = "INSERT INTO meeting (StudentID, AdvisorID, Topic, Date, Time, Description, Status)
-        VALUES ($UID, $AdvisorID, '$Topic', '$MeetingDate', '$MeetingTime', '$Description', 'Status Here...')";
+        VALUES ($UID, $AdvisorID, '$Topic', '$MeetingDate', '$MeetingTime', '$Description', 'Pending')";
 
         try{
             $stmt = mysqli_stmt_init($conn);

@@ -17,6 +17,7 @@
         $html = $html.'<tr>
         <td>'.$row["Topic"].'</td>
         <td>'.$row["Date"].'</td>
+        <td>'.$row["Time"].'</td>
         <td>'.$row["Description"].'</td>
         <td>'.$row["Status"].'</td>
       </tr>';
