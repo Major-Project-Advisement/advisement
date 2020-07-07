@@ -18,8 +18,8 @@ if(isset($_SESSION['AdvisorID'])){
 
         $date = date('m/d/Y');
 
-        $sql = "INSERT INTO message (Sender, Recipient, Subject, Content, SentOn)
-        VALUES ('$EmployeeID', '$Recipient', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
+        $sql = "INSERT INTO message (AdvisorSender, StudentRecipient, Subject, Content, SentOn)
+        VALUES ('$AdvisorID', '$Recipient', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
 
         try{
             $stmt = mysqli_stmt_init($conn);
