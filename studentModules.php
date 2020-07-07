@@ -28,11 +28,7 @@
   
       }
       
-      if($ProgramID == 1){
-        $program_name = "";
-      }
       
-
     $username = $FirstName;
     $page_title="Modules";
     $header="Module Selection";

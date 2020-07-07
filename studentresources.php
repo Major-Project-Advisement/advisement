@@ -1,6 +1,38 @@
 <?php 
+    Session_start();//continue/start session
+
+    if(isset($_SESSION['StudentID'])){
+      
+        foreach($_SESSION as $key => $value) //create local variables based on $_SESSION keys and values
+        {
+          $$key = $value;
+        
+        }
+        
+        if($Image == 'null')
+        {
+          $Image = 'images/placeholder.jpg';
+        }
+        else
+        {
+          $Image = 'uploads/'.$Image;
+        }
+  
+        if($IsActive == 1){
+          $status = 'Active';
+        }
+        else
+        {
+          $status = 'Inactive';
+        }
+  
+      }
+    
+      
+
+    $username = $FirstName;
     $page_title="Resources";
-    $header="Dashboard";
+    $header="My Resources";
     $style='';
 
     $crumb='<div class="container">
@@ -12,101 +44,93 @@
     </nav>
     </div>';
 
-    $sidebar = '<!-- sidebar -->
-          
-    <!-- profile -->
-
-    <div class="col-md-3">
-
-      <div class="card" style="text-align: center">
-              <!-- SIDEBAR USERPIC -->
-      <div class="card-body">
-              <div class="profile-userpic">
-                  <img src="images/profilepic.jpeg" class="img-responsive" alt="profile picture">
-              </div>
-              <!-- END SIDEBAR USERPIC -->
-              <!-- SIDEBAR USER TITLE -->
-              <div class="profile-usertitle">
-                  <div class="profile-usertitle-name">
-                      Kerone Creary
-                  </div>
-                  <div class="profile-usertitle-job">
-                      Aspiring Developer
-                  </div>
-      </div>
-              </div>
-              <!-- END SIDEBAR USER TITLE -->
-              </div>
-      <br/>
-      <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action active main-color-bg">
-        <span class="material-icons">school</span> Progress</a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Completed <span class="badge badge-dark">40</span></a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Level  <span class="badge badge-dark">4</span> </a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-        Remaining  <span class="badge badge-dark ">7</span></a>
-      </div>
-      
-      <br>
-    </div>';
+    $sidebar = '';
 
 
 
-    $main = '
-    <div class="col-md-9">
+    $main = '<div class="container col-md-12">         
+                <!-- Webpage Content Starts here -->
+                <div class="">
+            
+                <table class="table table-striped table hover">
+                <thead>
+                  <tr>
+                    <th colspan="2">Resources</th>
+                  </tr>
+                </thead>
+  
+                <tbody  id="currentmodules" data="'.$UID.'" >
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout</a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  
+                </tbody>
 
-      <div class="card" >
-          <div class="card-header main-color-bg">
-            Available Resources
-          </div>
+                <thead>
+                  <tr>
+                    <th colspan="2">Resources</th>
+                  </tr>
+                </thead>
 
-          <table class="table table-striped table hover">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Module Code</th>
-                <th>Type</th>
-                <th>Credits</th>
-              </tr>
-            </thead>
+                <tbody  id="currentmodules" data="'.$UID.'" >
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Hi</td>
+                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  
+                </tbody>
 
-            <tbody>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            </tbody>
-          </table>
-
-
-          
-        </div>
-
-
-      </div>';
-
+                
+              </table>
+                    
+            
+                </div>
+            
+            </div>';
+  
+    
+  
     include 'studentTemplate.php';
 
 ?>
