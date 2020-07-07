@@ -10,7 +10,7 @@
       //Print the students ID and their full name
      // echo '<option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>';
      $Valid .= '
-      <option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
+      <option value="'.$row['StudentID'].'">'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
      ';
     }
   }
@@ -41,7 +41,6 @@
     <title>Advisor | <?php echo $page_title; ?></title>
   </head>
   <body>
-
 
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
@@ -118,9 +117,6 @@
 </nav>
 <!-- navbar end -->
 
-
-
-
 <!-- header start   -->
 <header id="header">
   <div class="container" >
@@ -136,32 +132,26 @@
 </header>
 <!-- header end   -->
 
-
-
 <!-- breadcrumb -->
 <?php echo $crumb; ?>
 <!-- breadcrumb end -->
 
-
-
 <!-- main start--> 
 <section id="main">
 
-<div class="container">
-      <div class="row">
-        <?php echo $sidebar; ?>
-        <?php echo $main; ?>
-      </div>
-</div>
+  <div class="container">
+        <div class="row">
+          <?php echo $sidebar; ?>
+          <?php echo $main; ?>
+        </div>
+  </div>
 
 </section>
 <!-- main end-->
 
 <!-- Footer -->
 <footer id="footer">
-
   <p>Copyright ScitAdvisement, &copy; 2020</p>
-
 </footer>
 <!-- Footer end -->
 
@@ -169,7 +159,7 @@
   echo '<div class="modal fade" id="CreateMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="advisorMeeting.php" method="post" id="register_form" enctype="multipart/form-data">
+      <form action="advisorMessage.php" method="post" id="register_form" enctype="multipart/form-data">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Send A Message</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -181,7 +171,8 @@
             <label>From: <b>Me</b></label>
             <br>
             <label>To: </label>
-            <select>
+            <select id="Recipient" name="Recipient">
+            <option>Please Select A Recipient</option>
           '.$Valid.'
             </select>
           </div>  
