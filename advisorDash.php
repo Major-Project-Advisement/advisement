@@ -212,3 +212,41 @@
   include 'advisorTemplate.php';
 
 ?>
+
+
+<script>
+  $(document).ready(function(){
+    //ajax call for populating Current Modules Table
+    $.ajax({
+
+    url: "getCurrentModules.php",
+    method: "POST",
+    data:{uid : $("#currentmodules").attr('data')},
+    dataType: "text",
+    async: false,
+    success: function (html){
+    
+    if (html.length != 3 ){
+
+      
+        $("#currentmodules").html(html);
+        
+    } 
+    else 
+    {
+        
+        //display error
+        $("#currentmoduleserror").html('<p>Not currently enrolled in any module</p>');
+      
+    }
+}
+
+});
+
+
+
+  })
+
+
+
+</script>

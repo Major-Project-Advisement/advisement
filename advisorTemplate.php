@@ -32,7 +32,7 @@
 
     <!-- custom styles -->
     <link rel="stylesheet" href="css/advisorStyle.css">
-    <?php echo $style; ?>
+    
 
     <!-- material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -65,6 +65,9 @@
             <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
             <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateMessage">Message</a>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="advisorUpdate.php" tabindex="-1" aria-disabled="true">Account</a>
         </li>
         ';
 
