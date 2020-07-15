@@ -59,7 +59,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
+            <a class="dropdown-item" href="advisorViewStudents.php" >View</a>
             <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateMessage">Message</a>
           </div>
         </li>

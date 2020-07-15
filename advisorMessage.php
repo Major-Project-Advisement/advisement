@@ -29,7 +29,7 @@ if(isset($_SESSION['AdvisorID'])){
         }catch(\Throwable $th){
             echo $th;
         }
-        //header("Location: advisorDash.php?Message=success");
+        header("Location: advisorDash.php?Message=success");
 
     }else{
         echo "POST Did Not Work!";
