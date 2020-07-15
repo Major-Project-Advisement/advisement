@@ -295,18 +295,10 @@
       success: function (html){
           
           if (html.length != 3 ){
-
-              
-            
               $("#currentMeetings").html(html);
-              
-          } 
-          else 
-          {
-              
+          } else {
               //display error
               $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
-            
           }
       }
 
@@ -351,18 +343,10 @@
         success: function (html){
             
             if (html.length != 3 ){
-
-                
-              
-                $("#currentInbox").html(html);
-                
-            } 
-            else 
-            {
-                
-                //display error
-                $("#currentInboxError").html('<p>You have no new messages</p>');
-              
+              $("#currentInbox").html(html);
+            }else{
+              //display error
+              $("#currentInboxError").html('<p>You have no new messages</p>');
             }
         }
 

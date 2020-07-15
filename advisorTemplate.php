@@ -10,7 +10,7 @@
       //Print the students ID and their full name
      // echo '<option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>';
      $Valid .= '
-      <option value="'.$row['StudentID'].'">'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
+      <option value="'.$row['UID'].'">'.$row['UID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
      ';
     }
   }
@@ -44,7 +44,7 @@
 
 <!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="index-page.php"><img style="height:40px; width:40px;" src="images/academics-white.png"> </img></a>
+  <a <?php if(isset($username)){ echo 'href="advisorDash.php"';}else{echo 'href="index-page.php"';} ?>><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,9 +55,6 @@
         if(isset($username)){
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Meetings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>

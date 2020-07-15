@@ -18,8 +18,8 @@ if(isset($_SESSION['AdvisorID'])){
 
         $date = date('m/d/Y');
 
-        $sql = "INSERT INTO message (AdvisorSender, StudentRecipient, Subject, Content, SentOn)
-        VALUES ('$AdvisorID', '$Recipient', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
+        $sql = "INSERT INTO message (StudentRecipient, AdvisorSender, Subject, Content, SentOn)
+        VALUES ('$Recipient', '$AdvisorID', '$subject', '$message', STR_TO_DATE('$date', '%m/%d/%Y'))";
 
         try{
             $stmt = mysqli_stmt_init($conn);
@@ -29,7 +29,7 @@ if(isset($_SESSION['AdvisorID'])){
         }catch(\Throwable $th){
             echo $th;
         }
-        header("Location: advisorDash.php?Message=success");
+        //header("Location: advisorDash.php?Message=success");
 
     }else{
         echo "POST Did Not Work!";

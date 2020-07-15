@@ -216,32 +216,69 @@
 
 <script>
   $(document).ready(function(){
-    //ajax call for populating Current Modules Table
-    $.ajax({
+   
 
-    url: "getCurrentModules.php",
+
+
+
+
+    //ajax call for populating Meetings Table
+    $.ajax({
+    url: "getAdvisorMeetings.php",
     method: "POST",
     data:{uid : $("#currentmodules").attr('data')},
     dataType: "text",
     async: false,
     success: function (html){
-    
-    if (html.length != 3 ){
-
-      
-        $("#currentmodules").html(html);
         
-    } 
-    else 
-    {
-        
-        //display error
-        $("#currentmoduleserror").html('<p>Not currently enrolled in any module</p>');
-      
+        if (html.length != 3 ){
+            $("#currentMeetings").html(html);
+        } else {
+            //display error
+            $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
+        }
     }
-}
 
-});
+    });
+
+
+
+    //ajax call for populating Inbox
+    $.ajax({
+
+    url: "getAdvisorInbox.php",
+    method: "POST",
+    data:{uid : $("#currentmodules").attr('data')},
+    dataType: "text",
+    async: false,
+    success: function (html){
+        
+      if (html.length != 3 ){
+        $("#currentInbox").html(html);
+      }else{
+        //display error
+        $("#currentInboxError").html('<p>You have no new messages</p>');
+      }
+    }
+
+    });
+
+
+
+
+    $(".overview-section").click(function(){
+      $(".overview-section").children("div").removeClass("text-primary")
+        $(this).children("div").addClass("text-primary")
+        $(".overview-card").hide();
+        id="#"+$(this).attr("data")
+        $("div"+id).show();
+
+    });
+
+
+
+
+
 
 
 
