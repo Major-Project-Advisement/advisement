@@ -10,7 +10,7 @@
       //Print the students ID and their full name
      // echo '<option>'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>';
      $Valid .= '
-      <option value="'.$row['StudentID'].'">'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
+      <option value="'.$row['UID'].'">'.$row['StudentID'].' - '.$row['FirstName'].' '.$row['LastName'].'</option>
      ';
     }
   }
@@ -182,7 +182,7 @@
           </div>
           <div class="form-group">
             <label>Message</label>
-            <input type="text" name="message" class="form-control" placeholder="Message">
+            <textarea type="text" name="message" class="form-control" placeholder="Message"></textarea>
           </div>
         </div>
         <div class="modal-footer">

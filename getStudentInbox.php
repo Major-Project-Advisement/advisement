@@ -6,7 +6,7 @@
  {
    $uid = (int)$_POST["uid"];
 
-   $sql = "SELECT * FROM meeting WHERE StudentID = $uid";
+   $sql = "SELECT * FROM message WHERE StudentRecipient = $uid";
 
   
    $result = mysqli_query($conn, $sql);
@@ -20,10 +20,11 @@
     $result1 = mysqli_query($conn, $sql1);
     $row1 = mysqli_fetch_assoc($result1);
 
-        $html = $html.'<tr>
+        $html = $html.'<tr data-advisor="'.$row["AdvisorSender"].'" data-message="'.$row["MessageID"].'">
         <td>'.$row1["Title"].' '.$row1["LastName"].'</td>
         <td>'.$row["Subject"].'</td>
-        <td>'.$row["Date"].'</td>';
+        <td>'.$row["SentOn"].'</td>';
+
         if($Status == 0){
             $html = $html.'<td class="text-primary">unread</td> 
                         <td><a class="btn btn-info read-message"> Read </a></td>';
