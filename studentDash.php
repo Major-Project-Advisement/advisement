@@ -56,13 +56,13 @@
 
     $sidebar = '<!-- sidebar -->
           
-    <!-- profile -->
+      <!-- profile -->
 
-    <div class="col-md-3">
+      <div class="col-md-3">
 
-      <div class="card" style="text-align: center">
-              <!-- SIDEBAR USERPIC -->
-      <div class="card-body">
+        <div class="card" style="text-align: center">
+                <!-- SIDEBAR USERPIC -->
+        <div class="card-body">
               <div class="profile-userpic">
                   <img src="'.$Image.'" class="img-responsive" alt="profile picture">
               </div>
@@ -79,20 +79,21 @@
               </div>
               <!-- END SIDEBAR USER TITLE -->
               </div>
-      <br/>
-      <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action active main-color-bg">
-        <span class="material-icons">school</span> Progress</a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Completed <span class="badge badge-dark">'.$completed.'</span></a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-        Level  <span class="badge badge-dark">'.$level.'</span> </a>
-      <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-        Remaining  <span class="badge badge-dark ">'.$remaining.'</span></a>
+        <br/>
+        <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active main-color-bg">
+          <span class="material-icons">school</span> Progress</a>
+        <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
+          Completed <span class="badge badge-dark">'.$completed.'</span></a>
+        <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
+          Level  <span class="badge badge-dark">'.$level.'</span> </a>
+        <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+          Remaining  <span class="badge badge-dark ">'.$remaining.'</span></a>
+        </div>
+        
+        <br>
       </div>
-      
-      <br>
-    </div>';
+    ';
 
 
 
@@ -114,35 +115,33 @@
       </div>
 
       <div id="currentModules" class="card overview-card mb-3"  >
-              <div class="card-header main-color-bg">
-                Current Modules
-              </div>
+        <div class="card-header main-color-bg">
+          Current Modules
+        </div>
 
-                <table class="table table-striped table hover">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Module Code</th>
-                      <th>Type</th>
-                      <th>Credits</th>
-                    </tr>
-                  </thead>
+          <table class="table table-striped table hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Module Code</th>
+                <th>Type</th>
+                <th>Credits</th>
+              </tr>
+            </thead>
 
-                  <tbody  id="currentmodules" data="'.$UID.'" >
-                    
-                  </tbody>
-                </table>
-                <div id="currentmoduleserror" class="col-12" style="text-align: center">
-                
-                </div>
-
-
+            <tbody  id="currentmodules" data="'.$UID.'" >
               
-            </div>
-      <div id="meetings" class="card overview-card mb-3" style="display: none;" >
-      <div class="card-header main-color-bg">
-        Meetings
+            </tbody>
+          </table>
+          <div id="currentmoduleserror" class="col-12" style="text-align: center">
+          
+          </div>
       </div>
+      
+      <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+        <div class="card-header main-color-bg">
+          Meetings
+        </div>
 
         <table class="table table-striped table hover">
           <thead>
@@ -160,79 +159,63 @@
           </tbody>
         </table>
         <div id="currentMeetingsError" class="col-12" style="text-align: center">
-        
-        </div>
-
-
       
+      </div>
+
     </div>
 
-            <div id="inbox" class="card overview-card mb-3" style="display: none;">
-              <div class="card-header main-color-bg">
-                Inbox
-              </div>
-
-                <table class="table table-striped table hover">
-                  <thead>
-                    <tr>
-                      <th>Sender</th>
-                      <th>Subject</th>
-                      <th>Date </th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-
-                  <tbody  id="currentInbox" data="'.$UID.'" >
-                    
-                  </tbody>
-                </table>
-                <div id="currentInboxError" class="col-12" style="text-align: center">
-                
-                </div>
-
-
-              
-            </div>
-
-          
-          <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
-            <div class="card-header main-color-bg">
-              Sent Items
-            </div>
-  
-              <table class="table table-striped table hover">
-                <thead>
-                  <tr>
-                    <th>Recipient</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-  
-                <tbody  id="currentSent" data="'.$UID.'" >
-                  
-                </tbody>
-              </table>
-              <div id="currentSentError" class="col-12" style="text-align: center">
-              
-              </div>
-  
-  
-              
-            </div>
-  
-  
+        <div id="inbox" class="card overview-card mb-3" style="display: none;">
+          <div class="card-header main-color-bg">
+            Inbox
           </div>
 
+          <table class="table table-striped table hover">
+            <thead>
+              <tr>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Date </th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="currentInbox" data="'.$UID.'" >
+              
+            </tbody>
+          </table>
+          <div id="currentInboxError" class="col-12" style="text-align: center">
           
-          
+          </div>
+        </div>
 
           
-  
-  
+        <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
+          <div class="card-header main-color-bg">
+            Sent Items
           </div>
+
+          <table class="table table-striped table hover">
+            <thead>
+              <tr>
+                <th>Recipient</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody  id="currentSent" data="'.$UID.'" >
+              
+            </tbody>
+          </table>
+          <div id="currentSentError" class="col-12" style="text-align: center">
+          
+          </div>    
+        </div>
+      </div>
+
+    </div>
 ';
     include 'studentTemplate.php';
 
@@ -241,8 +224,8 @@
 <script>
   $(document).ready(function(){
 
-        //ajax call for populating Current Modules Table
-        $.ajax({
+    //ajax call for populating Current Modules Table
+    $.ajax({
 
     url: "getCurrentModules.php",
     method: "POST",
@@ -295,18 +278,10 @@
       success: function (html){
           
           if (html.length != 3 ){
-
-              
-            
               $("#currentMeetings").html(html);
-              
-          } 
-          else 
-          {
-              
+          } else {
               //display error
               $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
-            
           }
       }
 
@@ -351,18 +326,10 @@
         success: function (html){
             
             if (html.length != 3 ){
-
-                
-              
-                $("#currentInbox").html(html);
-                
-            } 
-            else 
-            {
-                
-                //display error
-                $("#currentInboxError").html('<p>You have no new messages</p>');
-              
+              $("#currentInbox").html(html);
+            }else{
+              //display error
+              $("#currentInboxError").html('<p>You have no new messages</p>');
             }
         }
 

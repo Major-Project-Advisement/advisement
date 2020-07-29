@@ -1,5 +1,6 @@
 <?php
 
+  include_once 'includes/config.php';
   if(isset($AdvisorID)){
     $date = date('Y/m/d');
 
