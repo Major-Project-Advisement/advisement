@@ -24,7 +24,7 @@
         <td >'.$row1["Title"].' '.$row1["LastName"].'</td>
         <td>'.$row["Subject"].'</td>
         <td>'.$row["SentOn"].'</td>
-        <td><a class="btn btn-warning read-message"> Delete </a></td>
+        <td><a class="btn btn-warning delete-message"> Delete </a></td>
       </tr>';
 
    }

@@ -10,7 +10,7 @@
     
     $sql1 = "SELECT count(*) as Modules FROM currentmodules WHERE StudentID=$uid";
     $sql2 = "SELECT count(*) as Meetings FROM meeting WHERE StudentID=$uid";
-    $sql3 = "SELECT count(*) as Inbox FROM message WHERE StudentRecipient=$uid";
+    $sql3 = "SELECT count(*) as Inbox FROM message WHERE StudentRecipient=$uid AND Status = 0";
     $sql4 = "SELECT count(*) as Sent FROM message WHERE StudentSender=$uid";
     
 

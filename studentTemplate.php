@@ -85,7 +85,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Advisor</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
-            <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateModal">Message</a>
+            <a class="dropdown-item" href="#CreateModal" data-toggle="modal" data-target="#CreateModal">Message</a>
             <a class="dropdown-item" href="#RequestMeeting" data-toggle="modal" data-target="#RequestMeeting">Request A Meeting</a>
           </div>
         </li>';
@@ -277,33 +277,26 @@ echo '
             </div>
           </div>
 
-          <div class="modal fade" id="ViewAdvisor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="ReadMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <form action="viewAdvisor.php" method="post" id="register_form" enctype="multipart/form-data">
+                
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">View Advisor</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div class="profile-userpic text-center">
-                      <img src="'.$AdvisorImage.'" class="img-responsive" alt="profile picture">
-                    </div>
-                    <div class="text-center full-name">
-                      '.$AdvisorTitle.' '.$AdvisorFirstName.' '.$AdvisorLastName.'
-                    </div>
-                    <div class="text-center email-address">
-                      '.$AdvisorEmail.'
-                    </div>
+                    <h1 id="Subject"></h1>
+                    <p id="MessageContent"></p>
                    
-                    
                   </div>
                   <div class="modal-footer">
-                    <button id="ConfirmAdvisor" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                    <button id="CloseMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                    <button id="ReplyMessage" type="button" class="btn btn-primary" data-dismiss="modal" href="#CreateModal" data-toggle="modal" data-target="#CreateModal">Reply</button>
                   </div>
-                </form>
+                
               </div>
             </div>
           </div>';

@@ -346,7 +346,82 @@
 
     });
 
+    $(".delete-message").click(function(){
+      
+      swal({
+            title: "Are you sure?",
+            text: "Are you sure you want to delete this message?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+
+                url: "deleteMessage.php",
+                method: "POST",
+                data:{
+                    messageID : $(this).parent().parent().attr('data-message')                   
+                },
+                dataType: "text",
+                async: false,
+                success: function (html){
+                    window.location.replace("studentDash.php");
+                    
+                }
+
+                });
+            } else {
+                swal("Cancelled message deletion");
+            }
+            });
+
+
+    });
+
+    $(".read-message").click(function(){
+        console.log("read pressed");
+
+        UpdateMessage($(this).parent().parent().attr('data-message'));
+
+          $("#MessageContent").html($(this).parent().parent().attr("data-content"));
+          $("#Subject").html($(this).parent().parent().attr("data-subject"));
+
+        
+
+        $("#CloseMessage").click(() => {
+          
+          window.location.replace("studentDash.php");
+
+        });
+
+       
+
+      });
+
+      function UpdateMessage(MessageID){
+        $.ajax({
+
+        url: "readMessage.php",
+        method: "POST",
+        data:{
+            messageID : MessageID                  
+        },
+        dataType: "text",
+        async: false,
+        success: function (html){
+          console.log(html);
+            
+        }
+
+        });
+      }
+
+   
 
   });
+
+  
 </script>
 
