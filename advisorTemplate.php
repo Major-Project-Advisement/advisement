@@ -43,8 +43,9 @@
   <body>
 
 <!-- navbar start  -->
+<!-- navbar start  -->
 <nav class="navbar navbar-default navbar-expand-md navbar-dark">
-  <a href="index-page.php"><img style="height:40px; width:40px;" src="images/academics-white.png"> </img></a>
+  <a <?php if(isset($username)){ echo 'href="advisorDash.php"';}else{echo 'href="index-page.php"';} ?>><img style="height:35px; width:35px;" src="images/academics-white.png"> </img></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -56,15 +57,15 @@
           echo '<li class="nav-item">
           <a class="nav-link" href="#">Meetings</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Update</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="studentViewAdvisor.php" >View</a>
+            <a class="dropdown-item" href="advisorViewStudents.php" >View</a>
             <a class="dropdown-item" href="#CreateMessage" data-toggle="modal" data-target="#CreateMessage">Message</a>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="advisorUpdate.php" tabindex="-1" aria-disabled="true">Account</a>
         </li>
         ';
 
@@ -115,6 +116,7 @@
     
   </div>
 </nav>
+<!-- navbar end -->
 <!-- navbar end -->
 
 <!-- header start   -->

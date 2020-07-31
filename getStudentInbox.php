@@ -25,7 +25,7 @@
         <td>'.$row["Subject"].'</td>
         <td>'.$row["SentOn"].'</td>';
 
-        if($Status == 0){
+        if($row["Status"] == 0){
             $html = $html.'<td class="text-primary">unread</td> 
                         <td><a class="btn btn-info read-message"> Read </a></td>';
         }else{

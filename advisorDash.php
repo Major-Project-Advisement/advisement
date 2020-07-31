@@ -74,7 +74,7 @@
         
   <!-- profile -->
 
-  <div class="col-md-4">
+  <div class="col-md-3">
 
     <div class="card" style="text-align: center">
             <!-- SIDEBAR USERPIC -->
@@ -112,103 +112,229 @@
 
 
 
-  $main = '  
-      <!-- main document -->
-      <div class="col-md-8">
-
-      <div class="card">
-        <div class="card-header main-color-bg">
-          <span class="material-icons">account_box</span> Overview
-        </div>
-
-        <div class="card-body row">
-          <div class="col-4" style="text-align: center;">
-
-            <div class="well dash-box">
-              <h2><span class="material-icons">inbox</span> '.$numInbox.'</h2>
-              <h4>Inbox</h4>
-
-            </div>
-
-          </div>
-
-          <div class="col-4" style="text-align: center;">
-
-            <div class="well dash-box">
-              <h2><span class="material-icons">work</span> '.$numMeetings.'</h2>
-              <h4>Meetings</h4>
-
-            </div>
-
-          </div>
-
-          <div class="col-4" style="text-align: center;">
-
-            <div class="well dash-box">
-              <h2><span class="material-icons">people_alt</span> '.$numStudents.'</h2>
-              <h4>Students</h4>
-
-            </div>
-
-          </div>
-
-        </div>
-
+  $main = '
+  <!-- main document -->
+  <div class="col-md-9">
+    <div class="card mb-3" >
+      <div class="card-header main-color-bg">
+       <span class="material-icons">account_box</span> Overview
       </div>
+      <div class="card-body row">
+     
+         <div id="overview" data="'.$AdvisorID.'"  class="card-body row">
+           
 
-      <br>
-      <div class="card" >
-          <div class="card-header main-color-bg">
-          <span class="material-icons">contacts</span> Students
-          </div>
-
-          <table class="table table-striped table hover">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Number</th>
-                <th>Status</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            </tbody>
-          </table>
-
-
-          
         </div>
-
-
-      </div>
         
-  ';
+      </div>
+    </div>
+
+    <div id="currentModules" class="card overview-card mb-3"  >
+      <div class="card-header main-color-bg">
+        Current Modules
+      </div>
+
+      <table class="table table-striped table hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Module Code</th>
+            <th>Type</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
+
+        <tbody  id="currentmodules" data="'.$AdvisorID.'" >
+          
+        </tbody>
+      </table>
+      <div id="currentmoduleserror" class="col-12" style="text-align: center">
+      
+      </div>        
+    </div>
+
+    <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+      <div class="card-header main-color-bg">
+        Meetings
+      </div>
+
+      <table class="table table-striped table hover">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody  id="currentMeetings" data="'.$AdvisorID.'" >
+          
+        </tbody>
+      </table>
+      <div id="currentMeetingsError" class="col-12" style="text-align: center">
+    
+    </div>
+
+  </div>
+
+      <div id="inbox" class="card overview-card mb-3" style="display: none;">
+        <div class="card-header main-color-bg">
+          Inbox
+        </div>
+
+        <table class="table table-striped table hover">
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Subject</th>
+              <th>Date </th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="currentInbox" data="'.$AdvisorID.'" >
+            
+          </tbody>
+        </table>
+        <div id="currentInboxError" class="col-12" style="text-align: center">
+        
+        </div>
+      </div>
+
+        
+      <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
+        <div class="card-header main-color-bg">
+          Sent Items
+        </div>
+
+        <table class="table table-striped table hover">
+          <thead>
+            <tr>
+              <th>Recipient</th>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody  id="currentSent" data="'.$AdvisorID.'" >
+            
+          </tbody>
+        </table>
+        <div id="currentSentError" class="col-12" style="text-align: center">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+';
     
   include 'advisorTemplate.php';
 
 ?>
+
+
+<script>
+  $(document).ready(function(){
+
+    //ajax call for populating The Overview
+    $.ajax({
+
+            url: "getAdvisorOverview.php",
+            method: "POST",
+            data:{UID : $("#overview").attr('data')},
+            dataType: "text",
+            async: false,
+            success: function (html){
+                  
+              $("#overview").html(html);
+                                                                        
+            }
+
+    });
+
+    //ajax call for populating Meetings Table
+    $.ajax({
+
+      url: "getStudentMeetings.php",
+      method: "POST",
+      data:{uid : $("#currentmodules").attr('data')},
+      dataType: "text",
+      async: false,
+      success: function (html){
+          
+          if (html.length != 3 ){
+              $("#currentMeetings").html(html);
+          } else {
+              //display error
+              $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
+          }
+      }
+
+      });
+
+      //ajax call for populating Sent Items Table
+    $.ajax({
+
+      url: "getStudentSent.php",
+      method: "POST",
+      data:{uid : $("#currentmodules").attr('data')},
+      dataType: "text",
+      async: false,
+      success: function (html){
+          
+          if (html.length != 3 ){
+
+              
+            
+              $("#currentSent").html(html);
+              
+          } 
+          else 
+          {
+              
+              //display error
+              $("#currentSentError").html('<p>You have no sent items</p>');
+            
+          }
+      }
+
+      });
+
+        //ajax call for populating Sent Items Table
+    $.ajax({
+
+        url: "getAdvisorInbox.php",
+        method: "POST",
+        data:{uid : $("#currentmodules").attr('data')},
+        dataType: "text",
+        async: false,
+        success: function (html){
+            
+            if (html.length != 3 ){
+              $("#currentInbox").html(html);
+            }else{
+              //display error
+              $("#currentInboxError").html('<p>You have no new messages</p>');
+            }
+        }
+
+        });
+
+
+
+    $(".overview-section").click(function(){
+      $(".overview-section").children("div").removeClass("text-primary")
+        $(this).children("div").addClass("text-primary")
+        $(".overview-card").hide();
+        id="#"+$(this).attr("data")
+        $("div"+id).show();
+
+    });
+
+
+  });
+</script>

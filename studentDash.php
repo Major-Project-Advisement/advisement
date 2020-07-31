@@ -104,64 +104,59 @@
          <span class="material-icons">account_box</span> Overview
         </div>
         <div class="card-body row">
-       
            <div id="overview" data="'.$UID.'"  class="card-body row">
-             
-  
           </div>
-          
         </div>
+    </div>
+
+    <div id="currentModules" class="card overview-card mb-3"  >
+      <div class="card-header main-color-bg">
+        Current Modules
       </div>
 
-      <div id="currentModules" class="card overview-card mb-3"  >
-              <div class="card-header main-color-bg">
-                Current Modules
-              </div>
+      <table class="table table-striped table hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Module Code</th>
+            <th>Type</th>
+            <th>Credits</th>
+          </tr>
+        </thead>
 
-                <table class="table table-striped table hover">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Module Code</th>
-                      <th>Type</th>
-                      <th>Credits</th>
-                    </tr>
-                  </thead>
+        <tbody  id="currentmodules" data="'.$UID.'" >   
+        </tbody>
+      </table>
 
-                  <tbody  id="currentmodules" data="'.$UID.'" >
-                    
-                  </tbody>
-                </table>
-                <div id="currentmoduleserror" class="col-12" style="text-align: center">
-                
-                </div>
+      <div id="currentmoduleserror" class="col-12" style="text-align: center">
+      </div>     
+    </div>
 
-
-              
-            </div>
-      <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+    <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+    
       <div class="card-header main-color-bg">
         Meetings
       </div>
 
-        <table class="table table-striped table hover">
-          <thead>
-            <tr>
-              <th>Topic</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Description</th>
-              <th>Status</th>
-            </tr>
-          </thead>
+      <table class="table table-striped table hover">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
 
-          <tbody  id="currentMeetings" data="'.$UID.'" >
-            
-          </tbody>
-        </table>
-        <div id="currentMeetingsError" class="col-12" style="text-align: center">
-        
-        </div>
+        <tbody  id="currentMeetings" data="'.$UID.'" >
+          
+        </tbody>
+      </table>
+      
+      <div id="currentMeetingsError" class="col-12" style="text-align: center">
+      
+      </div>
 
 
       
