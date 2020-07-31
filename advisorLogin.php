@@ -51,9 +51,6 @@ $main = '<div id="container"class="container">
                                 <input type="password" id="password" class="form-control" name="password" required="">
                             </div>
                         </div>
-
-                        
-
                         
                         <div align="center">
                             <button type="submit" name="submit-button" id="submit-button" class="btn btn-light btn-lg">

@@ -3,7 +3,7 @@
 
     $page_title="Login";
 
-    $header="Student Login";
+    $header="Admin Login";
 
     $style='';
 
@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header main-color-bg">Login</div>
                 <div class="card-body">
-                    <form id="login_form" action="studentLoginValid.php" method="POST">
+                    <form id="login_form" action="adminLoginValid.php" method="POST">
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">User ID</label>
                             <div class="col-md-6">
@@ -32,11 +32,10 @@
                             </div>
                         </div>
 
-                     
-
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" name="submit" class="btn btn-primary">
-                                Login
+                        
+                        <div align="center">
+                            <button type="submit" name="submit-button" id="submit-button" class="btn btn-light btn-lg">
+                                Sign In
                             </button>
                         </div>
                     </form>
@@ -49,6 +48,6 @@
 
 
 
-    include 'studentTemplate.php';
+    include 'adminTemplate.php';
 
 ?>
