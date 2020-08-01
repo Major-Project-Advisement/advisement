@@ -105,12 +105,8 @@
          <span class="material-icons">account_box</span> Overview
         </div>
         <div class="card-body row">
-       
            <div id="overview" data="'.$UID.'"  class="card-body row">
-             
-  
           </div>
-          
         </div>
       </div>
 

@@ -46,6 +46,7 @@
         $Email = $row['Email'];
         $Phone = $row['Phone'];
 
+       
         $Students .= '
             <tr>
                 <td>'.$Picture.'</td>
@@ -58,10 +59,6 @@
         
         ';
     }
-
-
-
-
 
     $username = $FirstName;
     $page_title="All Students";
