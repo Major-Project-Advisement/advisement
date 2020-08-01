@@ -85,15 +85,7 @@
                     <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   
-                </tbody>
-
-                <thead>
-                  <tr>
-                    <th colspan="2">Resources</th>
-                  </tr>
-                </thead>
-
-                <tbody  id="currentmodules" data="'.$UID.'" >
+               
                   <tr>
                     <td class="col-10">Hi</td>
                     <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>

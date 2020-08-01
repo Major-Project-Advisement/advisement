@@ -35,7 +35,10 @@
         if(isset($username)){
 
           echo '<li class="nav-item">
-          <a class="nav-link" href="studentFindAdvisor.php">Advisor</a>
+          <a class="nav-link" href="viewAdvisors.php">Advisor</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" href="viewStudents.php">Students</a>
           </li>';
         }
     ?>
