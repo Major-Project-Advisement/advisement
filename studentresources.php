@@ -61,28 +61,28 @@
   
                 <tbody  id="currentmodules" data="'.$UID.'" >
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout</a></td>
+                    <td class="col-10">UTechs Website</td>
+                    <td><a href="http://utech.edu.jm/" class="btn btn-info"> Checkout</a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Moodle</td>
+                    <td><a href="https://utechonline.utech.edu.jm/login/index.php" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Calvin McKain Library</td>
+                    <td><a href="http://library.utech.edu.jm/client/en_GB/default" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">University Forms</td>
+                    <td><a href="http://utech.edu.jm/forms" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Student Handbook</td>
+                    <td><a href="http://utech.edu.jm/publications/studentHandbook/index.html" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Student Portal</td>
+                    <td><a href="https://evisionweb.utech.edu.jm/sipr/" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   
                 </tbody>
@@ -95,28 +95,32 @@
 
                 <tbody  id="currentmodules" data="'.$UID.'" >
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Campus Map</td>
+                    <td><a href="http://utech.edu.jm/campus-map" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Admission/Course of Study</td>
+                    <td><a href="http://utech.edu.jm/admissions/admissions" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">COVID-19 Preparedness and Updates</td>
+                    <td><a href="http://utech.edu.jm/covid19" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Social Media - Facebook</td>
+                    <td><a href="https://www.facebook.com/UTechJa/" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Social Media - Twitter</td>
+                    <td><a href="https://twitter.com/utechjamaica" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   <tr>
-                    <td class="col-10">Hi</td>
-                    <td><a href="studentEditPassword.php" class="btn btn-info"> Checkout </a></td>
+                    <td class="col-10">Social Media - Instagram</td>
+                    <td><a href="https://twitter.com/utechjamaica" class="btn btn-info"> Checkout </a></td>
+                  </tr>
+                  <tr>
+                    <td class="col-10">Social Media - YouTube</td>
+                    <td><a href="https://www.youtube.com/user/utechjamaica" class="btn btn-info"> Checkout </a></td>
                   </tr>
                   
                 </tbody>
