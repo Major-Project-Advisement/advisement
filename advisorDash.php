@@ -181,13 +181,8 @@
         
         </div>
       </div>
-    </div>
-  </div>
-';
-    
-  include 'advisorTemplate.php';
 
-?>      
+        
       <div id="sentItems" class="card overview-card mb-4" style="display: none;" >
         <div class="card-header main-color-bg">
           Sent Items
@@ -237,7 +232,7 @@
 
       //ajax call for populating Meetings Table
       $.ajax({
-        url: "getStudentMeetings.php",
+        url: "getAdvisorMeetings.php",
         method: "POST",
         data:{uid : $("#currentMeetings").attr('data')},
         dataType: "text",
@@ -255,7 +250,7 @@
       //ajax call for populating Sent Items Table
       $.ajax({
 
-        url: "getStudentSent.php",
+        url: "getAdvisorSent.php",
         method: "POST",
         data:{uid : $("#currentSent").attr('data')},
         dataType: "text",
@@ -281,7 +276,9 @@
         dataType: "text",
         async: false,
         success: function (html){
-            
+
+          console.log(html);
+
             if (html.length != 3 ){
               $("#currentInbox").html(html);
             }else{
