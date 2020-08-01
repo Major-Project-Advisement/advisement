@@ -129,31 +129,9 @@
       </div>
     </div>
 
-    <div id="currentModules" class="card overview-card mb-3"  >
-      <div class="card-header main-color-bg">
-        Current Modules
-      </div>
 
-      <table class="table table-striped table hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Module Code</th>
-            <th>Type</th>
-            <th>Credits</th>
-          </tr>
-        </thead>
 
-        <tbody  id="currentmodules" data="'.$AdvisorID.'" >
-          
-        </tbody>
-      </table>
-      <div id="currentmoduleserror" class="col-12" style="text-align: center">
-      
-      </div>        
-    </div>
-
-    <div id="meetings" class="card overview-card mb-3" style="display: none;" >
+    <div id="meetings" class="card overview-card mb-4"  >
       <div class="card-header main-color-bg">
         Meetings
       </div>
@@ -179,7 +157,7 @@
 
   </div>
 
-      <div id="inbox" class="card overview-card mb-3" style="display: none;">
+      <div id="inbox" class="card overview-card mb-4" style="display: none;">
         <div class="card-header main-color-bg">
           Inbox
         </div>
@@ -205,7 +183,7 @@
       </div>
 
         
-      <div id="sentItems" class="card overview-card mb-3" style="display: none;" >
+      <div id="sentItems" class="card overview-card mb-4" style="display: none;" >
         <div class="card-header main-color-bg">
           Sent Items
         </div>
@@ -240,76 +218,61 @@
 <script>
   $(document).ready(function(){
 
-    //ajax call for populating The Overview
-    $.ajax({
+      //ajax call for populating The Overview
+      $.ajax({
+        url: "getAdvisorOverview.php",
+        method: "POST",
+        data:{UID : $("#overview").attr('data')},
+        dataType: "text",
+        async: false,
+        success: function (html){    
+          $("#overview").html(html);                                                           
+        }
+      });
 
-            url: "getAdvisorOverview.php",
-            method: "POST",
-            data:{UID : $("#overview").attr('data')},
-            dataType: "text",
-            async: false,
-            success: function (html){
-                  
-              $("#overview").html(html);
-                                                                        
-            }
-
-    });
-
-    //ajax call for populating Meetings Table
-    $.ajax({
-
-      url: "getStudentMeetings.php",
-      method: "POST",
-      data:{uid : $("#currentmodules").attr('data')},
-      dataType: "text",
-      async: false,
-      success: function (html){
-          
+      //ajax call for populating Meetings Table
+      $.ajax({
+        url: "getStudentMeetings.php",
+        method: "POST",
+        data:{uid : $("#currentMeetings").attr('data')},
+        dataType: "text",
+        async: false,
+        success: function (html){
           if (html.length != 3 ){
-              $("#currentMeetings").html(html);
+            $("#currentMeetings").html(html);
           } else {
-              //display error
-              $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
+            //display error
+            $("#currentMeetingsError").html('<p>You have no meetings at this time</p>');
           }
-      }
-
+        }
       });
 
       //ajax call for populating Sent Items Table
-    $.ajax({
+      $.ajax({
 
-      url: "getStudentSent.php",
-      method: "POST",
-      data:{uid : $("#currentmodules").attr('data')},
-      dataType: "text",
-      async: false,
-      success: function (html){
-          
+        url: "getStudentSent.php",
+        method: "POST",
+        data:{uid : $("#currentSent").attr('data')},
+        dataType: "text",
+        async: false,
+        success: function (html){
+            
           if (html.length != 3 ){
-
-              
-            
-              $("#currentSent").html(html);
-              
+            $("#currentSent").html(html);  
           } 
-          else 
-          {
-              
-              //display error
-              $("#currentSentError").html('<p>You have no sent items</p>');
-            
+          else {
+            //display error
+            $("#currentSentError").html('<p>You have no sent items</p>');
           }
-      }
+        }
 
       });
 
-        //ajax call for populating Sent Items Table
-    $.ajax({
-
+      //ajax call for populating Inbox Table
+      $.ajax({
         url: "getAdvisorInbox.php",
         method: "POST",
-        data:{uid : $("#currentmodules").attr('data')},
+        data:{uid : $("#currentInbox").attr('data')},
         dataType: "text",
         async: false,
         success: function (html){
@@ -322,7 +285,7 @@
             }
         }
 
-        });
+      });
 
 
 

@@ -2,33 +2,24 @@
  
  include_once "includes/config.php";
 
- if(isset($_POST["UID"]))
- {
-   $uid = (int)$_POST["UID"];
+ if(isset($_POST["UID"])){
+
+    $uid = (int)$_POST["UID"];
    
-
-    
-    $sql1 = "SELECT count(*) as Modules FROM currentmodules WHERE StudentID=$uid";
-    $sql2 = "SELECT count(*) as Meetings FROM meeting WHERE StudentID=$uid";
-    $sql3 = "SELECT count(*) as Inbox FROM message WHERE StudentRecipient=$uid";
-    $sql4 = "SELECT count(*) as Sent FROM message WHERE StudentSender=$uid";
-    
-
+    $sql2 = "SELECT count(*) as Meetings FROM meeting WHERE AdvisorID=$uid";
+    $sql3 = "SELECT count(*) as Inbox FROM message WHERE AdvisorRecipient=$uid";
+    $sql4 = "SELECT count(*) as Sent FROM message WHERE AdvisorSender=$uid";
    
-  
-   $result = mysqli_query($conn, $sql1);
-   $modules = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, $sql2);
+    $meetings = mysqli_fetch_assoc($result);
 
-   $result = mysqli_query($conn, $sql2);
-   $meetings = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, $sql3);
+    $inbox = mysqli_fetch_assoc($result);
 
-   $result = mysqli_query($conn, $sql3);
-   $inbox = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, $sql4);
+    $sent = mysqli_fetch_assoc($result);
 
-   $result = mysqli_query($conn, $sql4);
-   $sent = mysqli_fetch_assoc($result);
-
-   $html = '
+    $html = '
 
             <div class="col-md-4 col-6" style="text-align: center;">
                 <a id="meetings" class="overview-section" data="meetings" style="cursor: pointer;">
