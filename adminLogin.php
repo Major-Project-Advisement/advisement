@@ -34,7 +34,7 @@
 
                         
                         <div align="center">
-                            <button type="submit" name="submit-button" id="submit-button" class="btn btn-light btn-lg">
+                            <button type="submit" name="submit" id="submit-button" class="btn btn-light btn-lg">
                                 Sign In
                             </button>
                         </div>
