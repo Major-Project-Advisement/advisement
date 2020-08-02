@@ -54,9 +54,7 @@
     <ul class="navbar-nav mr-auto">
       <?php
         if(isset($username)){
-          echo '<li class="nav-item">
-          <a class="nav-link" href="#">Meetings</a>
-        </li>
+          echo '
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -194,7 +192,58 @@
       </form>
     </div>
   </div>
-</div>';
+</div>
+
+<!-- Read Message Modal-->
+<div class="modal fade" id="ReadMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h1 id="Subject"></h1>
+                    <p id="MessageContent"></p>
+                   
+                  </div>
+                  <div class="modal-footer">
+                    <button id="CloseMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                    <button id="ReplyMessage" type="button" class="btn btn-primary" data-dismiss="modal" href="#CreateModal" data-toggle="modal" data-target="#CreateModal">Reply</button>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          
+
+<!-- Read Message Modal-->
+<div class="modal fade" id="ReadMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h1 id="Subject"></h1>
+                    <p id="MessageContent"></p>
+                   
+                  </div>
+                  <div class="modal-footer">
+                    <button id="CloseMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                    <button id="ReplyMessage" type="button" class="btn btn-primary" data-dismiss="modal" href="#CreateMessage" data-toggle="modal" data-target="#CreateMessage">Reply</button>
+                  </div>
+                
+              </div>
+            </div>
+  </div>';
 ?>
 
 

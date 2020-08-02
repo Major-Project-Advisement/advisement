@@ -26,6 +26,7 @@
     $sql="SELECT * FROM student WHERE AdvisorID = $AdvisorID";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
+    $Students = '';
     
     while($row = mysqli_fetch_assoc($result)){
 
@@ -47,9 +48,9 @@
         $Phone = $row['Phone'];
 
        
-        $Students .= '
+        $Students = $Students. '
             <tr>
-                <td>'.$Picture.'</td>
+                <td><img style="height:50px; width: auto;" src="'.$Picture.'"> </img></td>
                 <td>'.$ID.'</td>
                 <td>'.$Name.'</td>
                 <td>'.$School.'</td>

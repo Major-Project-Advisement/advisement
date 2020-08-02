@@ -6,7 +6,7 @@
  {
    
 
-   $sql = 'Select * from 
+   $sql = 'SELECT * from 
    (Select Title, FirstName, LastName, "Student" as Type, CreatedOn as Joined from student 
    UNION 
    Select Title, FirstName, LastName, "Advisor" as Type, CreatedOn as Joined from advisor)a 

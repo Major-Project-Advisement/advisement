@@ -42,14 +42,14 @@
   }
 
   //SQL to get the number of Messages assigned to this Advisor
-  $sql = "SELECT * FROM message WHERE AdvisorSender='".$AdvisorID."' OR AdvisorRecipient='".$AdvisorID."' ";
+  $sql = "SELECT * FROM message WHERE AdvisorRecipient='".$AdvisorID."' AND Status=1 ";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
     $numInbox = $numInbox + 1;
   }
 
   //SQL to get the number of Meetings assigned to this Advisor
-  $sql = "SELECT * FROM meeting WHERE AdvisorID='".$AdvisorID."'";
+  $sql = "SELECT * FROM meeting WHERE AdvisorID='".$AdvisorID."' AND Status='Accepted'";
   $result = mysqli_query($conn, $sql);
   while($row = mysqli_fetch_assoc($result)){
     $numMeetings = $numMeetings + 1;
@@ -97,14 +97,14 @@
             </div>
     <br/>
     <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action active main-color-bg">
-      <span class="material-icons">school</span>  Activity</a>
-    <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-      Completed <span class="badge badge-dark">40</span></a>
-    <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
-      Level  <span class="badge badge-dark">4</span> </a>
-    <a href="#" class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-      Remaining  <span class="badge badge-dark ">7</span></a>
+    <a class="list-group-item list-group-item-action main-color-bg">
+      <span class="material-icons">settings</span>  Activity</a>
+    <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
+      Students <span class="badge badge-dark">'.$numStudents.'</span></a>
+    <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action ">
+      Meetings Accepted <span class="badge badge-dark">'.$numMeetings.'</span> </a>
+    <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
+      Messages Read <span class="badge badge-dark ">'.$numInbox.'</span></a>
     </div>
     
     <br>
@@ -144,6 +144,7 @@
             <th>Time</th>
             <th>Description</th>
             <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
 
@@ -299,6 +300,123 @@
         $("div"+id).show();
 
     });
+
+    $(".delete-message").click(function(){
+      
+      swal({
+            title: "Are you sure?",
+            text: "Are you sure you want to delete this message?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+
+                url: "deleteMessage.php",
+                method: "POST",
+                data:{
+                    messageID : $(this).parent().parent().attr('data-message')                   
+                },
+                dataType: "text",
+                async: false,
+                success: function (html){
+                    window.location.replace("adminDash.php");
+                    
+                }
+
+                });
+            } else {
+                swal("Cancelled message deletion");
+            }
+            });
+
+
+    });
+
+    $(".remove-request").click(function(){
+      
+      swal({
+            title: "Are you sure?",
+            text: "Are you sure you want to remove this meeting request?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+
+                url: "removeMeeting.php",
+                method: "POST",
+                data:{
+                    meetingID : $(this).parent().parent().attr('data-message')                   
+                },
+                dataType: "text",
+                async: false,
+                success: function (html){
+                    window.location.replace("adminDash.php");
+                    
+                }
+
+                });
+            } else {
+                swal("Cancelled message deletion");
+            }
+            });
+
+
+    });
+
+
+
+    $(".read-message").click(function(){
+        console.log("read pressed");
+
+        UpdateMessage($(this).parent().parent().attr('data-message'));
+
+          $("#MessageContent").html($(this).parent().parent().attr("data-content"));
+          $("#Subject").html($(this).parent().parent().attr("data-subject"));
+
+        
+
+        $("#CloseMessage").click(() => {
+          
+          window.location.replace("advisorDash.php");
+
+        });
+
+        $("#ReplyMessage").click(() => {
+          
+          $("#CreateMessage").modal("show");
+          $("#Recipient").val($(this).parent().parent().attr("data-student"))
+
+        });
+
+       
+
+      });
+
+      function UpdateMessage(MessageID){
+        $.ajax({
+
+        url: "readMessage.php",
+        method: "POST",
+        data:{
+            messageID : MessageID                  
+        },
+        dataType: "text",
+        async: false,
+        success: function (html){
+          console.log(html);
+            
+        }
+
+        });
+      }
+
+    
 
 
   });

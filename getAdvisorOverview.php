@@ -7,7 +7,7 @@
     $uid = (int)$_POST["UID"];
    
     $sql2 = "SELECT count(*) as Meetings FROM meeting WHERE AdvisorID=$uid";
-    $sql3 = "SELECT count(*) as Inbox FROM message WHERE AdvisorRecipient=$uid";
+    $sql3 = "SELECT count(*) as Inbox FROM message WHERE AdvisorRecipient=$uid AND Status = 0";
     $sql4 = "SELECT count(*) as Sent FROM message WHERE AdvisorSender=$uid";
    
     $result = mysqli_query($conn, $sql2);
@@ -23,7 +23,7 @@
 
             <div class="col-md-4 col-6" style="text-align: center;">
                 <a id="meetings" class="overview-section" data="meetings" style="cursor: pointer;">
-                    <div class="well dash-box">
+                    <div class="well dash-box text-primary">
                         <h2><span class="material-icons">forum</span>'.$meetings["Meetings"].'</h2>
                         <h4>Meeting</h4>
 
