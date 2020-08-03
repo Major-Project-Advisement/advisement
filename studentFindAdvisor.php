@@ -147,6 +147,9 @@
 
 
       //display modal with advisor
+      if(image == 'null'){
+        image = 'placeholder.jpg';
+      }
       $("#ViewAdvisor").find("img").attr("src","uploads/"+image)
       $("#ViewAdvisor").find("div.full-name").html(title+" "+fname+" "+lname)
       $("#ViewAdvisor").find("div.email-address").html(email)
