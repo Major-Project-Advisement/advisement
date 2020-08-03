@@ -24,8 +24,9 @@
       
 
     $sql="SELECT * FROM student WHERE AdvisorID = $AdvisorID";
+    
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+    
     $Students = '';
     
     while($row = mysqli_fetch_assoc($result)){
@@ -77,11 +78,15 @@
     </nav>
     </div>';
 
-    $sidebar = '';
+    $sidebar = '<h1 class="col-md-6 offset-md-3 col-12 mb-3" style="text-align:center">
+    Student List
+     
+    </h1>';
 
 
 
     $main = '
+
         <table class="table" width="100%">
             <tr>
                 <th>Image</th>
