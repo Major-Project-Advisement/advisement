@@ -256,7 +256,75 @@
                 
               </div>
             </div>
-  </div>';
+  </div>
+  
+  <!-- Respond Meeting Modal-->
+  <div class="modal fade" id="Respond" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <form action="" method="post" id="register_form" enctype="multipart/form-data">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Respond To Meeting</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <div class="form-group">
+           You Recieved A Meeting Request From {students name goes here}!
+           
+         </div>  
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-danger" data-dismiss="modal" href="#Decline" data-toggle="modal" data-target="#Decline">Decline</button>
+         <button type="submit" class="btn btn-primary">Accept</button>
+       </div>
+     </form>
+   </div>
+ </div>
+</div>
+
+
+
+<div class="modal fade" id="Decline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <form action="" method="post" id="register_form" enctype="multipart/form-data">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Decline Meeting</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <div class="form-group">
+           Are You Sure You Want To Decline The Meeting?
+           
+         </div>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+         <button type="submit" class="btn btn-primary">Okay</button>
+       </div>
+     </form>
+   </div>
+ </div>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ';
 ?>
 
 

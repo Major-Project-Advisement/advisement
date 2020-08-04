@@ -1,6 +1,7 @@
 <?php 
  
  include_once "includes/config.php";
+ //include 'advisorTemplate.php';
 
  if(isset($_POST["uid"]))
  {
@@ -23,7 +24,7 @@
       if($row["Status"] == 'Pending'){
 
           $html = $html.'<td>'.$row["Status"].'</td> 
-                      <td><a class="btn btn-info read-message" href="#ViewRequest data-toggle="modal" data-target="#ViewRequest"> Respond </a></td>';
+                      <td><a class="btn btn-info read-message" href="#Respond" data-toggle="modal" data-target="#Respond"> Respond </a></td>';
 
       }else if($row["Status"] == 'Accepted'){
 
@@ -43,4 +44,19 @@
    echo $html;
       
  }
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
