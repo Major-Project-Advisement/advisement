@@ -38,6 +38,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
+    <!-- Calendar plugin -->
+    </style>
+
+
+
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.2.0/main.min.js'></script>
+
+
+
     <title>Advisor | <?php echo $page_title; ?></title>
   </head>
   <body>
@@ -55,6 +65,9 @@
       <?php
         if(isset($username)){
           echo '
+          <li class="nav-item">
+          <a class="nav-link" href="advisorCalendar.php" tabindex="-1" aria-disabled="true">Calendar</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">

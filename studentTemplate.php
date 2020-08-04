@@ -54,6 +54,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
+    <!-- Calendar plugin -->
+    <link href='fullcalendar-scheduler/main.css' rel='stylesheet' />
+    <script src='fullcalendar-scheduler/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'resourceTimelineWeek'
+        });
+        calendar.render();
+      });
+
+    </script>
+
+    
+
     <title>Student | <?php echo $page_title; ?></title>
   </head>
   <body>

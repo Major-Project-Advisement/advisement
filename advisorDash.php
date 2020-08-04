@@ -322,7 +322,7 @@
                 dataType: "text",
                 async: false,
                 success: function (html){
-                    window.location.replace("adminDash.php");
+                    window.location.replace("advisorDash.php");
                     
                 }
 
